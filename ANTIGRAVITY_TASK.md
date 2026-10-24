@@ -1,71 +1,54 @@
-# TAREFAS PARA O ANTIGRAVITY — Lote 2
+# TAREFAS PARA O ANTIGRAVITY — Lote 3
 
-A tarefa anterior (verificação de segurança) foi aceita. Faça a **Tarefa A** e depois a **Tarefa B**, nessa ordem.
+O lote 2 foi aceito (`run_all_tests.bat` e `gen_import_table.py`). Faça a **Tarefa A** e depois a **Tarefa B**.
 Entregue um relatório por tarefa com a saída dos comandos de aceite.
 
 ## Regras (valem para as duas)
-- Crie **somente** os arquivos listados em cada tarefa. Não edite nenhum outro arquivo, inclusive `CMakeLists.txt`,
-  `.gitignore`, o manifesto e tudo em `recomp/src`, `recomp/include`, `za_port/` e `analysis/`.
-  Se achar que outro arquivo precisa mudar, escreva isso no relatório em vez de mudar.
+- Edite **somente** os arquivos listados em cada tarefa. Nada em `CMakeLists.txt`, `.gitignore`, manifesto,
+  `recomp/src`, `recomp/include`, `recomp/tests`, `za_port/` e `analysis/`. Se achar que outro arquivo precisa
+  mudar, escreva isso no relatório em vez de mudar.
 - Se o mesmo erro acontecer duas vezes seguidas, **pare e relate**. Não tente de novo em loop.
 - Não faça commit nem push.
-- Toda saída de build/geração vai para `build/` (já ignorado pelo git), nunca para dentro de `recomp/` ou `za_port/`.
+- Releia o arquivo antes de editar (os dois já existem e são seus do lote 2).
 
 ---
 
-## Tarefa A — `tools/run_all_tests.bat`
+## Tarefa A — etapa opcional de teste diferencial no `tools/run_all_tests.bat`
 
-Script que compila e testa os dois projetos CMake do repositório e diz no fim se está tudo verde.
+O recompilador agora tem um teste diferencial que compara instruções traduzidas com o emulador Unicorn
+(`recomp/tools/insn_difftest.py`). Ele é lento e precisa de Python com `unicorn`, então entra como etapa opcional.
 
-1. Colocar no início do `PATH` o toolchain WinLibs:
-   `%LOCALAPPDATA%\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin`
-   (é ele que tem `cmake.exe`, `ninja.exe` e `g++`; o cmake do devkitPro não serve).
-2. Para cada projeto, configurar com `-G Ninja -DCMAKE_BUILD_TYPE=Release`, compilar e rodar `ctest --output-on-failure`:
-   - `recomp/` em `build/recomp`
-   - `za_port/` em `build/za_port`
-3. Imprimir um resumo final com uma linha por projeto (`recomp: OK` ou `recomp: FALHOU`, idem `za_port`) e sair com
-   código 0 só se os dois passarem. Uma falha num projeto não deve impedir o outro de rodar.
-4. Rodar a partir da raiz do repositório (`tools\run_all_tests.bat`).
+1. `tools\run_all_tests.bat` sem argumentos continua fazendo exatamente o que faz hoje.
+2. `tools\run_all_tests.bat --difftest` faz, **depois** dos dois projetos:
+   - procura `build\venv\Scripts\python.exe`; se não existir, ou se `build\venv\Scripts\python.exe -I -c "import unicorn"`
+     falhar, imprime `difftest: PULADO (venv sem unicorn)` e segue;
+   - se existir, roda `build\venv\Scripts\python.exe -I recomp\tools\insn_difftest.py build\recomp exefs\main`
+     (só se `recomp` deu OK; senão `difftest: PULADO (recomp falhou)`).
+3. O resumo final ganha a linha `difftest: OK`, `difftest: FALHOU` ou `difftest: PULADO (...)` quando a opção é usada.
+   Código de saída 0 só se nada FALHOU (PULADO não reprova).
+4. Para preparar o venv (documente no topo do .bat, como comentário `rem`):
+   `python -m venv build\venv` e `build\venv\Scripts\pip install unicorn capstone`.
 
-**Aceite:** `tools\run_all_tests.bat` termina com os dois `OK` e código de saída 0. Cole o resumo final.
+**Aceite** (cole o resumo final dos dois):
+```
+tools\run_all_tests.bat
+tools\run_all_tests.bat --difftest
+```
+O primeiro igual ao lote 2 (dois OK, código 0); o segundo com `difftest: OK` e código 0 (com o venv preparado).
 
 ---
 
-## Tarefa B — `recomp/tools/gen_import_table.py`
+## Tarefa B — ordem de verdade no self-test do `recomp/tools/gen_import_table.py`
 
-Gera, a partir do inventário de importações, uma tabela C++ que a camada HLE vai usar.
+Na revisão do lote 2: o passo `[SELF-TEST] Ordenacao por (ns, mangled)` só confere se cada nome **aparece** no
+código gerado, não a **ordem**. Corrija para conferir que as cinco entradas de `expected_order` aparecem no
+`import_table.cpp` gerado exatamente nessa sequência (por exemplo, comparando as posições com `source.index(...)`).
+Acrescente um caso negativo: gerar com a ordem trocada de propósito (chamando a formatação sem ordenar, ou
+invertendo a lista) e confirmar que a checagem de ordem **reprova** esse caso.
 
-- Entrada: o `imports.csv` produzido por `nso_inspect` (colunas `nome,namespace,demangled,tipo,got,resolvido_no_sdk`;
-  alguns campos vêm entre aspas porque contêm vírgulas — use o módulo `csv`).
-- Uso: `python recomp/tools/gen_import_table.py <imports.csv> --out <pasta>`; gera `<pasta>/import_table.hpp` e
-  `<pasta>/import_table.cpp`. Python 3, só biblioteca padrão.
-- `import_table.hpp` deve conter exatamente esta interface:
-  ```cpp
-  #pragma once
-  #include <cstddef>
-  namespace recomp::hle {
-  struct ImportInfo {
-      const char* mangled;
-      const char* demangled;
-      const char* ns;        // coluna namespace
-      bool function;         // tipo == "func"
-      bool in_sdk;           // resolvido_no_sdk == "sim"
-  };
-  extern const ImportInfo kImports[];
-  extern const std::size_t kImportCount;
-  } // namespace recomp::hle
-  ```
-- `import_table.cpp`: inclui o header, define `kImports` com uma entrada por linha do CSV, ordenada por `ns` e depois
-  por `mangled`, e `kImportCount`. Escapar corretamente `\` e `"` nas strings C++.
-- Opção `--self-test`: gera a tabela a partir de um CSV de exemplo embutido no script (incluindo um nome com vírgula e
-  um com aspas), confere o conteúdo gerado e sai com 0 só se tudo bater. Não depende de nenhum arquivo externo.
-
-**Aceite** (cole a saída dos três):
+**Aceite:**
 ```
 python recomp/tools/gen_import_table.py --self-test
 python recomp/tools/gen_import_table.py analysis/recomp/generated/imports.csv --out build/hle_table
-g++ -std=c++20 -Wall -Wextra -fsyntax-only -Ibuild/hle_table build/hle_table/import_table.cpp
 ```
-O segundo deve informar **1001** importações; o terceiro não pode ter erros nem warnings.
-Se `analysis/recomp/generated/imports.csv` não existir, gere com:
-`build\recomp\nso_inspect.exe exefs\main --sdk exefs\sdk` (depois da Tarefa A).
+O primeiro passa e mostra o caso negativo reprovado como esperado; o segundo continua informando **1001** importações.
