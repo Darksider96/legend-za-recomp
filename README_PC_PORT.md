@@ -96,7 +96,7 @@ iniciar_jogo.bat --test
 
 ### 5. Suítes de Testes de Integração (100% Green)
 
-O projeto conta com **8 suítes de testes unitários e de integração** validadas contra o RomFS real:
+O projeto conta com **9 suítes de testes unitários e de integração** validadas contra o RomFS real:
 
 1. `trpfs_test.exe`: 16 / 16 PASS (VFS, montagem de pacotes e descompressão Oodle)
 2. `personal_test.exe`: 13 / 13 PASS (Pokédex regional de 1.422 espécies e nomes decifrados)
@@ -106,8 +106,9 @@ O projeto conta com **8 suítes de testes unitários e de integração** validad
 6. `battle_test.exe`: 25 / 25 PASS (Banco de 902 golpes, matriz 18x18 e fórmula de dano)
 7. `learnset_test.exe`: 10 / 10 PASS (Learnsets por nível de mais de 1.000 espécies)
 8. `combat_rules_test.exe`: 11 / 11 PASS (Estágios estatísticos de -6 a +6, chance crítica e mapeamento SFX Wwise)
+9. `config_test.exe`: 12 / 12 PASS (Validação INI, clamp de resolução/volume, tolerância a comentários e detecção de ROM)
 
-**Total: 166 de 166 testes aprovados com 100% de sucesso (ZERO falhas)!**
+**Total: 178 de 178 testes aprovados com 100% de sucesso (ZERO falhas)!**
 
 ---
 
@@ -132,4 +133,21 @@ O motor conta com rastreamento integral em tempo real gravado automaticamente na
     ```cmd
     gerenciar_espaco_nsp.bat
     ```
+
+---
+
+### 8. Configurador Inicial (`za_configurator.exe`) e Persistência (`za_config.ini`)
+
+O motor conta com um utilitário dedicado de configuração interativa compilado com linkagem estática (`-static`):
+
+- **Arquivo `za_config.ini`:**
+  - `[Storage]`: Caminho do RomFS (`romfs_path=../romfs`) e checagem de espaço do `.nsp`.
+  - `[Graphics]`: Resolução configurável (`window_width`, `window_height` de 720p até 4K), modo de exibição (`windowed`, `borderless`, `fullscreen`), modo de sombreamento (`solid` vs `wireframe`), câmera inicial (`third_person` vs `free_fly`) e sincronização vertical (`vsync=true/false`).
+  - `[Performance]`: Limite de taxa de quadros (`target_fps=30, 60, 120, 144, 0`), orçamento do cache de pacotes Oodle (`oodle_cache_kb`) e ativação do profiler.
+  - `[Audio]`: Volumes mestres (`master_volume`, `bgm_volume`, `sfx_volume` de 0% a 100%) e ativação de BGM.
+  - `[Input]`: Sensibilidade do mouse (`mouse_sensitivity`), inversão do eixo Y e preferência de controle (Gamepad/Teclado).
+- **Opções de Linha de Comando:**
+  - `za_configurator.exe --check`: Valida o RomFS, DLL do Oodle e configurações de forma instantânea.
+  - `za_configurator.exe --reset`: Restaura todos os parâmetros de fábrica no `za_config.ini`.
+  - `za_configurator.exe --set <secao.chave> <valor>`: Permite scripts automatizados ajustarem configurações diretamente.
 
