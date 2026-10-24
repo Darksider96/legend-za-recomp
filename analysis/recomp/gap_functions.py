@@ -419,7 +419,7 @@ def run():
         'não decodificáveis, ou ausência de `RET`, `B` e `BR`. As demais regiões decodificáveis com esses '
         'terminadores são classificadas como código. O prefixo e o sufixo de `.text` também são inventariados.', '',
         '### Até dez maiores lacunas de código', '',
-        f'Foram encontradas {stat["codigo"]} lacunas dessa classe; são exibidas {len(largest)}.', '',
+        f'Lacunas dessa classe: {stat["codigo"]}; linhas exibidas: {len(largest)}.', '',
         '| Início RVA | Tamanho em bytes |', '|---|---:|',
         *[f'| {hx(g.start)} | {g.size} |' for g in largest], '',
         '## Inícios e limites propostos', '',
@@ -438,8 +438,8 @@ def run():
         'quando o registrador é sobrescrito ou há transferência de controle. Esses endereços podem ser labels '
         'internos e sua origem continua identificada no CSV.', '',
         'Cada fim usa o início seguinte ou a borda da lacuna. Padding posterior a terminador é removido. '
-        'Quando existe fall-through real até o próximo início, seu padding é conservado para não criar '
-        'uma borda intermediária sem terminador. Os bytes removidos/conservados constam no CSV detalhado.', '',
+        'Nos fins sem terminador, o padding é conservado e a borda é declarada como fall-through '
+        'estrutural até o próximo início. Os bytes removidos/conservados constam no CSV detalhado.', '',
         'Todo BL em propostas gera início se seu alvo estiver numa lacuna de código. B só gera início quando '
         'sai da proposta corrente; branches internos não são todos promovidos a funções. Isso também permite '
         'descobrir chamadas a outras funções dentro da mesma lacuna física. O processo é repetido até estabilizar.', '',

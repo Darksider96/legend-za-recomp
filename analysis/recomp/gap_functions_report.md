@@ -18,7 +18,7 @@ Zeros/padding exige somente palavras zero, `UDF` ou `NOP`. Dados significa maior
 
 ### Até dez maiores lacunas de código
 
-Foram encontradas 1 lacunas dessa classe; são exibidas 1.
+Lacunas dessa classe: 1; linhas exibidas: 1.
 
 | Início RVA | Tamanho em bytes |
 |---|---:|
@@ -44,7 +44,7 @@ Sequência considera o primeiro código da lacuna, o primeiro endereço após pa
 
 ADR é resolvido diretamente; ADRP/ADD usa até doze instruções seguintes, interrompendo a busca quando o registrador é sobrescrito ou há transferência de controle. Esses endereços podem ser labels internos e sua origem continua identificada no CSV.
 
-Cada fim usa o início seguinte ou a borda da lacuna. Padding posterior a terminador é removido. Quando existe fall-through real até o próximo início, seu padding é conservado para não criar uma borda intermediária sem terminador. Os bytes removidos/conservados constam no CSV detalhado.
+Cada fim usa o início seguinte ou a borda da lacuna. Padding posterior a terminador é removido. Nos fins sem terminador, o padding é conservado e a borda é declarada como fall-through estrutural até o próximo início. Os bytes removidos/conservados constam no CSV detalhado.
 
 Todo BL em propostas gera início se seu alvo estiver numa lacuna de código. B só gera início quando sai da proposta corrente; branches internos não são todos promovidos a funções. Isso também permite descobrir chamadas a outras funções dentro da mesma lacuna física. O processo é repetido até estabilizar.
 
