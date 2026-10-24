@@ -7,6 +7,8 @@ if(MINGW)
     # Sem -static o executavel pode carregar um libstdc++ de outra instalacao do MinGW no PATH e falhar ao iniciar
     add_link_options(-static)
 endif()
+# LDXP/STXP de 64 bits no codigo gerado viram cmpxchg16b
+add_compile_options(-mcx16)
 
 add_library(recomp_core STATIC src/nso.cpp src/a64_decode.cpp src/emit_c.cpp)
 target_include_directories(recomp_core PUBLIC include)
@@ -23,6 +25,10 @@ target_compile_options(a64_recomp PRIVATE -Wall -Wextra)
 add_executable(a64_dump tools/a64_dump.cpp)
 target_link_libraries(a64_dump PRIVATE recomp_core)
 target_compile_options(a64_dump PRIVATE -Wall -Wextra)
+
+add_executable(a64_insn_tests tools/a64_insn_tests.cpp)
+target_link_libraries(a64_insn_tests PRIVATE recomp_core)
+target_compile_options(a64_insn_tests PRIVATE -Wall -Wextra)
 
 enable_testing()
 add_executable(nso_test tests/nso_test.cpp)
@@ -49,6 +55,18 @@ if(EXISTS ${ZA_MAIN})
     target_include_directories(fnv_poc_test PRIVATE include ${ZA_ROOT}/za_port/include)
     target_compile_options(fnv_poc_test PRIVATE -Wall -Wextra)
     add_test(NAME fnv_poc_test COMMAND fnv_poc_test)
+
+    # Testes diferenciais por instrucao (R3): fora do build padrao; quem roda e recomp/tools/insn_difftest.py,
+    # que compara o resultado com o Unicorn
+    set(INSN_TESTS_PER_SHAPE 3 CACHE STRING "Instrucoes reais sorteadas por forma em insn_difftest")
+    set(INSN_DIR ${CMAKE_CURRENT_BINARY_DIR}/insn)
+    add_custom_command(OUTPUT ${INSN_DIR}/insn_tests.cpp ${INSN_DIR}/insn_tests.csv ${INSN_DIR}/image.bin
+        COMMAND a64_insn_tests ${ZA_MAIN} --out-dir ${INSN_DIR} --per-shape ${INSN_TESTS_PER_SHAPE}
+        DEPENDS a64_insn_tests ${ZA_MAIN}
+        COMMENT "Sorteando e traduzindo instrucoes do exefs/main para insn_difftest")
+    add_executable(insn_difftest EXCLUDE_FROM_ALL tests/insn_difftest.cpp ${INSN_DIR}/insn_tests.cpp)
+    target_link_libraries(insn_difftest PRIVATE recomp_core)
+    target_include_directories(insn_difftest PRIVATE tests)
 else()
-    message(STATUS "exefs/main ausente: fnv_poc_test nao sera gerado")
+    message(STATUS "exefs/main ausente: fnv_poc_test e insn_difftest nao serao gerados")
 endif()

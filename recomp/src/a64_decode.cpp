@@ -183,6 +183,25 @@ Insn LoadsStores(Insn d, uint32_t w) {
         return d;
     }
 
+    if (Bits(w, 29, 24) == 0b001000) {  // exclusivos e acquire/release; CAS/CASP (v8.1, o1 = 1 com size 0x ou o2 = 1) ficam de fora
+        const uint32_t size = Bits(w, 31, 30);
+        const bool o2 = Bit(w, 23), load = Bit(w, 22), o1 = Bit(w, 21);
+        d.rm = static_cast<uint8_t>(Bits(w, 20, 16));
+        d.ra = static_cast<uint8_t>(Bits(w, 14, 10));
+        d.ordered = Bit(w, 15);
+        if (!o2 && !o1) {
+            d.op = load ? Op::LoadExclusive : Op::StoreExclusive;
+            d.size = static_cast<uint8_t>(size);
+        } else if (!o2 && (size & 2)) {
+            d.op = load ? Op::LoadExclusivePair : Op::StoreExclusivePair;
+            d.size = static_cast<uint8_t>(size);  // 2: par de W, 3: par de X
+        } else if (o2 && !o1 && d.ordered) {
+            d.op = load ? Op::LoadAcquire : Op::StoreRelease;
+            d.size = static_cast<uint8_t>(size);
+        }
+        return d;
+    }
+
     if (Bits(w, 29, 27) == 0b101) {  // pares
         const uint32_t opc = Bits(w, 31, 30), mode = Bits(w, 24, 23);
         const bool load = Bit(w, 22);
@@ -347,6 +366,11 @@ Insn Decode(uint32_t word, uint64_t pc) {
     d.word = word;
     d.pc = pc;
     const uint32_t op0 = Bits(word, 28, 25);
+    if ((word >> 16) == 0) {  // UDF #imm16 (permanentemente indefinida: o jogo usa como armadilha)
+        d.op = Op::Udf;
+        d.imm = Bits(word, 15, 0);
+        return d;
+    }
     if ((op0 & 0b1110) == 0b1000) return DataProcessingImmediate(d, word);
     if ((op0 & 0b1110) == 0b1010) return BranchesSystem(d, word);
     if ((op0 & 0b0101) == 0b0100) return LoadsStores(d, word);
@@ -358,10 +382,11 @@ const char* OpName(Op op) {
     static const char* names[] = {
         "unknown", "add_imm", "sub_imm", "movz", "movn", "movk", "and_imm", "orr_imm", "eor_imm", "adr", "adrp", "sbfm", "bfm",
         "ubfm", "extr", "b", "bl", "b.cond", "cbz", "cbnz", "tbz", "tbnz", "br", "blr", "ret", "load", "store", "load_pair",
-        "store_pair", "prefetch", "and", "bic", "orr", "orn", "eor", "eon", "add_shift", "sub_shift", "add_ext", "sub_ext",
+        "store_pair", "prefetch", "load_exclusive", "store_exclusive", "load_exclusive_pair",
+        "store_exclusive_pair", "load_acquire", "store_release", "and", "bic", "orr", "orn", "eor", "eon", "add_shift", "sub_shift", "add_ext", "sub_ext",
         "adc", "sbc", "csel", "csinc", "csinv", "csneg", "ccmp", "ccmn", "udiv", "sdiv", "lslv", "lsrv", "asrv", "rorv", "rbit",
         "rev16", "rev32", "rev", "clz", "cls", "madd", "msub", "smaddl", "smsubl", "umaddl", "umsubl", "smulh", "umulh",
-        "hint", "barrier", "clrex", "mrs", "msr", "svc", "brk",
+        "hint", "barrier", "clrex", "mrs", "msr", "svc", "brk", "udf",
     };
     const auto index = static_cast<size_t>(op);
     return index < sizeof(names) / sizeof(names[0]) ? names[index] : "?";

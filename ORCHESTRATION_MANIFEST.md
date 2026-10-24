@@ -64,7 +64,19 @@ Fronteira conhecida: ~600 símbolos `nn::` e 533 funções NVN (via `nvnBootstra
   - `f_133f0c0` (FNV-1a 64 do jogo) traduzida no build a partir do dump: **100.000/100.000** strings aleatórias com
     hash idêntico a `za::vfs::Fnv1a64` (`fnv_poc_test`). Helpers semânticos testados em `context_test`.
   - **141.434 funções (63,6%)** já traduzem sem nenhuma instrução pendente; as demais param em SIMD/FP ou atômicos.
-- R3 próxima (Claude Code): SIMD/FP e exclusivos/atômicos no decodificador e no gerador, com testes diferenciais.
+- R3 em andamento (Claude Code):
+  - Exclusivos (LDXR/STXR, pares) e acquire/release (LDAR/STLR) traduzidos; monitor exclusivo emulado com
+    compare-and-swap (`cmpxchg16b` nos pares de X, por isso `-mcx16`).
+  - Teste diferencial por instrução (`a64_insn_tests` + `insn_difftest` + `recomp/tools/insn_difftest.py`): instruções
+    reais do jogo, sorteadas por forma, traduzidas uma a uma e comparadas com o Unicorn (registradores, flags,
+    vetores, memória e destino de saída). **1.734 instruções / 616 formas / 27.744 casos: 0 divergências**.
+  - Próximo: SIMD/FP (loads/stores Q/D/S, FP escalar, NEON comum), validado no mesmo harness.
+- Levantamentos delegados aceitos (2026-10-24):
+  - Codex, `analysis/recomp/control_flow_report.md`: 917 stubs da PLT mapeados (o 918º padrão é o PLT0);
+    682.939 BL e 63.232 tail calls; 17 alvos em lacunas do `.eh_frame` (faixa 0x1d92734–0x1dcacd0, sem FDE: a R4
+    precisa descobrir essas funções); 4.454 tabelas de salto candidatas, 3.990 com base e tamanho resolvidos.
+  - Antigravity: `tools/run_all_tests.bat` (recomp e za_port verdes) e `recomp/tools/gen_import_table.py`
+    (tabela HLE com as 1.001 importações).
 
 ### 6. Decisões de arquitetura
 - Memória do jogo mapeada no host no **mesmo endereço** do Switch: ponteiros do jogo = ponteiros do host. Isso

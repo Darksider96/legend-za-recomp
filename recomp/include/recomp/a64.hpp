@@ -4,7 +4,8 @@
 // Cobre: imediatos (add/sub, logico, move wide, bitfield, extract, adr/adrp), ramificacoes (b, bl, b.cond, cbz/cbnz,
 // tbz/tbnz, br/blr/ret), loads/stores inteiros (offset sem sinal, pre/pos-indice, sem escala, registrador, par,
 // literal), operacoes com registradores (logico, add/sub deslocado/estendido, adc/sbc, csel, ccmp, 1/2/3 fontes) e
-// sistema (hint, barreiras, mrs/msr, svc, brk). SIMD/FP, exclusivos/atomicos e LSE ficam como Op::Unknown (fase R3).
+// sistema (hint, barreiras, mrs/msr, svc, brk, udf), exclusivos (ldxr/stxr, pares) e acquire/release (ldar/stlr).
+// SIMD/FP fica como Op::Unknown (fase R3); CAS/LSE da v8.1 nao existem no Cortex-A57 do Switch.
 
 #include <cstdint>
 #include <string>
@@ -19,6 +20,7 @@ enum class Op : uint8_t {
     B, Bl, BCond, Cbz, Cbnz, Tbz, Tbnz, Br, Blr, Ret,
     // Loads/stores
     Load, Store, LoadPair, StorePair, Prefetch,
+    LoadExclusive, StoreExclusive, LoadExclusivePair, StoreExclusivePair, LoadAcquire, StoreRelease,
     // Registradores
     And, Bic, Orr, Orn, Eor, Eon,          // set_flags em And/Bic = ANDS/BICS
     AddShift, SubShift, AddExt, SubExt, Adc, Sbc,
@@ -27,7 +29,7 @@ enum class Op : uint8_t {
     Rbit, Rev16, Rev32, Rev, Clz, Cls,
     Madd, Msub, Smaddl, Smsubl, Umaddl, Umsubl, Smulh, Umulh,
     // Sistema
-    Hint, Barrier, Clrex, Mrs, Msr, Svc, Brk,
+    Hint, Barrier, Clrex, Mrs, Msr, Svc, Brk, Udf,
 };
 
 enum class AddrMode : uint8_t { Offset, PreIndex, PostIndex, Register, Literal };
@@ -36,7 +38,7 @@ struct Insn {
     Op op{Op::Unknown};
     uint32_t word{0};
     uint64_t pc{0};          // RVA
-    uint8_t rd{0}, rn{0}, rm{0}, ra{0};   // ra tambem e Rt2 em pares
+    uint8_t rd{0}, rn{0}, rm{0}, ra{0};   // ra tambem e Rt2 em pares; rm e Rs (status) em store exclusivo
     bool sf{false};          // operacao de 64 bits
     bool set_flags{false};
     int64_t imm{0};          // imediato ja decodificado (deslocado/estendido)
@@ -50,6 +52,7 @@ struct Insn {
     uint8_t size{0};         // log2 dos bytes acessados (0..3)
     bool sign_extend{false}; // LDRSB/LDRSH/LDRSW
     bool dest64{true};       // destino X (true) ou W (false) em loads com sinal
+    bool ordered{false};     // exclusivos: acquire (LDAXR) / release (STLXR); sempre true em LDAR/STLR
     AddrMode mode{AddrMode::Offset};
     uint64_t target{0};      // RVA de destino (ramificacoes, adr/adrp e literais)
     uint16_t sysreg{0};      // mrs/msr: o0:op1:CRn:CRm:op2

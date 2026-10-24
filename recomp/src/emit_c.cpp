@@ -232,7 +232,27 @@ struct Emitter {
         case Op::Smulh: Line(Write(d.rd, true, std::format("recomp::MulHighSigned({}, {})", Reg(d.rn, true), Reg(d.rm, true)))); break;
         case Op::Umulh: Line(Write(d.rd, true, std::format("recomp::MulHighUnsigned({}, {})", Reg(d.rn, true), Reg(d.rm, true)))); break;
         case Op::Load: case Op::Store: case Op::LoadPair: case Op::StorePair: Memory(d); break;
-        case Op::Prefetch: case Op::Hint: case Op::Clrex: break;
+        case Op::LoadExclusive:
+            Line(Write(d.rd, d.size == 3, std::format("recomp::LoadExclusive<{}>(c, {}, {})", MemoryType(d), Reg(d.rn, true, true), d.ordered)));
+            break;
+        case Op::StoreExclusive:
+            Line(Write(d.rm, false, std::format("recomp::StoreExclusive<{0}>(c, {1}, static_cast<{0}>({2}), {3})", MemoryType(d), Reg(d.rn, true, true),
+                                                Reg(d.rd, d.size == 3), d.ordered)));
+            break;
+        case Op::LoadExclusivePair:
+            Line(std::format("{{ {0} lo, hi; recomp::LoadExclusivePair<{0}>(c, {1}, {2}, lo, hi); {3} {4} }}", MemoryType(d), Reg(d.rn, true, true),
+                             d.ordered, Write(d.rd, d.size == 3, "lo"), Write(d.ra, d.size == 3, "hi")));
+            break;
+        case Op::StoreExclusivePair:
+            Line(Write(d.rm, false, std::format("recomp::StoreExclusivePair<{0}>(c, {1}, static_cast<{0}>({2}), static_cast<{0}>({3}), {4})", MemoryType(d),
+                                                Reg(d.rn, true, true), Reg(d.rd, d.size == 3), Reg(d.ra, d.size == 3), d.ordered)));
+            break;
+        case Op::LoadAcquire: Line(Write(d.rd, d.size == 3, std::format("recomp::LoadAcquire<{}>({})", MemoryType(d), Reg(d.rn, true, true)))); break;
+        case Op::StoreRelease:
+            Line(std::format("recomp::StoreRelease<{0}>({1}, static_cast<{0}>({2}));", MemoryType(d), Reg(d.rn, true, true), Reg(d.rd, d.size == 3)));
+            break;
+        case Op::Clrex: Line("c.exclusive_address = recomp::kNoExclusive;"); break;
+        case Op::Prefetch: case Op::Hint: break;
         case Op::Barrier: Line("recomp::Barrier();"); break;
         case Op::B: Line(Jump(d.target)); break;
         case Op::Bl:
@@ -250,7 +270,7 @@ struct Emitter {
         case Op::Br: Line(std::format("{{ recomp::Dispatch(c, {}); return; }}", Reg(d.rn, true))); break;
         case Op::Blr: Line(std::format("{{ const uint64_t t = {}; c.x[30] = {}; recomp::Dispatch(c, t); }}", Reg(d.rn, true), Guest(d.pc + 4))); break;
         case Op::Ret: Line("return;"); break;
-        case Op::Brk: Line(std::format("recomp::Trap(c, {}, {});", Hex(d.pc), d.imm)); break;
+        case Op::Brk: case Op::Udf: Line(std::format("recomp::Trap(c, {}, {});", Hex(d.pc), d.imm)); break;
         case Op::Mrs:
             if (d.sysreg == a64::kSysTpidrEl0) Line(Write(d.rd, true, "c.tpidr"));
             else if (d.sysreg == a64::kSysTpidrroEl0) Line(Write(d.rd, true, "c.tpidrro"));
@@ -262,7 +282,8 @@ struct Emitter {
             break;
         case Op::Msr:
             if (d.sysreg == a64::kSysTpidrEl0) Line(std::format("c.tpidr = {};", Reg(d.rd, true)));
-            else if (d.sysreg == a64::kSysFpcr) Line(std::format("c.fpcr = static_cast<uint32_t>({});", Reg(d.rd, true)));
+            // FPCR do Cortex-A57 (ARMv8.0): so AHP, DN, FZ, RMode, Stride e Len (bits 26:20 e 18:16) sao gravaveis
+            else if (d.sysreg == a64::kSysFpcr) Line(std::format("c.fpcr = static_cast<uint32_t>({}) & 0x07F70000u;", Reg(d.rd, true)));
             else if (d.sysreg == a64::kSysFpsr) Line(std::format("c.fpsr = static_cast<uint32_t>({});", Reg(d.rd, true)));
             else Unsupported(d);
             break;
@@ -271,13 +292,13 @@ struct Emitter {
     }
 };
 
-bool EndsFlow(Op op) { return op == Op::B || op == Op::Br || op == Op::Ret || op == Op::Brk; }
+bool EndsFlow(Op op) { return op == Op::B || op == Op::Br || op == Op::Ret || op == Op::Brk || op == Op::Udf; }
 
 } // namespace
 
 std::string FunctionName(uint64_t rva) { return std::format("f_{:x}", rva); }
 
-bool EmitFunction(const NsoModule& module, const FunctionRange& function, EmitResult& out) {
+bool EmitFunction(const NsoModule& module, const FunctionRange& function, EmitResult& out, const std::string& name) {
     out = {};
     const auto image = module.Image();
     if (function.start + function.size > module.Text().size || function.size % 4) return false;
@@ -293,7 +314,7 @@ bool EmitFunction(const NsoModule& module, const FunctionRange& function, EmitRe
     }
     out.instructions = insns.size();
     Emitter emitter{function, out, labels};
-    out.code = std::format("void {}(recomp::Context& c) {{\n", FunctionName(function.start));
+    out.code = std::format("void {}(recomp::Context& c) {{\n", name.empty() ? FunctionName(function.start) : name);
     for (const Insn& d : insns) {
         if (labels.contains(d.pc)) out.code += std::format("L_{:x}:\n", d.pc);
         emitter.Emit(d);

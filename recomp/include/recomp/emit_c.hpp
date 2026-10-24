@@ -22,7 +22,8 @@ struct EmitResult {
 };
 
 std::string FunctionName(uint64_t rva);
-bool EmitFunction(const NsoModule& module, const FunctionRange& function, EmitResult& out);
+// name: nome da funcao gerada (padrao FunctionName(function.start)); chamadas continuam usando FunctionName
+bool EmitFunction(const NsoModule& module, const FunctionRange& function, EmitResult& out, const std::string& name = {});
 // Arquivo completo: include do runtime, declaracoes das funcoes chamadas e os corpos
 std::string EmitFile(const std::vector<EmitResult>& functions);
 
