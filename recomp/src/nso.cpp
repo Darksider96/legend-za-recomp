@@ -308,6 +308,8 @@ bool NsoModule::ParseDynamic(std::string& error) {
     }
     init_array_ = tag(25);
     init_array_count_ = tag(27) / 8;
+    init_ = tag(12);   // DT_INIT
+    fini_ = tag(13);   // DT_FINI
     return true;
 }
 

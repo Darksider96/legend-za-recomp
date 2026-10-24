@@ -79,6 +79,9 @@ public:
     // Construtores estaticos (DT_INIT_ARRAY): RVAs das entradas, executadas pelo rtld antes de nnMain
     uint64_t InitArray() const { return init_array_; }
     uint64_t InitArrayCount() const { return init_array_count_; }
+    // DT_INIT / DT_FINI: o crt do modulo (roda o INIT_ARRAY); o rtld chama na ordem reversa de carga (0 = ausente)
+    uint64_t Init() const { return init_; }
+    uint64_t Fini() const { return fini_; }
     // Inicios e tamanhos das funcoes descritas no .eh_frame (ordenados por inicio)
     const std::vector<FunctionRange>& Functions() const { return functions_; }
     const Symbol* FindExport(const std::string& name) const;
@@ -93,7 +96,7 @@ private:
     std::vector<uint8_t> image_;
     uint64_t mod0_{0}, dynamic_{0}, eh_frame_hdr_{0}, eh_frame_hdr_end_{0};
     uint64_t dynsym_count_{0};   // do cabecalho NSO (tamanho da dynsym / 24)
-    uint64_t init_array_{0}, init_array_count_{0};
+    uint64_t init_array_{0}, init_array_count_{0}, init_{0}, fini_{0};
     std::vector<Symbol> symbols_;
     std::vector<Relocation> relocations_;
     std::vector<FunctionRange> functions_;

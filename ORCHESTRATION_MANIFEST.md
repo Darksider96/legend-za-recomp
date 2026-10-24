@@ -29,7 +29,7 @@ Regras para qualquer agente:
 | :--- | :--- |
 | `recomp/tools` (offline) | Ler o NSO, descobrir funções (`.eh_frame`, símbolos, alvos de `BL`, vtables, tabelas de salto), traduzir cada função AArch64 para C++ |
 | `recomp/runtime` | Memória do jogo no mesmo endereço do Switch (`0x7100000000`), segmentos e relocações, contexto de CPU (X0–X30, SP, NZCV, V0–V31, TLS), threads, tabela de despacho para chamadas indiretas |
-| `recomp/hle` | Reimplementação nativa das funções `nn::` importadas (os, fs, hid, audio, vi, time, oe, account, rede como offline) |
+| `recomp/hle` | HLE do kernel (SVCs) e dos serviços do sistema; sobrescritas nativas de funções do sdk (NVN, fs, hid...) |
 | `recomp/nvn` | NVN → Vulkan, incluindo tradução dos shaders Maxwell (`.bnsh`/`.trsha`) para SPIR-V |
 | testes | Testes diferenciais: função traduzida × referência validada (parsers de `za_port`, valores conhecidos) |
 
@@ -73,8 +73,11 @@ Fronteira conhecida: ~600 símbolos `nn::` e 533 funções NVN (via `nvnBootstra
     zeros/NaN de FMAX/FMIN, propagação de NaN, FMA fundida, FRECPE/FRSQRTE.
   - Semântica de FP do ARM com FPCR = 0 (arredondamento ao mais próximo, sem flush-to-zero); FPSR não é emulado.
     Código gerado com `-ffp-contract=off` (sem fusão de multiplicação e soma entre instruções).
-- R4 próxima (Claude Code): runtime mínimo — mapear a imagem em 0x7100000000, aplicar relocações, tabela de despacho,
-  INIT_ARRAY e `nninitStartup` → `nnMain` registrando cada chamada `nn::`.
+- R4 em andamento (Claude Code): `recomp/runtime/` (carregador, despacho, kernel, `za_recomp`), build com `-DRECOMP_GAME=ON`.
+  - `a64_recomp --all` traduz o módulo inteiro em arquivos fatiados: main = 224.328 funções (.eh_frame + 918 stubs
+    da PLT + 1.034 das lacunas), ~1,1 GB de C++; ~54 s por arquivo de 15 MB em `-O1`.
+  - Boot como no Horizon: o `rtld` chama `nn::init::Start` do sdk com 3 callbacks (pronto, init dos módulos via
+    `DT_INIT` na ordem reversa de carga, fini); o sdk chama `nninitStartup` e `nnMain` do main.
 - Levantamentos delegados aceitos (2026-10-24):
   - Codex, `analysis/recomp/control_flow_report.md`: 917 stubs da PLT mapeados (o 918º padrão é o PLT0);
     682.939 BL e 63.232 tail calls; 17 alvos em lacunas do `.eh_frame` (faixa 0x1d92734–0x1dcacd0, sem FDE: a R4
@@ -84,6 +87,12 @@ Fronteira conhecida: ~600 símbolos `nn::` e 533 funções NVN (via `nvnBootstra
   - Codex, `analysis/recomp/gap_functions_report.md`: 1.034 funções propostas para a lacuna de 230 KB; 0 alvos órfãos.
 
 ### 6. Decisões de arquitetura
+- **O `sdk` também é recompilado** (2026-10-24). Ele traz libc (musl), libc++ e `nn::*` com o layout de objetos que o
+  jogo espera (96 importações do main são do libc++); reimplementar isso como HLE seria frágil. A fronteira nativa
+  fica nas **SVCs** (kernel do Horizon) e em sobrescritas pontuais por nome de função (NVN, fs, hid, áudio...) onde
+  for mais simples que emular o serviço. O `rtld` não é traduzido: o carregador do runtime faz o papel dele.
+- Endereços: main em `0x7100000000`, sdk em `0x7108000000`; funções nativas em endereços falsos `0x7F00000000 + 16·i`
+  (o GOT recebe esses valores e o `Dispatch` os reconhece).
 - Memória do jogo mapeada no host no **mesmo endereço** do Switch: ponteiros do jogo = ponteiros do host. Isso
   permite que importações de libc (`memcpy`, `strlen`...) chamem a implementação do host diretamente.
 - Relocações (RELA, RELR, JMPREL) e construtores do INIT_ARRAY aplicados pelo runtime, como o `rtld` faria.

@@ -1,6 +1,8 @@
 #include "recomp/emit_c.hpp"
 
 #include "emit_internal.hpp"
+#include "recomp/jump_tables.hpp"
+#include "recomp/context.hpp"
 
 #include <cstring>
 #include <format>
@@ -56,12 +58,20 @@ std::string Extended(unsigned rm, unsigned option, unsigned amount, bool sf) {
 std::string Hex(uint64_t v) { return std::format("0x{:x}", v); }
 
 // Endereco absoluto do jogo para um RVA
-std::string Guest(uint64_t rva) { return std::format("(recomp::kImageBase + {}ull)", Hex(rva)); }
+uint64_t g_module_base = kImageBase;
+std::string g_module_prefix = "f_";
+
+// Endereco absoluto do jogo para um RVA do modulo sendo traduzido
+std::string Guest(uint64_t rva) {
+    if (g_module_base == kImageBase) return std::format("(recomp::kImageBase + {}ull)", Hex(rva));
+    return std::format("{}ull", Hex(g_module_base + rva));
+}
 
 struct Emitter {
     const FunctionRange& function;
     EmitResult& out;
     const std::set<uint64_t>& labels;
+    const std::map<uint64_t, std::vector<uint64_t>>& tables;  // BR de tabela de salto -> destinos na funcao
 
     bool Inside(uint64_t rva) const { return rva >= function.start && rva < function.start + function.size; }
 
@@ -75,7 +85,7 @@ struct Emitter {
 
     void Unsupported(const Insn& d) {
         out.unsupported.push_back(d);
-        Line(std::format("recomp::Unimplemented(c, {}, {});  // {}", Hex(d.pc), Hex(d.word), a64::OpName(d.op)));
+        Line(std::format("recomp::Unimplemented(c, {}, {});  // {}", Guest(d.pc), Hex(d.word), a64::OpName(d.op)));
     }
 
     std::string MemoryType(const Insn& d) const {
@@ -278,10 +288,22 @@ struct Emitter {
             Line(std::format("if (((c.x[{}] >> {}) & 1) {} 0) {}", d.rd == 31 ? 0 : d.rd, d.bit, d.op == Op::Tbz ? "==" : "!=", Jump(d.target)));
             if (d.rd == 31) out.code.replace(out.code.rfind("c.x[0]"), 6, "uint64_t{0}");
             break;
-        case Op::Br: Line(std::format("{{ recomp::Dispatch(c, {}); return; }}", Reg(d.rn, true))); break;
+        case Op::Br: {
+            const auto table = tables.find(d.pc);
+            if (table == tables.end()) {
+                Line(std::format("{{ recomp::Dispatch(c, {}); return; }}", Reg(d.rn, true)));
+                break;
+            }
+            // Switch resolvido: goto local para cada destino; outro valor volta para o Dispatch
+            std::string code = std::format("{{ const uint64_t t = {}; switch (t) {{", Reg(d.rn, true));
+            for (uint64_t target : table->second) code += std::format(" case {}: goto L_{:x};", Guest(target), target);
+            Line(code + " default: break; } recomp::Dispatch(c, t); return; }");
+            break;
+        }
         case Op::Blr: Line(std::format("{{ const uint64_t t = {}; c.x[30] = {}; recomp::Dispatch(c, t); }}", Reg(d.rn, true), Guest(d.pc + 4))); break;
         case Op::Ret: Line("return;"); break;
-        case Op::Brk: case Op::Udf: Line(std::format("recomp::Trap(c, {}, {});", Hex(d.pc), d.imm)); break;
+        case Op::Svc: Line(std::format("recomp::SupervisorCall(c, {});", d.imm)); break;
+        case Op::Brk: case Op::Udf: Line(std::format("recomp::Trap(c, {}, {});", Guest(d.pc), d.imm)); break;
         case Op::Mrs:
             if (d.sysreg == a64::kSysTpidrEl0) Line(Write(d.rd, true, "c.tpidr"));
             else if (d.sysreg == a64::kSysTpidrroEl0) Line(Write(d.rd, true, "c.tpidrro"));
@@ -312,7 +334,12 @@ bool EndsFlow(Op op) { return op == Op::B || op == Op::Br || op == Op::Ret || op
 
 } // namespace
 
-std::string FunctionName(uint64_t rva) { return std::format("f_{:x}", rva); }
+void SetModule(uint64_t base, const std::string& prefix) {
+    g_module_base = base;
+    g_module_prefix = prefix;
+}
+
+std::string FunctionName(uint64_t rva) { return std::format("{}{:x}", g_module_prefix, rva); }
 
 bool EmitFunction(const NsoModule& module, const FunctionRange& function, EmitResult& out, const std::string& name) {
     out = {};
@@ -329,7 +356,9 @@ bool EmitFunction(const NsoModule& module, const FunctionRange& function, EmitRe
         if (branch && d.target >= function.start && d.target < function.start + function.size) labels.insert(d.target);
     }
     out.instructions = insns.size();
-    Emitter emitter{function, out, labels};
+    out.jump_tables = ResolveJumpTables(module, function, insns);
+    for (const auto& [br, targets] : out.jump_tables) labels.insert(targets.begin(), targets.end());
+    Emitter emitter{function, out, labels, out.jump_tables};
     out.code = std::format("void {}(recomp::Context& c) {{\n", name.empty() ? FunctionName(function.start) : name);
     for (const Insn& d : insns) {
         if (labels.contains(d.pc)) out.code += std::format("L_{:x}:\n", d.pc);

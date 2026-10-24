@@ -240,11 +240,13 @@ inline void StoreRelease(uint64_t address, T value) {
     AtomicAt<T>(address).store(value, std::memory_order_seq_cst);
 }
 
-// Implementados pelo runtime (fase R4): chamada indireta por endereco do jogo, instrucao nao traduzida, BRK e
-// contador do sistema (CNTVCT_EL0, 19,2 MHz no Switch)
+// Implementados pelo runtime: chamada indireta por endereco do jogo, instrucao nao traduzida, BRK e contador do
+// sistema (CNTVCT_EL0, 19,2 MHz no Switch)
 void Dispatch(Context& c, uint64_t guest_address);
-[[noreturn]] void Unimplemented(Context& c, uint64_t rva, uint32_t word);
-[[noreturn]] void Trap(Context& c, uint64_t rva, uint32_t imm);
+[[noreturn]] void Unimplemented(Context& c, uint64_t address, uint32_t word);
+[[noreturn]] void Trap(Context& c, uint64_t address, uint32_t imm);
 uint64_t ReadCounter();
+// SVC #imm: chamada ao kernel do Horizon (HLE do kernel no runtime)
+void SupervisorCall(Context& c, uint32_t imm);
 
 } // namespace recomp

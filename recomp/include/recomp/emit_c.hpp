@@ -8,6 +8,7 @@
 #include "recomp/a64.hpp"
 #include "recomp/nso.hpp"
 
+#include <map>
 #include <set>
 #include <string>
 #include <vector>
@@ -19,8 +20,11 @@ struct EmitResult {
     std::vector<a64::Insn> unsupported;     // instrucoes que viraram Unimplemented
     std::set<uint64_t> callees;             // RVAs de funcoes chamadas ou alvo de tail call
     size_t instructions{0};
+    std::map<uint64_t, std::vector<uint64_t>> jump_tables;  // BR resolvidos como switch -> destinos (RVAs)
 };
 
+// Modulo sendo traduzido: base onde ele fica mapeado e prefixo dos nomes (padrao: main em kImageBase, "f_")
+void SetModule(uint64_t base, const std::string& prefix);
 std::string FunctionName(uint64_t rva);
 // name: nome da funcao gerada (padrao FunctionName(function.start)); chamadas continuam usando FunctionName
 bool EmitFunction(const NsoModule& module, const FunctionRange& function, EmitResult& out, const std::string& name = {});

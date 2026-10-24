@@ -11,7 +11,7 @@ endif()
 # nao pode virar FMA (o ARM arredonda cada uma)
 add_compile_options(-mcx16 -ffp-contract=off)
 
-add_library(recomp_core STATIC src/nso.cpp src/a64_decode.cpp src/a64_simd.cpp src/emit_c.cpp src/emit_simd.cpp)
+add_library(recomp_core STATIC src/nso.cpp src/a64_decode.cpp src/a64_simd.cpp src/emit_c.cpp src/emit_simd.cpp src/jump_tables.cpp)
 target_include_directories(recomp_core PUBLIC include)
 target_compile_options(recomp_core PRIVATE -Wall -Wextra)
 
@@ -75,4 +75,49 @@ if(EXISTS ${ZA_MAIN})
     target_include_directories(insn_difftest PRIVATE tests)
 else()
     message(STATUS "exefs/main ausente: fnv_poc_test e insn_difftest nao serao gerados")
+endif()
+
+# Jogo recompilado (R4): traduz main e sdk inteiros a partir do dump do usuario e compila o za_recomp.
+# Demorado (~1,2 GB de C++); o codigo gerado fica em build/ e nunca vai para o git.
+option(RECOMP_GAME "Traduzir main e sdk e compilar o za_recomp" OFF)
+set(RECOMP_GUEST_JOBS 6 CACHE STRING "Compilacoes paralelas dos arquivos gerados (cada uma usa ~1-2 GB de RAM)")
+set(ZA_SDK ${ZA_ROOT}/exefs/sdk)
+if(RECOMP_GAME AND EXISTS ${ZA_MAIN} AND EXISTS ${ZA_SDK})
+    set(GUEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/guest)
+    set(GAP_FUNCTIONS ${ZA_ROOT}/analysis/recomp/generated/gap_functions.csv)
+    set(MAIN_EXTRA)
+    if(EXISTS ${GAP_FUNCTIONS})
+        set(MAIN_EXTRA --extra ${GAP_FUNCTIONS})
+    endif()
+    function(guest_outputs dir count out)
+        set(files ${dir}/missing.cpp ${dir}/dispatch_table.cpp)
+        math(EXPR last "${count} - 1")
+        foreach(i RANGE ${last})
+            string(LENGTH "${i}" len)
+            if(len EQUAL 1)
+                set(i "00${i}")
+            elseif(len EQUAL 2)
+                set(i "0${i}")
+            endif()
+            list(APPEND files ${dir}/guest_${i}.cpp)
+        endforeach()
+        set(${out} ${files} PARENT_SCOPE)
+    endfunction()
+    guest_outputs(${GUEST_DIR}/main 128 MAIN_SOURCES)
+    guest_outputs(${GUEST_DIR}/sdk 24 SDK_SOURCES)
+    add_custom_command(OUTPUT ${MAIN_SOURCES}
+        COMMAND a64_recomp ${ZA_MAIN} --all --out-dir ${GUEST_DIR}/main --files 128 ${MAIN_EXTRA}
+        DEPENDS a64_recomp ${ZA_MAIN}
+        COMMENT "Traduzindo exefs/main")
+    add_custom_command(OUTPUT ${SDK_SOURCES}
+        COMMAND a64_recomp ${ZA_SDK} --all --out-dir ${GUEST_DIR}/sdk --files 24 --base 0x7108000000 --prefix s_ --table kSdkFunctions
+        DEPENDS a64_recomp ${ZA_SDK}
+        COMMENT "Traduzindo exefs/sdk")
+    set_source_files_properties(${MAIN_SOURCES} ${SDK_SOURCES} PROPERTIES COMPILE_OPTIONS "-O1;-foptimize-sibling-calls;-w;-Wa,-mbig-obj")
+    set_property(GLOBAL APPEND PROPERTY JOB_POOLS guest_pool=${RECOMP_GUEST_JOBS})
+    add_executable(za_recomp runtime/main.cpp runtime/loader.cpp runtime/dispatch.cpp runtime/kernel.cpp ${MAIN_SOURCES} ${SDK_SOURCES})
+    target_link_libraries(za_recomp PRIVATE recomp_core)
+    target_compile_options(za_recomp PRIVATE -Wall -Wextra)
+    target_link_options(za_recomp PRIVATE -Wl,--stack,268435456)
+    set_property(TARGET za_recomp PROPERTY JOB_POOL_COMPILE guest_pool)
 endif()
