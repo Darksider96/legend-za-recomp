@@ -1,10 +1,18 @@
 @echo off
 setlocal enabledelayedexpansion
 
+rem Para preparar o venv para o --difftest:
+rem python -m venv build\venv
+rem build\venv\Scripts\pip install unicorn capstone
+
 set "PATH=%LOCALAPPDATA%\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin;%PATH%"
+
+set DO_DIFFTEST=0
+if "%~1"=="--difftest" set DO_DIFFTEST=1
 
 set RECOMP_STATUS=FALHOU
 set ZA_PORT_STATUS=FALHOU
+set DIFFTEST_STATUS=
 
 echo ========================================================
 echo [1/2] Compilando e testando: recomp
@@ -37,15 +45,50 @@ if errorlevel 1 goto after_za_port
 set ZA_PORT_STATUS=OK
 
 :after_za_port
+if "%DO_DIFFTEST%"=="1" (
+    echo.
+    echo ========================================================
+    echo [3/3] Teste diferencial: insn_difftest ^(Unicorn^)
+    echo ========================================================
+    if not "%RECOMP_STATUS%"=="OK" (
+        set "DIFFTEST_STATUS=PULADO (recomp falhou)"
+        echo difftest: !DIFFTEST_STATUS!
+    ) else (
+        if not exist build\venv\Scripts\python.exe (
+            set "DIFFTEST_STATUS=PULADO (venv sem unicorn)"
+            echo difftest: !DIFFTEST_STATUS!
+        ) else (
+            build\venv\Scripts\python.exe -I -c "import unicorn" >nul 2>&1
+            if errorlevel 1 (
+                set "DIFFTEST_STATUS=PULADO (venv sem unicorn)"
+                echo difftest: !DIFFTEST_STATUS!
+            ) else (
+                build\venv\Scripts\python.exe -I recomp\tools\insn_difftest.py build\recomp exefs\main
+                if errorlevel 1 (
+                    set DIFFTEST_STATUS=FALHOU
+                ) else (
+                    set DIFFTEST_STATUS=OK
+                )
+            )
+        )
+    )
+)
+
 echo.
 echo ========================================================
 echo Resumo Final
 echo ========================================================
-echo recomp: %RECOMP_STATUS%
-echo za_port: %ZA_PORT_STATUS%
+echo recomp: !RECOMP_STATUS!
+echo za_port: !ZA_PORT_STATUS!
+if "!DO_DIFFTEST!"=="1" (
+    echo difftest: !DIFFTEST_STATUS!
+)
 
-if "%RECOMP_STATUS%"=="OK" (
-    if "%ZA_PORT_STATUS%"=="OK" (
+if "!RECOMP_STATUS!"=="OK" (
+    if "!ZA_PORT_STATUS!"=="OK" (
+        if "!DO_DIFFTEST!"=="1" (
+            if "!DIFFTEST_STATUS!"=="FALHOU" exit /b 1
+        )
         exit /b 0
     )
 )
