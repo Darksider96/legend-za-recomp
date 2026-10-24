@@ -7,6 +7,7 @@
 
 #include "kernel.hpp"
 #include "loader.hpp"
+#include "threads.hpp"
 #include "recomp/runtime.hpp"
 
 #include <windows.h>
@@ -30,7 +31,6 @@ namespace {
 
 std::vector<recomp::LoadedModule> g_modules;
 
-constexpr uint64_t kMainThreadHandle = 0xE001;
 constexpr uint64_t kStackSize = 16 << 20;
 
 void* Allocate(uint64_t size) { return VirtualAlloc(nullptr, size, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE); }
@@ -122,7 +122,7 @@ int main(int argc, char** argv) {
     auto* rtld_area = static_cast<uint8_t*>(Allocate(0x1000));  // o rtld passa o fim da propria imagem em x1
     c.sp = (reinterpret_cast<uint64_t>(stack) + kStackSize - 0x100) & ~uint64_t{0xF};
     c.tpidrro = reinterpret_cast<uint64_t>(tls);
-    c.x[0] = kMainThreadHandle;
+    c.x[0] = recomp::kernel::CreateMainThread(c);
     c.x[1] = reinterpret_cast<uint64_t>(rtld_area);
     c.x[2] = recomp::RegisterHost("rtld:pronto", RtldReady);
     c.x[3] = recomp::RegisterHost("rtld:init", RtldInitModules);

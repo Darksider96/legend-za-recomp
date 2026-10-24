@@ -2,6 +2,11 @@
 
 #include <windows.h>
 
+#include <cxxabi.h>
+
+#include <algorithm>
+#include <cstdlib>
+
 #include <cstring>
 #include <format>
 
@@ -85,7 +90,46 @@ bool LinkModules(std::vector<LoadedModule>& modules, const std::map<std::string,
     return true;
 }
 
-void SetDescribedModules(const std::vector<LoadedModule>* modules) { g_described = modules; }
+namespace {
+
+struct NamedFunction {
+    uint64_t address, size;
+    std::string name;
+};
+
+std::vector<NamedFunction> g_symbols;  // exportacoes de funcao de todos os modulos, ordenadas por endereco
+
+std::string Demangle(const std::string& name) {
+    int status = 0;
+    char* text = abi::__cxa_demangle(name.c_str(), nullptr, nullptr, &status);
+    std::string out = status == 0 && text ? text : name;
+    std::free(text);
+    return out;
+}
+
+}  // namespace
+
+void SetDescribedModules(const std::vector<LoadedModule>* modules) {
+    g_described = modules;
+    g_symbols.clear();
+    for (const LoadedModule& m : *modules) {
+        for (const Symbol& s : m.nso.Symbols()) {
+            if (s.section != 0 && s.IsFunction() && !s.name.empty()) g_symbols.push_back({m.base + s.value, s.size, s.name});
+        }
+    }
+    std::sort(g_symbols.begin(), g_symbols.end(), [](const auto& a, const auto& b) { return a.address < b.address; });
+}
+
+// Exportacao de funcao que contem o endereco (nome demangled)
+bool FindSymbol(uint64_t address, std::string& name, uint64_t& offset) {
+    const auto it = std::upper_bound(g_symbols.begin(), g_symbols.end(), address, [](uint64_t a, const NamedFunction& f) { return a < f.address; });
+    if (it == g_symbols.begin()) return false;
+    const NamedFunction& f = *(it - 1);
+    if (address >= f.address + std::max<uint64_t>(f.size, 4)) return false;
+    name = Demangle(f.name);
+    offset = address - f.address;
+    return true;
+}
 
 // Usado por DescribeAddress (dispatch.cpp): modulo e RVA de um endereco
 bool FindModule(uint64_t address, std::string& name, uint64_t& rva) {

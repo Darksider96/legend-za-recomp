@@ -307,7 +307,7 @@ struct Emitter {
         case Op::Mrs:
             if (d.sysreg == a64::kSysTpidrEl0) Line(Write(d.rd, true, "c.tpidr"));
             else if (d.sysreg == a64::kSysTpidrroEl0) Line(Write(d.rd, true, "c.tpidrro"));
-            else if (d.sysreg == a64::kSysCntvctEl0) Line(Write(d.rd, true, "recomp::ReadCounter()"));
+            else if (d.sysreg == a64::kSysCntvctEl0 || d.sysreg == a64::kSysCntpctEl0) Line(Write(d.rd, true, "recomp::ReadCounter()"));
             else if (d.sysreg == a64::kSysCntfrqEl0) Line(Write(d.rd, true, "uint64_t{19200000}"));
             else if (d.sysreg == a64::kSysFpcr) Line(Write(d.rd, true, "uint64_t{c.fpcr}"));
             else if (d.sysreg == a64::kSysFpsr) Line(Write(d.rd, true, "uint64_t{c.fpsr}"));

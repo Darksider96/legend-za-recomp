@@ -108,8 +108,9 @@ std::map<uint64_t, std::vector<uint64_t>> ResolveJumpTables(const NsoModule& mod
         if (load.amount != 0 && load.amount != load.size) continue;
         uint64_t table = 0;
         if (!Constant(insns, jl, load.rn, table)) continue;
-        const unsigned index = load.rm;
-        // Guarda: cmp wI/xI, #N seguido de b.hi (N + 1 entradas) ou b.hs (N entradas), sem escrita em I no meio
+        unsigned index = load.rm;
+        // Guarda: cmp wI/xI, #N seguido de b.hi (N + 1 entradas) ou b.hs (N entradas), sem escrita em I no meio. Copias
+        // (mov wI, wJ = orr com XZR) entre a guarda e o load sao seguidas: a guarda pode estar no registrador original.
         int jc = -1;
         for (int j = jl - 1; j >= 0; --j) {
             const Insn& d = insns[j];
@@ -117,7 +118,13 @@ std::map<uint64_t, std::vector<uint64_t>> ResolveJumpTables(const NsoModule& mod
                 jc = j;
                 break;
             }
-            if (Writes(d, index)) break;
+            if (Writes(d, index)) {
+                if (d.op == Op::Orr && d.rn == 31 && d.amount == 0 && d.rd == index && d.rm != 31) {
+                    index = d.rm;
+                    continue;
+                }
+                break;
+            }
         }
         if (jc < 0) continue;
         uint64_t entries = 0;

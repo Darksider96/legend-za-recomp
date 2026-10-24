@@ -46,7 +46,7 @@ bool IsBranch(Op op) {
 // Instrucoes fora do teste: nao decodificadas, excecoes e leituras dependentes do tempo
 bool Testable(const Insn& d) {
     if (d.op == Op::Unknown || d.op == Op::Svc || d.op == Op::Brk || d.op == Op::Udf) return false;
-    if (d.op == Op::Mrs && d.sysreg == recomp::a64::kSysCntvctEl0) return false;
+    if (d.op == Op::Mrs && (d.sysreg == recomp::a64::kSysCntvctEl0 || d.sysreg == recomp::a64::kSysCntpctEl0)) return false;
     if (IsBranch(d.op) && d.target == d.pc) return false;  // salto para si mesmo: laco infinito com uma instrucao
     if (AccessesMemory(d.op) && d.mode == AddrMode::Register && d.rn == d.rm) return false;
     return true;

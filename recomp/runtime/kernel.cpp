@@ -7,6 +7,9 @@
 // sao faixas fixas reservadas no host. Os modulos ficam em 0x71xxxxxxxx (dentro da regiao de ASLR de 39 bits).
 
 #include "kernel.hpp"
+#include "handles.hpp"
+#include "ipc.hpp"
+#include "threads.hpp"
 #include "recomp/runtime.hpp"
 
 #include <windows.h>
@@ -16,6 +19,7 @@
 #include <random>
 #include <string>
 #include <thread>
+#include <vector>
 
 namespace recomp {
 
@@ -31,8 +35,9 @@ constexpr uint32_t kResultSuccess = 0;
 constexpr uint32_t kResultInvalidEnumValue = 0xF001;   // 2001-0120
 constexpr uint32_t kResultInvalidSize = 0xCA01;        // 2001-0101
 constexpr uint32_t kResultOutOfMemory = 0xD001;        // 2001-0104
+constexpr uint32_t kResultInvalidHandle = 0xE401;      // 2001-0114
+constexpr uint32_t kResultTimedOut = 0xEA01;           // 2001-0117
 
-constexpr uint32_t kPseudoCurrentThread = 0xFFFF8000, kPseudoCurrentProcess = 0xFFFF8001;
 
 uint64_t g_heap_size = 0;
 uint64_t g_program_id = 0;
@@ -104,11 +109,24 @@ const char* InfoName(uint32_t id) {
                                   "TotalMemorySize", "UsedMemorySize", "DebuggerAttached", "ResourceLimit", "IdleTickCount", "RandomEntropy",
                                   "AslrRegionAddress", "AslrRegionSize", "StackRegionAddress", "StackRegionSize", "SystemResourceSizeTotal",
                                   "SystemResourceSizeUsed", "ProgramId", "InitialProcessIdRange", "UserExceptionContextAddress",
-                                  "TotalNonSystemMemorySize", "UsedNonSystemMemorySize", "IsApplication", "FreeThreadCount", "ThreadTickCount"};
+                                  "TotalNonSystemMemorySize", "UsedNonSystemMemorySize", "IsApplication", "FreeThreadCount", "ThreadTickCount",
+                                  "IsSvcPermitted", "IoRegionHint", "AliasRegionExtraSize"};
     return id < sizeof(names) / sizeof(names[0]) ? names[id] : "?";
 }
 
 void Return(Context& c, uint32_t result) { c.x[0] = result; }
+
+// Reserva (sem commit) as regioes alias e de pilha: o Windows so reserva em blocos de 64 KiB, mas faz commit por
+// pagina, entao MapMemory em paginas de 4 KiB funciona dentro de uma reserva previa
+void ReserveRegions() {
+    static const bool reserved = [] {
+        const bool alias = VirtualAlloc(reinterpret_cast<void*>(kAliasBase), kAliasSize, MEM_RESERVE, PAGE_READWRITE) != nullptr;
+        const bool stack = VirtualAlloc(reinterpret_cast<void*>(kStackRegionBase), kStackRegionSize, MEM_RESERVE, PAGE_READWRITE) != nullptr;
+        if (!alias || !stack) Log("[svc] aviso: reserva das regioes alias/pilha falhou (alias=%d pilha=%d)", alias, stack);
+        return true;
+    }();
+    (void)reserved;
+}
 
 // svcSetHeapSize(size em X1) -> X1 = endereco do heap. O heap cresce no mesmo lugar (reserva unica da regiao).
 void SetHeapSize(Context& c) {
@@ -160,6 +178,10 @@ void GetInfo(Context& c) {
     case 18: value = g_program_id; break;
     case 20: value = 0; break;
     case 23: value = 1; break;                         // IsApplication
+    case 24: value = 64; break;                        // FreeThreadCount
+    case 26: value = 1; break;                         // IsSvcPermitted (14.0+)
+    case 27: value = 0; break;                         // IoRegionHint (16.0+)
+    case 28: value = 0; break;                         // AliasRegionExtraSize (18.0+): sem regiao extra
     default:
         Fatal(c, "[svc] GetInfo tipo %u (%s) subtipo %llu nao implementado", id, InfoName(id), static_cast<unsigned long long>(sub));
     }
@@ -176,15 +198,18 @@ void QueryMemory(Context& c) {
         uint64_t base, size;
         uint32_t type, attribute, permission, ipc_refcount, device_refcount, padding;
     } info{};
-    if (VirtualQuery(reinterpret_cast<void*>(address), &mbi, sizeof(mbi)) && mbi.State != MEM_FREE) {
+    ReserveRegions();
+    if (VirtualQuery(reinterpret_cast<void*>(address), &mbi, sizeof(mbi))) {
+        // A partir da pagina consultada, a faixa contigua no mesmo estado; reservado sem commit conta como livre (as
+        // regioes alias, de pilha e de heap sao reservadas de antemao no host)
         info.base = reinterpret_cast<uint64_t>(mbi.BaseAddress);
         info.size = mbi.RegionSize;
-        info.type = mbi.State == MEM_COMMIT ? 5 : 0;   // Heap / livre
+        info.type = mbi.State == MEM_COMMIT ? 5 : 0;        // Heap / livre
         info.permission = mbi.State == MEM_COMMIT ? 3 : 0;  // RW
-    } else {
+    } else {  // fora do espaco do usuario do host
         info.base = address & ~uint64_t{0xFFF};
         info.size = 0x1000;
-        info.type = 0;
+        info.type = 0x10;  // Inaccessible
     }
     std::memcpy(reinterpret_cast<void*>(c.x[0]), &info, sizeof(info));
     c.x[1] = 0;  // PageInfo
@@ -208,21 +233,76 @@ void SupervisorCall(Context& c, uint32_t id) {
         else std::this_thread::yield();
         return;
     }
-    case 0x0C:  // GetThreadPriority(W1 = handle) -> W1
-        c.x[1] = 44;
+    case 0x04: {  // MapMemory(X0 = destino, X1 = origem, X2 = tamanho): pilhas na regiao alias; o destino ganha memoria nova
+        ReserveRegions();
+        if (VirtualAlloc(reinterpret_cast<void*>(c.x[0]), c.x[2], MEM_COMMIT, PAGE_READWRITE) != reinterpret_cast<void*>(c.x[0])) {
+            Log("[svc] MapMemory 0x%llx <- 0x%llx (0x%llx bytes) falhou", static_cast<unsigned long long>(c.x[0]), static_cast<unsigned long long>(c.x[1]),
+                static_cast<unsigned long long>(c.x[2]));
+            return Return(c, kResultOutOfMemory);
+        }
         return Return(c, kResultSuccess);
+    }
+    case 0x05:  // UnmapMemory(X0 = destino, X1 = origem, X2 = tamanho): volta a ser reservado (livre para o jogo)
+        VirtualFree(reinterpret_cast<void*>(c.x[0]), c.x[2], MEM_DECOMMIT);
+        return Return(c, kResultSuccess);
+    case 0x08: return kernel::SvcCreateThread(c);
+    case 0x09: return kernel::SvcStartThread(c);
+    case 0x0A: return kernel::SvcExitThread(c);
+    case 0x0C: return kernel::SvcGetThreadPriority(c);
+    case 0x0D: return kernel::SvcSetThreadPriority(c);
+    case 0x0E: return kernel::SvcGetThreadCoreMask(c);
+    case 0x0F: return kernel::SvcSetThreadCoreMask(c);
+    case 0x1A: return kernel::SvcArbitrateLock(c);
+    case 0x1B: return kernel::SvcArbitrateUnlock(c);
+    case 0x1C: return kernel::SvcWaitProcessWideKeyAtomic(c);
+    case 0x1D: return kernel::SvcSignalProcessWideKey(c);
     case 0x10: c.x[0] = 0; return;  // GetCurrentProcessorNumber
-    case 0x16: return Return(c, kResultSuccess);  // CloseHandle
+    case 0x16:  // CloseHandle(W0)
+        ipc::CloseHandle(static_cast<uint32_t>(c.x[0]));
+        return Return(c, kResultSuccess);
+    case 0x11:    // SignalEvent(W0)
+    case 0x12:    // ClearEvent(W0)
+    case 0x17: {  // ResetSignal(W0)
+        const auto event = kernel::GetAs<kernel::Event>(static_cast<uint32_t>(c.x[0]));
+        if (!event) return Return(c, kResultInvalidHandle);
+        if (id == 0x11) event->Signal();
+        else event->Clear();
+        return Return(c, kResultSuccess);
+    }
+    case 0x18: {  // WaitSynchronization(X1 = handles, W2 = quantidade, X3 = timeout em ns) -> W1 = indice
+        const auto* handles = reinterpret_cast<const uint32_t*>(c.x[1]);
+        const int count = static_cast<int>(c.x[2]);
+        std::vector<std::shared_ptr<kernel::Object>> objects;
+        for (int i = 0; i < count; ++i) {
+            objects.push_back(kernel::Get(handles[i]));
+            if (!objects.back()) return Return(c, kResultInvalidHandle);
+        }
+        const int64_t timeout = static_cast<int64_t>(c.x[3]);
+        if (timeout != 0) Log("[svc] WaitSynchronization em %d handle(s), timeout %lld ns", count, static_cast<long long>(timeout));
+        const int index = kernel::WaitAny(objects.data(), count, timeout);
+        if (index < 0) return Return(c, kResultTimedOut);
+        c.x[1] = static_cast<uint64_t>(index);
+        return Return(c, kResultSuccess);
+    }
+    case 0x45: {  // CreateEvent -> W1 = lado de escrita, W2 = lado de leitura (o mesmo objeto aqui)
+        auto event = std::make_shared<kernel::Event>();
+        c.x[1] = kernel::Insert(event);
+        c.x[2] = kernel::Insert(event);
+        return Return(c, kResultSuccess);
+    }
+    case 0x1F: return ipc::ConnectToNamedPort(c);
+    case 0x21: return ipc::SendSyncRequest(c);
     case 0x1E: c.x[0] = ReadCounter(); return;  // GetSystemTick
     case 0x24:  // GetProcessId(W1 = handle) -> X1
         c.x[1] = 0x51;
         return Return(c, kResultSuccess);
-    case 0x25:  // GetThreadId(W1 = handle) -> X1
-        c.x[1] = static_cast<uint32_t>(c.x[1]) == kPseudoCurrentThread ? 0x60 : static_cast<uint32_t>(c.x[1]);
-        return Return(c, kResultSuccess);
-    case 0x26:  // Break(reason, arg, size)
-        Fatal(c, "[svc] Break: reason=0x%llx arg=0x%llx size=0x%llx", static_cast<unsigned long long>(c.x[0]), static_cast<unsigned long long>(c.x[1]),
-              static_cast<unsigned long long>(c.x[2]));
+    case 0x25: return kernel::SvcGetThreadId(c);
+    case 0x26: {  // Break(reason, arg, size): o sdk passa o nn::Result do erro como argumento de 4 bytes
+        uint32_t value = 0;
+        if (c.x[1] && c.x[2] >= 4) std::memcpy(&value, reinterpret_cast<const void*>(c.x[1]), 4);
+        Fatal(c, "[svc] Break: reason=0x%llx arg=0x%llx size=0x%llx valor=0x%08x (modulo %u, descricao %u)", static_cast<unsigned long long>(c.x[0]),
+              static_cast<unsigned long long>(c.x[1]), static_cast<unsigned long long>(c.x[2]), value, value & 0x1FF, (value >> 9) & 0x1FFF);
+    }
     case 0x27: {  // OutputDebugString(ptr, size)
         const std::string text(reinterpret_cast<const char*>(c.x[0]), c.x[1]);
         Log("[svc] OutputDebugString: %s", text.c_str());

@@ -2,10 +2,13 @@
 
 #include "recomp/runtime.hpp"
 
+#include <windows.h>
+
 #include <algorithm>
 #include <cstdarg>
 #include <cstdio>
 #include <cstdlib>
+#include <cstring>
 #include <format>
 #include <mutex>
 #include <vector>
@@ -18,6 +21,7 @@ extern const GuestFunction kSdkFunctions[];
 extern const size_t kSdkFunctionsCount;
 
 bool FindModule(uint64_t address, std::string& name, uint64_t& rva);
+bool FindSymbol(uint64_t address, std::string& name, uint64_t& offset);
 
 namespace {
 
@@ -104,10 +108,29 @@ std::string DescribeAddress(uint64_t address) {
     uint64_t rva = 0;
     if (!FindModule(address, module, rva)) return std::format("0x{:x}", address);
     std::string out = std::format("{}+0x{:x}", module, rva);
-    if (const GuestFunction* f = Containing(address); f && address - f->address < 0x100000) {
+    std::string symbol;
+    uint64_t offset = 0;
+    if (FindSymbol(address, symbol, offset)) {
+        out += std::format(" [{}+0x{:x}]", symbol, offset);
+    } else if (const GuestFunction* f = Containing(address); f && address - f->address < 0x100000) {
         out += std::format(" (fn 0x{:x}+0x{:x})", f->address, address - f->address);
     }
     return out;
+}
+
+// Pilha de chamadas do jogo pela cadeia de frame pointers (x29 -> {x29 anterior, x30})
+void LogBacktrace(const Context& c) {
+    uint64_t fp = c.x[29];
+    for (int depth = 0; depth < 24 && fp && fp % 16 == 0; ++depth) {
+        MEMORY_BASIC_INFORMATION mbi{};
+        if (!VirtualQuery(reinterpret_cast<void*>(fp), &mbi, sizeof(mbi)) || mbi.State != MEM_COMMIT) break;
+        uint64_t frame[2];
+        std::memcpy(frame, reinterpret_cast<const void*>(fp), sizeof(frame));
+        if (!frame[1]) break;
+        Log("  #%-2d %s", depth, DescribeAddress(frame[1]).c_str());
+        if (frame[0] <= fp) break;
+        fp = frame[0];
+    }
 }
 
 void Log(const char* format, ...) {
@@ -127,6 +150,8 @@ void Fatal(const Context& c, const char* format, ...) {
     Log("  x0..x7 = %llx %llx %llx %llx %llx %llx %llx %llx", static_cast<unsigned long long>(c.x[0]), static_cast<unsigned long long>(c.x[1]),
         static_cast<unsigned long long>(c.x[2]), static_cast<unsigned long long>(c.x[3]), static_cast<unsigned long long>(c.x[4]),
         static_cast<unsigned long long>(c.x[5]), static_cast<unsigned long long>(c.x[6]), static_cast<unsigned long long>(c.x[7]));
+    Log("  pilha do jogo:");
+    LogBacktrace(c);
     std::exit(3);
 }
 

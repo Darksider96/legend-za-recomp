@@ -135,6 +135,7 @@ std::string Describe(const Insn& insn);
 inline constexpr uint16_t kSysTpidrEl0 = 0x5E82;
 inline constexpr uint16_t kSysTpidrroEl0 = 0x5E83;
 inline constexpr uint16_t kSysCntvctEl0 = 0x5F02;
+inline constexpr uint16_t kSysCntpctEl0 = 0x5F01;
 inline constexpr uint16_t kSysCntfrqEl0 = 0x5F00;
 inline constexpr uint16_t kSysFpcr = 0x5A20;
 inline constexpr uint16_t kSysFpsr = 0x5A21;
