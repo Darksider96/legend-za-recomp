@@ -68,9 +68,9 @@ def parse_imports_csv(reader) -> List[Dict[str, str]]:
         })
     return entries
 
-def generate_table(entries: List[Dict[str, str]]) -> Tuple[str, str]:
-    """Ordena as entradas por ns e mangled, e gera header e source C++."""
-    sorted_entries = sorted(entries, key=lambda e: (e["ns"], e["mangled"]))
+def generate_table(entries: List[Dict[str, str]], do_sort: bool = True) -> Tuple[str, str]:
+    """Ordena as entradas por ns e mangled (se do_sort=True), e gera header e source C++."""
+    sorted_entries = sorted(entries, key=lambda e: (e["ns"], e["mangled"])) if do_sort else list(entries)
 
     header = HEADER_TEMPLATE
 
@@ -107,6 +107,20 @@ def generate_table(entries: List[Dict[str, str]]) -> Tuple[str, str]:
     source = '\n'.join(lines)
     return header, source
 
+def verify_order(source: str, expected_order: List[Tuple[str, str]]) -> bool:
+    """Verifica se cada entrada de expected_order aparece na sequencia exata em source."""
+    positions = []
+    for mangled, _ in expected_order:
+        needle = f'"{escape_cpp_string(mangled)}"'
+        pos = source.find(needle)
+        if pos == -1:
+            return False
+        positions.append(pos)
+    for i in range(1, len(positions)):
+        if positions[i] <= positions[i - 1]:
+            return False
+    return True
+
 def run_self_test() -> int:
     """Executa auto-teste completo sem dependencias externas."""
     sample_csv = (
@@ -133,8 +147,7 @@ def run_self_test() -> int:
     assert "extern const std::size_t kImportCount;" in header
     print("[SELF-TEST] Header interface: OK")
 
-    # 2. Checa ordenacao: ns entao mangled
-    # Ordem esperada dos namespaces: "" (g_GlobalVar), "c" (_Z4testPKc, strlen), "nn::fs", "nn::os"
+    # 2. Checa ordenacao real por (ns, mangled) conferindo posicoes relativas
     expected_order = [
         ("g_GlobalVar", ""),
         ("_Z4testPKc", "c"),
@@ -142,9 +155,13 @@ def run_self_test() -> int:
         ("_ZN2nn2fs8OpenFileEv", "nn::fs"),
         ("_ZN2nn2os12WaitEventEPv", "nn::os"),
     ]
-    for mangled, ns in expected_order:
-        assert f'"{escape_cpp_string(mangled)}"' in source
-    print("[SELF-TEST] Ordenacao por (ns, mangled): OK")
+    assert verify_order(source, expected_order), "Entradas nao estao na sequencia esperada"
+    print("[SELF-TEST] Ordenacao por (ns, mangled) em sequencia exata: OK")
+
+    # 2b. Caso negativo: gerar com a ordem trocada (sem ordenar) e conferir que reprova
+    _, source_inverted = generate_table(list(reversed(entries)), do_sort=False)
+    assert not verify_order(source_inverted, expected_order), "Caso negativo: ordem invertida deveria ser reprovada"
+    print("[SELF-TEST] Caso negativo de ordenacao (ordem invertida reprovada como esperado): OK")
 
     # 3. Checa escape de virgula e aspas no demangled
     assert 'test(char const*, \\"quote\\")' in source
