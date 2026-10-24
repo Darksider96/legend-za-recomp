@@ -49,5 +49,28 @@ Fronteira conhecida: ~600 símbolos `nn::` e 533 funções NVN (via `nvnBootstra
 
 ### 5. Estado
 - R0 concluída (2026-10-24).
-- R1 concluída (2026-10-24): `nso_inspect` validou segmentos SHA-256, 1.106 símbolos, 346.629 relocações DT_RELR, 1.912 construtores estáticos e 222.376 funções no `.eh_frame` (98.9% do `.text`). Arquivos `imports.csv`, `exports.csv` e `functions.csv` gerados em `analysis/recomp/generated`.
-- R2 em andamento.
+- R1 concluída (2026-10-24) — `recomp/tools/nso_inspect`, testes em `recomp/tests/nso_test.cpp`:
+  - `.text` descomprimido idêntico ao export do Ghidra; SHA-256 dos 3 segmentos confere com o cabeçalho NSO.
+  - **222.376 funções** no `.eh_frame` (98,9% do `.text`, sem sobreposição).
+  - **1.001 importações** (946 funções), 987 resolvidas no `sdk`; 14 sem definição (`glslc*`, hooks ZSTD do pia,
+    TLS do gRPC — prováveis símbolos fracos). Maiores grupos: libc 266, `nn::os` 102, `std` 92, `nn::hid` 56.
+  - NVN entra por **uma** importação (`nvnBootstrapLoader`); as 533 funções são resolvidas por nome em runtime.
+  - Relocações: 346.629 relativas (DT_RELR), 3.303 ABS64, 917 JUMP_SLOT, 55 GLOB_DAT; 1.912 construtores no INIT_ARRAY.
+  - Saída em `analysis/recomp/generated/` (não versionada).
+- R2 concluída (2026-10-24) — decodificador A64 (`recomp/src/a64_decode.cpp`), gerador de C++ (`emit_c.cpp`),
+  `a64_recomp`, `a64_dump`, `validate_decoder.py`:
+  - Decodificador × Capstone em 870.393 instruções amostradas: **100% de concordância**, 0 alvos e 0 registradores
+    divergentes. Cobre 91,4% das 12,38 M instruções; o resto é SIMD/FP (~5,5%) e exclusivos/acquire-release (~3,1%).
+  - `f_133f0c0` (FNV-1a 64 do jogo) traduzida no build a partir do dump: **100.000/100.000** strings aleatórias com
+    hash idêntico a `za::vfs::Fnv1a64` (`fnv_poc_test`). Helpers semânticos testados em `context_test`.
+  - **141.434 funções (63,6%)** já traduzem sem nenhuma instrução pendente; as demais param em SIMD/FP ou atômicos.
+- R3 próxima (Claude Code): SIMD/FP e exclusivos/atômicos no decodificador e no gerador, com testes diferenciais.
+
+### 6. Decisões de arquitetura
+- Memória do jogo mapeada no host no **mesmo endereço** do Switch: ponteiros do jogo = ponteiros do host. Isso
+  permite que importações de libc (`memcpy`, `strlen`...) chamem a implementação do host diretamente.
+- Relocações (RELA, RELR, JMPREL) e construtores do INIT_ARRAY aplicados pelo runtime, como o `rtld` faria.
+- O decodificador AArch64 do recompilador é próprio (sem dependência no runtime). Disassemblers externos (Capstone,
+  Ghidra) entram só como oráculo de teste do decodificador.
+- Código gerado nunca é versionado: o build gera a partir do dump do usuário.
+- Executáveis MinGW sempre com `-static` (um `libstdc++` de outra instalação no PATH derruba o processo).
