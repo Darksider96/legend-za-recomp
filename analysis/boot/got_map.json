@@ -1,0 +1,1118 @@
+[
+  {
+    "plt_address": "0x7102fc3960",
+    "got_address": "0x7103ce9030",
+    "got_offset": "0x3ce9030",
+    "symbol": "_ZN2nn2os16GetCurrentThreadEv"
+  },
+  {
+    "plt_address": "0x7102fc3970",
+    "got_address": "0x7103ce9038",
+    "got_offset": "0x3ce9038",
+    "symbol": "_ZN2nn2os14WaitLightEventEPNS0_14LightEventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3980",
+    "got_address": "0x7103ce9040",
+    "got_offset": "0x3ce9040",
+    "symbol": "_ZN2nn2os16SignalLightEventEPNS0_14LightEventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc39c0",
+    "got_address": "0x7103ce9060",
+    "got_offset": "0x3ce9060",
+    "symbol": "_ZN2nn2os26InitializeReaderWriterLockEPNS0_20ReaderWriterLockTypeE"
+  },
+  {
+    "plt_address": "0x7102fc39d0",
+    "got_address": "0x7103ce9068",
+    "got_offset": "0x3ce9068",
+    "symbol": "_ZN2nn2os24FinalizeReaderWriterLockEPNS0_20ReaderWriterLockTypeE"
+  },
+  {
+    "plt_address": "0x7102fc39e0",
+    "got_address": "0x7103ce9070",
+    "got_offset": "0x3ce9070",
+    "symbol": "_ZN2nn2os16AcquireWriteLockEPNS0_20ReaderWriterLockTypeE"
+  },
+  {
+    "plt_address": "0x7102fc39f0",
+    "got_address": "0x7103ce9078",
+    "got_offset": "0x3ce9078",
+    "symbol": "_ZN2nn2os15AcquireReadLockEPNS0_20ReaderWriterLockTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3a00",
+    "got_address": "0x7103ce9080",
+    "got_offset": "0x3ce9080",
+    "symbol": "_ZN2nn2os16ReleaseWriteLockEPNS0_20ReaderWriterLockTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3a10",
+    "got_address": "0x7103ce9088",
+    "got_offset": "0x3ce9088",
+    "symbol": "_ZN2nn2os15ReleaseReadLockEPNS0_20ReaderWriterLockTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3a20",
+    "got_address": "0x7103ce9090",
+    "got_offset": "0x3ce9090",
+    "symbol": "_ZN2nn2os18FinalizeLightEventEPNS0_14LightEventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3a30",
+    "got_address": "0x7103ce9098",
+    "got_offset": "0x3ce9098",
+    "symbol": "_ZN2nn2os20InitializeLightEventEPNS0_14LightEventTypeEbNS0_14EventClearModeE"
+  },
+  {
+    "plt_address": "0x7102fc3a60",
+    "got_address": "0x7103ce90b0",
+    "got_offset": "0x3ce90b0",
+    "symbol": "_ZN2nn2os16AcquireSemaphoreEPNS0_13SemaphoreTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3a70",
+    "got_address": "0x7103ce90b8",
+    "got_offset": "0x3ce90b8",
+    "symbol": "_ZN2nn2os19InitializeSemaphoreEPNS0_13SemaphoreTypeEii"
+  },
+  {
+    "plt_address": "0x7102fc3a80",
+    "got_address": "0x7103ce90c0",
+    "got_offset": "0x3ce90c0",
+    "symbol": "_ZN2nn2os16ReleaseSemaphoreEPNS0_13SemaphoreTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3a90",
+    "got_address": "0x7103ce90c8",
+    "got_offset": "0x3ce90c8",
+    "symbol": "_ZN2nn2os17FinalizeSemaphoreEPNS0_13SemaphoreTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3aa0",
+    "got_address": "0x7103ce90d0",
+    "got_offset": "0x3ce90d0",
+    "symbol": "_ZN2nn2os19TryAcquireSemaphoreEPNS0_13SemaphoreTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3b70",
+    "got_address": "0x7103ce9138",
+    "got_offset": "0x3ce9138",
+    "symbol": "_ZN2nn2os15InitializeMutexEPNS0_9MutexTypeEbi"
+  },
+  {
+    "plt_address": "0x7102fc3b80",
+    "got_address": "0x7103ce9140",
+    "got_offset": "0x3ce9140",
+    "symbol": "_ZN2nn2os9LockMutexEPNS0_9MutexTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3b90",
+    "got_address": "0x7103ce9148",
+    "got_offset": "0x3ce9148",
+    "symbol": "_ZN2nn2os13FinalizeMutexEPNS0_9MutexTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3ba0",
+    "got_address": "0x7103ce9150",
+    "got_offset": "0x3ce9150",
+    "symbol": "_ZN2nn2os11UnlockMutexEPNS0_9MutexTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3bb0",
+    "got_address": "0x7103ce9158",
+    "got_offset": "0x3ce9158",
+    "symbol": "_ZN2nn2os25FinalizeConditionVariableEPNS0_21ConditionVariableTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3c00",
+    "got_address": "0x7103ce9180",
+    "got_offset": "0x3ce9180",
+    "symbol": "_ZN2nn2os13GetSystemTickEv"
+  },
+  {
+    "plt_address": "0x7102fc3c10",
+    "got_address": "0x7103ce9188",
+    "got_offset": "0x3ce9188",
+    "symbol": "_ZN2nn2os17ConvertToTimeSpanENS0_4TickE"
+  },
+  {
+    "plt_address": "0x7102fc3d90",
+    "got_address": "0x7103ce9248",
+    "got_offset": "0x3ce9248",
+    "symbol": "_ZN2nn2os21SendLightMessageQueueEPNS0_21LightMessageQueueTypeEm"
+  },
+  {
+    "plt_address": "0x7102fc3da0",
+    "got_address": "0x7103ce9250",
+    "got_offset": "0x3ce9250",
+    "symbol": "_ZN2nn2os23SignalConditionVariableEPNS0_21ConditionVariableTypeE"
+  },
+  {
+    "plt_address": "0x7102fc3df0",
+    "got_address": "0x7103ce9278",
+    "got_offset": "0x3ce9278",
+    "symbol": "_ZN2nn3hid24ShowControllerStrapGuideEv"
+  },
+  {
+    "plt_address": "0x7102fc3eb0",
+    "got_address": "0x7103ce92d8",
+    "got_offset": "0x3ce92d8",
+    "symbol": "_ZN2nn2fs18IsSaveDataExistingENS_13ApplicationIdERKNS_7account3UidE"
+  },
+  {
+    "plt_address": "0x7102fc3ec0",
+    "got_address": "0x7103ce92e0",
+    "got_offset": "0x3ce92e0",
+    "symbol": "_ZN2nn2fs21MountSaveDataReadOnlyEPKcNS_13ApplicationIdERKNS_7account3UidE"
+  },
+  {
+    "plt_address": "0x7102fc3ed0",
+    "got_address": "0x7103ce92e8",
+    "got_offset": "0x3ce92e8",
+    "symbol": "_ZN2nn2fs12GetEntryTypeEPNS0_18DirectoryEntryTypeEPKc"
+  },
+  {
+    "plt_address": "0x7102fc3ee0",
+    "got_address": "0x7103ce92f0",
+    "got_offset": "0x3ce92f0",
+    "symbol": "_ZN2nn2fs7UnmountEPKc"
+  },
+  {
+    "plt_address": "0x7102fc3f80",
+    "got_address": "0x7103ce9340",
+    "got_offset": "0x3ce9340",
+    "symbol": "_ZN2nn3hid15GetNpadStyleSetERKj"
+  },
+  {
+    "plt_address": "0x7102fc4030",
+    "got_address": "0x7103ce9398",
+    "got_offset": "0x3ce9398",
+    "symbol": "_ZN2nn2os28IsMutexLockedByCurrentThreadEPKNS0_9MutexTypeE"
+  },
+  {
+    "plt_address": "0x7102fc4050",
+    "got_address": "0x7103ce93a8",
+    "got_offset": "0x3ce93a8",
+    "symbol": "_ZN2nn3hid21InitializeTouchScreenEii"
+  },
+  {
+    "plt_address": "0x7102fc40e0",
+    "got_address": "0x7103ce93f0",
+    "got_offset": "0x3ce93f0",
+    "symbol": "_ZN2nn2os11SleepThreadENS_8TimeSpanE"
+  },
+  {
+    "plt_address": "0x7102fc40f0",
+    "got_address": "0x7103ce93f8",
+    "got_offset": "0x3ce93f8",
+    "symbol": "_ZN2nn2os18TryWaitSystemEventEPNS0_15SystemEventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc4100",
+    "got_address": "0x7103ce9400",
+    "got_offset": "0x3ce9400",
+    "symbol": "_ZN2nn2os18DestroySystemEventEPNS0_15SystemEventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc44b0",
+    "got_address": "0x7103ce95d8",
+    "got_offset": "0x3ce95d8",
+    "symbol": "_ZN2nn2os10WaitThreadEPNS0_10ThreadTypeE"
+  },
+  {
+    "plt_address": "0x7102fc44c0",
+    "got_address": "0x7103ce95e0",
+    "got_offset": "0x3ce95e0",
+    "symbol": "_ZN2nn2os11GetThreadIdEPKNS0_10ThreadTypeE"
+  },
+  {
+    "plt_address": "0x7102fc44d0",
+    "got_address": "0x7103ce95e8",
+    "got_offset": "0x3ce95e8",
+    "symbol": "_ZN2nn2os20ChangeThreadPriorityEPNS0_10ThreadTypeEi"
+  },
+  {
+    "plt_address": "0x7102fc44e0",
+    "got_address": "0x7103ce95f0",
+    "got_offset": "0x3ce95f0",
+    "symbol": "_ZN2nn2os12CreateThreadEPNS0_10ThreadTypeEPFvPvES3_S3_mi"
+  },
+  {
+    "plt_address": "0x7102fc44f0",
+    "got_address": "0x7103ce95f8",
+    "got_offset": "0x3ce95f8",
+    "symbol": "_ZN2nn2os20SetThreadNamePointerEPNS0_10ThreadTypeEPKc"
+  },
+  {
+    "plt_address": "0x7102fc4500",
+    "got_address": "0x7103ce9600",
+    "got_offset": "0x3ce9600",
+    "symbol": "_ZN2nn2os11StartThreadEPNS0_10ThreadTypeE"
+  },
+  {
+    "plt_address": "0x7102fc4510",
+    "got_address": "0x7103ce9608",
+    "got_offset": "0x3ce9608",
+    "symbol": "_ZN2nn2os26GetThreadAvailableCoreMaskEv"
+  },
+  {
+    "plt_address": "0x7102fc4520",
+    "got_address": "0x7103ce9610",
+    "got_offset": "0x3ce9610",
+    "symbol": "_ZN2nn2os17SetThreadCoreMaskEPNS0_10ThreadTypeEim"
+  },
+  {
+    "plt_address": "0x7102fc4530",
+    "got_address": "0x7103ce9618",
+    "got_offset": "0x3ce9618",
+    "symbol": "_ZN2nn2os13DestroyThreadEPNS0_10ThreadTypeE"
+  },
+  {
+    "plt_address": "0x7102fc4580",
+    "got_address": "0x7103ce9640",
+    "got_offset": "0x3ce9640",
+    "symbol": "_ZN2nn2fs8OpenFileEPNS0_10FileHandleEPKci"
+  },
+  {
+    "plt_address": "0x7102fc4590",
+    "got_address": "0x7103ce9648",
+    "got_offset": "0x3ce9648",
+    "symbol": "_ZN2nn2fs11GetFileSizeEPlNS0_10FileHandleE"
+  },
+  {
+    "plt_address": "0x7102fc45a0",
+    "got_address": "0x7103ce9650",
+    "got_offset": "0x3ce9650",
+    "symbol": "_ZN2nn2fs9CloseFileENS0_10FileHandleE"
+  },
+  {
+    "plt_address": "0x7102fc45b0",
+    "got_address": "0x7103ce9658",
+    "got_offset": "0x3ce9658",
+    "symbol": "_ZN2nn2fs8ReadFileEPmNS0_10FileHandleElPvm"
+  },
+  {
+    "plt_address": "0x7102fc45c0",
+    "got_address": "0x7103ce9660",
+    "got_offset": "0x3ce9660",
+    "symbol": "_ZN2nn2fs11SetFileSizeENS0_10FileHandleEl"
+  },
+  {
+    "plt_address": "0x7102fc45d0",
+    "got_address": "0x7103ce9668",
+    "got_offset": "0x3ce9668",
+    "symbol": "_ZN2nn2fs10CreateFileEPKcl"
+  },
+  {
+    "plt_address": "0x7102fc45e0",
+    "got_address": "0x7103ce9670",
+    "got_offset": "0x3ce9670",
+    "symbol": "_ZN2nn2fs9WriteFileENS0_10FileHandleElPKvmRKNS0_11WriteOptionE"
+  },
+  {
+    "plt_address": "0x7102fc45f0",
+    "got_address": "0x7103ce9678",
+    "got_offset": "0x3ce9678",
+    "symbol": "_ZN2nn2fs9FlushFileENS0_10FileHandleE"
+  },
+  {
+    "plt_address": "0x7102fc4600",
+    "got_address": "0x7103ce9680",
+    "got_offset": "0x3ce9680",
+    "symbol": "_ZN2nn2fs26DeleteDirectoryRecursivelyEPKc"
+  },
+  {
+    "plt_address": "0x7102fc4610",
+    "got_address": "0x7103ce9688",
+    "got_offset": "0x3ce9688",
+    "symbol": "_ZN2nn2fs10DeleteFileEPKc"
+  },
+  {
+    "plt_address": "0x7102fc4620",
+    "got_address": "0x7103ce9690",
+    "got_offset": "0x3ce9690",
+    "symbol": "_ZN2nn2fs15CreateDirectoryEPKc"
+  },
+  {
+    "plt_address": "0x7102fc4630",
+    "got_address": "0x7103ce9698",
+    "got_offset": "0x3ce9698",
+    "symbol": "_ZN2nn2fs13OpenDirectoryEPNS0_15DirectoryHandleEPKci"
+  },
+  {
+    "plt_address": "0x7102fc4640",
+    "got_address": "0x7103ce96a0",
+    "got_offset": "0x3ce96a0",
+    "symbol": "_ZN2nn2fs13ReadDirectoryEPlPNS0_14DirectoryEntryENS0_15DirectoryHandleEl"
+  },
+  {
+    "plt_address": "0x7102fc4650",
+    "got_address": "0x7103ce96a8",
+    "got_offset": "0x3ce96a8",
+    "symbol": "_ZN2nn2fs14CloseDirectoryENS0_15DirectoryHandleE"
+  },
+  {
+    "plt_address": "0x7102fc4690",
+    "got_address": "0x7103ce96c8",
+    "got_offset": "0x3ce96c8",
+    "symbol": "_ZN2nn2os22GetSystemTickFrequencyEv"
+  },
+  {
+    "plt_address": "0x7102fc4760",
+    "got_address": "0x7103ce9730",
+    "got_offset": "0x3ce9730",
+    "symbol": "_ZN2nn2os11SetTlsValueENS0_7TlsSlotEm"
+  },
+  {
+    "plt_address": "0x7102fc4770",
+    "got_address": "0x7103ce9738",
+    "got_offset": "0x3ce9738",
+    "symbol": "_ZN2nn2os15AllocateTlsSlotEPNS0_7TlsSlotEPFvmE"
+  },
+  {
+    "plt_address": "0x7102fc4780",
+    "got_address": "0x7103ce9740",
+    "got_offset": "0x3ce9740",
+    "symbol": "_ZN2nn2os11FreeTlsSlotENS0_7TlsSlotE"
+  },
+  {
+    "plt_address": "0x7102fc47c0",
+    "got_address": "0x7103ce9760",
+    "got_offset": "0x3ce9760",
+    "symbol": "_ZN2nn2os16ReleaseSemaphoreEPNS0_13SemaphoreTypeEi"
+  },
+  {
+    "plt_address": "0x7102fc4820",
+    "got_address": "0x7103ce9790",
+    "got_offset": "0x3ce9790",
+    "symbol": "_ZN2nn2os20GetCurrentCoreNumberEv"
+  },
+  {
+    "plt_address": "0x7102fc4870",
+    "got_address": "0x7103ce97b8",
+    "got_offset": "0x3ce97b8",
+    "symbol": "_ZN2nn2os21WaitConditionVariableEPNS0_21ConditionVariableTypeEPNS0_9MutexTypeE"
+  },
+  {
+    "plt_address": "0x7102fc4880",
+    "got_address": "0x7103ce97c0",
+    "got_offset": "0x3ce97c0",
+    "symbol": "_ZN2nn2os27InitializeConditionVariableEPNS0_21ConditionVariableTypeE"
+  },
+  {
+    "plt_address": "0x7102fc4910",
+    "got_address": "0x7103ce9808",
+    "got_offset": "0x3ce9808",
+    "symbol": "_ZN2nn3hid14InitializeNpadEv"
+  },
+  {
+    "plt_address": "0x7102fc4940",
+    "got_address": "0x7103ce9820",
+    "got_offset": "0x3ce9820",
+    "symbol": "_ZN2nn3hid24SetSupportedNpadStyleSetENS_4util10BitFlagSetILi32ENS0_12NpadStyleTagEEE"
+  },
+  {
+    "plt_address": "0x7102fc4950",
+    "got_address": "0x7103ce9828",
+    "got_offset": "0x3ce9828",
+    "symbol": "_ZN2nn3hid22SetSupportedNpadIdTypeEPKjm"
+  },
+  {
+    "plt_address": "0x7102fc4960",
+    "got_address": "0x7103ce9830",
+    "got_offset": "0x3ce9830",
+    "symbol": "_ZN2nn3hid18SetNpadJoyHoldTypeENS0_15NpadJoyHoldTypeE"
+  },
+  {
+    "plt_address": "0x7102fc4970",
+    "got_address": "0x7103ce9838",
+    "got_offset": "0x3ce9838",
+    "symbol": "_ZN2nn3hid29SetNpadHandheldActivationModeENS0_26NpadHandheldActivationModeE"
+  },
+  {
+    "plt_address": "0x7102fc4980",
+    "got_address": "0x7103ce9840",
+    "got_offset": "0x3ce9840",
+    "symbol": "_ZN2nn3hid27BindNpadStyleSetUpdateEventERKjPNS_2os15SystemEventTypeENS3_14EventClearModeE"
+  },
+  {
+    "plt_address": "0x7102fc4990",
+    "got_address": "0x7103ce9848",
+    "got_offset": "0x3ce9848",
+    "symbol": "_ZN2nn2os16ClearSystemEventEPNS0_15SystemEventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc49a0",
+    "got_address": "0x7103ce9850",
+    "got_offset": "0x3ce9850",
+    "symbol": "_ZN2nn3hid22GetNpadControllerColorEPNS0_19NpadControllerColorERKj"
+  },
+  {
+    "plt_address": "0x7102fc49b0",
+    "got_address": "0x7103ce9858",
+    "got_offset": "0x3ce9858",
+    "symbol": "_ZN2nn3hid22GetNpadControllerColorEPNS0_19NpadControllerColorES2_RKj"
+  },
+  {
+    "plt_address": "0x7102fc49c0",
+    "got_address": "0x7103ce9860",
+    "got_offset": "0x3ce9860",
+    "symbol": "_ZN2nn3hid12GetNpadStateEPNS0_17NpadHandheldStateERKj"
+  },
+  {
+    "plt_address": "0x7102fc49d0",
+    "got_address": "0x7103ce9868",
+    "got_offset": "0x3ce9868",
+    "symbol": "_ZN2nn3hid12GetNpadStateEPNS0_16NpadFullKeyStateERKj"
+  },
+  {
+    "plt_address": "0x7102fc49e0",
+    "got_address": "0x7103ce9870",
+    "got_offset": "0x3ce9870",
+    "symbol": "_ZN2nn3hid12GetNpadStateEPNS0_16NpadJoyDualStateERKj"
+  },
+  {
+    "plt_address": "0x7102fc49f0",
+    "got_address": "0x7103ce9878",
+    "got_offset": "0x3ce9878",
+    "symbol": "_ZN2nn3hid12GetNpadStateEPNS0_16NpadJoyLeftStateERKj"
+  },
+  {
+    "plt_address": "0x7102fc4a00",
+    "got_address": "0x7103ce9880",
+    "got_offset": "0x3ce9880",
+    "symbol": "_ZN2nn3hid12GetNpadStateEPNS0_17NpadJoyRightStateERKj"
+  },
+  {
+    "plt_address": "0x7102fc4a10",
+    "got_address": "0x7103ce9888",
+    "got_offset": "0x3ce9888",
+    "symbol": "_ZN2nn3hid23GetSixAxisSensorHandlesEPNS0_19SixAxisSensorHandleEiRKjNS_4util10BitFlagSetILi32ENS0_12NpadStyleTagEEE"
+  },
+  {
+    "plt_address": "0x7102fc4a20",
+    "got_address": "0x7103ce9890",
+    "got_offset": "0x3ce9890",
+    "symbol": "_ZN2nn3hid18StartSixAxisSensorERKNS0_19SixAxisSensorHandleE"
+  },
+  {
+    "plt_address": "0x7102fc4a30",
+    "got_address": "0x7103ce9898",
+    "got_offset": "0x3ce9898",
+    "symbol": "_ZN2nn3hid17StopSixAxisSensorERKNS0_19SixAxisSensorHandleE"
+  },
+  {
+    "plt_address": "0x7102fc4a40",
+    "got_address": "0x7103ce98a0",
+    "got_offset": "0x3ce98a0",
+    "symbol": "_ZN2nn3hid21GetSixAxisSensorStateEPNS0_18SixAxisSensorStateERKNS0_19SixAxisSensorHandleE"
+  },
+  {
+    "plt_address": "0x7102fc4a60",
+    "got_address": "0x7103ce98b0",
+    "got_offset": "0x3ce98b0",
+    "symbol": "_ZN2nn3hid22GetSixAxisSensorStatesEPNS0_18SixAxisSensorStateEiRKNS0_19SixAxisSensorHandleE"
+  },
+  {
+    "plt_address": "0x7102fc4a70",
+    "got_address": "0x7103ce98b8",
+    "got_offset": "0x3ce98b8",
+    "symbol": "_ZN2nn3hid21IsSixAxisSensorAtRestERKNS0_19SixAxisSensorHandleE"
+  },
+  {
+    "plt_address": "0x7102fc4a80",
+    "got_address": "0x7103ce98c0",
+    "got_offset": "0x3ce98c0",
+    "symbol": "_ZN2nn3hid28IsSixAxisSensorFusionEnabledERKNS0_19SixAxisSensorHandleE"
+  },
+  {
+    "plt_address": "0x7102fc4a90",
+    "got_address": "0x7103ce98c8",
+    "got_offset": "0x3ce98c8",
+    "symbol": "_ZN2nn3hid25EnableSixAxisSensorFusionERKNS0_19SixAxisSensorHandleEb"
+  },
+  {
+    "plt_address": "0x7102fc4aa0",
+    "got_address": "0x7103ce98d0",
+    "got_offset": "0x3ce98d0",
+    "symbol": "_ZN2nn3hid32SetSixAxisSensorFusionParametersERKNS0_19SixAxisSensorHandleEff"
+  },
+  {
+    "plt_address": "0x7102fc4ab0",
+    "got_address": "0x7103ce98d8",
+    "got_offset": "0x3ce98d8",
+    "symbol": "_ZN2nn3hid32GetSixAxisSensorFusionParametersEPfS1_RKNS0_19SixAxisSensorHandleE"
+  },
+  {
+    "plt_address": "0x7102fc4ac0",
+    "got_address": "0x7103ce98e0",
+    "got_offset": "0x3ce98e0",
+    "symbol": "_ZN2nn3hid25SetGyroscopeZeroDriftModeERKNS0_19SixAxisSensorHandleERKNS0_22GyroscopeZeroDriftModeE"
+  },
+  {
+    "plt_address": "0x7102fc4ad0",
+    "got_address": "0x7103ce98e8",
+    "got_offset": "0x3ce98e8",
+    "symbol": "_ZN2nn3hid25GetGyroscopeZeroDriftModeERKNS0_19SixAxisSensorHandleE"
+  },
+  {
+    "plt_address": "0x7102fc4b10",
+    "got_address": "0x7103ce9908",
+    "got_offset": "0x3ce9908",
+    "symbol": "_ZN2nn3hid24GetSupportedNpadStyleSetEv"
+  },
+  {
+    "plt_address": "0x7102fc4b20",
+    "got_address": "0x7103ce9910",
+    "got_offset": "0x3ce9910",
+    "symbol": "_ZN2nn3hid14DisconnectNpadERKj"
+  },
+  {
+    "plt_address": "0x7102fc4b30",
+    "got_address": "0x7103ce9918",
+    "got_offset": "0x3ce9918",
+    "symbol": "_ZN2nn3hid19GetPlayerLedPatternERKj"
+  },
+  {
+    "plt_address": "0x7102fc4b40",
+    "got_address": "0x7103ce9920",
+    "got_offset": "0x3ce9920",
+    "symbol": "_ZN2nn3hid13GetNpadStatesEPNS0_16NpadFullKeyStateEiRKj"
+  },
+  {
+    "plt_address": "0x7102fc4b50",
+    "got_address": "0x7103ce9928",
+    "got_offset": "0x3ce9928",
+    "symbol": "_ZN2nn3hid13GetNpadStatesEPNS0_17NpadHandheldStateEiRKj"
+  },
+  {
+    "plt_address": "0x7102fc4b60",
+    "got_address": "0x7103ce9930",
+    "got_offset": "0x3ce9930",
+    "symbol": "_ZN2nn3hid20GetNpadJoyAssignmentERKj"
+  },
+  {
+    "plt_address": "0x7102fc4b70",
+    "got_address": "0x7103ce9938",
+    "got_offset": "0x3ce9938",
+    "symbol": "_ZN2nn3hid30SetNpadJoyAssignmentModeSingleERKj"
+  },
+  {
+    "plt_address": "0x7102fc4b80",
+    "got_address": "0x7103ce9940",
+    "got_offset": "0x3ce9940",
+    "symbol": "_ZN2nn3hid30SetNpadJoyAssignmentModeSingleERKjNS0_17NpadJoyDeviceTypeE"
+  },
+  {
+    "plt_address": "0x7102fc4b90",
+    "got_address": "0x7103ce9948",
+    "got_offset": "0x3ce9948",
+    "symbol": "_ZN2nn3hid30SetNpadJoyAssignmentModeSingleEPjRKjNS0_17NpadJoyDeviceTypeE"
+  },
+  {
+    "plt_address": "0x7102fc4ba0",
+    "got_address": "0x7103ce9950",
+    "got_offset": "0x3ce9950",
+    "symbol": "_ZN2nn3hid28SetNpadJoyAssignmentModeDualERKj"
+  },
+  {
+    "plt_address": "0x7102fc4bb0",
+    "got_address": "0x7103ce9958",
+    "got_offset": "0x3ce9958",
+    "symbol": "_ZN2nn3hid23MergeSingleJoyAsDualJoyERKjS2_"
+  },
+  {
+    "plt_address": "0x7102fc4bc0",
+    "got_address": "0x7103ce9960",
+    "got_offset": "0x3ce9960",
+    "symbol": "_ZN2nn3hid18SwapNpadAssignmentERKjS2_"
+  },
+  {
+    "plt_address": "0x7102fc4bd0",
+    "got_address": "0x7103ce9968",
+    "got_offset": "0x3ce9968",
+    "symbol": "_ZN2nn3hid18GetNpadJoyHoldTypeEv"
+  },
+  {
+    "plt_address": "0x7102fc4be0",
+    "got_address": "0x7103ce9970",
+    "got_offset": "0x3ce9970",
+    "symbol": "_ZN2nn3hid21StartLrAssignmentModeEv"
+  },
+  {
+    "plt_address": "0x7102fc4bf0",
+    "got_address": "0x7103ce9978",
+    "got_offset": "0x3ce9978",
+    "symbol": "_ZN2nn3hid20StopLrAssignmentModeEv"
+  },
+  {
+    "plt_address": "0x7102fc4c00",
+    "got_address": "0x7103ce9980",
+    "got_offset": "0x3ce9980",
+    "symbol": "_ZN2nn3hid29GetNpadHandheldActivationModeEv"
+  },
+  {
+    "plt_address": "0x7102fc4c10",
+    "got_address": "0x7103ce9988",
+    "got_offset": "0x3ce9988",
+    "symbol": "_ZN2nn3hid24SetNpadCommunicationModeENS0_21NpadCommunicationModeE"
+  },
+  {
+    "plt_address": "0x7102fc4c20",
+    "got_address": "0x7103ce9990",
+    "got_offset": "0x3ce9990",
+    "symbol": "_ZN2nn3hid24GetNpadCommunicationModeEv"
+  },
+  {
+    "plt_address": "0x7102fc4c30",
+    "got_address": "0x7103ce9998",
+    "got_offset": "0x3ce9998",
+    "symbol": "_ZN2nn3hid13GetNpadStatesEPNS0_16NpadJoyDualStateEiRKj"
+  },
+  {
+    "plt_address": "0x7102fc4c40",
+    "got_address": "0x7103ce99a0",
+    "got_offset": "0x3ce99a0",
+    "symbol": "_ZN2nn3hid13GetNpadStatesEPNS0_16NpadJoyLeftStateEiRKj"
+  },
+  {
+    "plt_address": "0x7102fc4c50",
+    "got_address": "0x7103ce99a8",
+    "got_offset": "0x3ce99a8",
+    "symbol": "_ZN2nn3hid13GetNpadStatesEPNS0_17NpadJoyRightStateEiRKj"
+  },
+  {
+    "plt_address": "0x7102fc4ff0",
+    "got_address": "0x7103ce9b78",
+    "got_offset": "0x3ce9b78",
+    "symbol": "_ZN2nn2os11YieldThreadEv"
+  },
+  {
+    "plt_address": "0x7102fc5400",
+    "got_address": "0x7103ce9d80",
+    "got_offset": "0x3ce9d80",
+    "symbol": "_ZN2nn2os19GenerateRandomBytesEPvm"
+  },
+  {
+    "plt_address": "0x7102fc54c0",
+    "got_address": "0x7103ce9de0",
+    "got_offset": "0x3ce9de0",
+    "symbol": "_ZN2nn2os15InitializeEventEPNS0_9EventTypeEbNS0_14EventClearModeE"
+  },
+  {
+    "plt_address": "0x7102fc54d0",
+    "got_address": "0x7103ce9de8",
+    "got_offset": "0x3ce9de8",
+    "symbol": "_ZN2nn2os13FinalizeEventEPNS0_9EventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5510",
+    "got_address": "0x7103ce9e08",
+    "got_offset": "0x3ce9e08",
+    "symbol": "_ZN2nn2os11SignalEventEPNS0_9EventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5520",
+    "got_address": "0x7103ce9e10",
+    "got_offset": "0x3ce9e10",
+    "symbol": "_ZN2nn2fs31QueryMountAddOnContentCacheSizeEPmi"
+  },
+  {
+    "plt_address": "0x7102fc5530",
+    "got_address": "0x7103ce9e18",
+    "got_offset": "0x3ce9e18",
+    "symbol": "_ZN2nn2fs17MountAddOnContentEPKciPvm"
+  },
+  {
+    "plt_address": "0x7102fc5540",
+    "got_address": "0x7103ce9e20",
+    "got_offset": "0x3ce9e20",
+    "symbol": "_ZN2nn2os19InitializeMultiWaitEPNS0_13MultiWaitTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5550",
+    "got_address": "0x7103ce9e28",
+    "got_offset": "0x3ce9e28",
+    "symbol": "_ZN2nn2os25InitializeMultiWaitHolderEPNS0_19MultiWaitHolderTypeEPNS0_9EventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5560",
+    "got_address": "0x7103ce9e30",
+    "got_offset": "0x3ce9e30",
+    "symbol": "_ZN2nn2os19LinkMultiWaitHolderEPNS0_13MultiWaitTypeEPNS0_19MultiWaitHolderTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5570",
+    "got_address": "0x7103ce9e38",
+    "got_offset": "0x3ce9e38",
+    "symbol": "_ZN2nn2os25InitializeMultiWaitHolderEPNS0_19MultiWaitHolderTypeEPNS0_15SystemEventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5580",
+    "got_address": "0x7103ce9e40",
+    "got_offset": "0x3ce9e40",
+    "symbol": "_ZN2nn2os7WaitAnyEPNS0_13MultiWaitTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5590",
+    "got_address": "0x7103ce9e48",
+    "got_offset": "0x3ce9e48",
+    "symbol": "_ZN2nn2os21UnlinkMultiWaitHolderEPNS0_19MultiWaitHolderTypeE"
+  },
+  {
+    "plt_address": "0x7102fc55a0",
+    "got_address": "0x7103ce9e50",
+    "got_offset": "0x3ce9e50",
+    "symbol": "_ZN2nn2os23FinalizeMultiWaitHolderEPNS0_19MultiWaitHolderTypeE"
+  },
+  {
+    "plt_address": "0x7102fc55b0",
+    "got_address": "0x7103ce9e58",
+    "got_offset": "0x3ce9e58",
+    "symbol": "_ZN2nn2os17FinalizeMultiWaitEPNS0_13MultiWaitTypeE"
+  },
+  {
+    "plt_address": "0x7102fc55c0",
+    "got_address": "0x7103ce9e60",
+    "got_offset": "0x3ce9e60",
+    "symbol": "_ZN2nn2os12TryWaitEventEPNS0_9EventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc55d0",
+    "got_address": "0x7103ce9e68",
+    "got_offset": "0x3ce9e68",
+    "symbol": "_ZN2nn2os26BroadcastConditionVariableEPNS0_21ConditionVariableTypeE"
+  },
+  {
+    "plt_address": "0x7102fc55f0",
+    "got_address": "0x7103ce9e78",
+    "got_offset": "0x3ce9e78",
+    "symbol": "_ZN2nn2os17GetThreadPriorityEPKNS0_10ThreadTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5600",
+    "got_address": "0x7103ce9e80",
+    "got_offset": "0x3ce9e80",
+    "symbol": "_ZN2nn2fs22QueryMountRomCacheSizeEPm"
+  },
+  {
+    "plt_address": "0x7102fc5610",
+    "got_address": "0x7103ce9e88",
+    "got_offset": "0x3ce9e88",
+    "symbol": "_ZN2nn2fs8MountRomEPKcPvm"
+  },
+  {
+    "plt_address": "0x7102fc56a0",
+    "got_address": "0x7103ce9ed0",
+    "got_offset": "0x3ce9ed0",
+    "symbol": "_ZN2nn2fs8ReadFileENS0_10FileHandleElPvm"
+  },
+  {
+    "plt_address": "0x7102fc56c0",
+    "got_address": "0x7103ce9ee0",
+    "got_offset": "0x3ce9ee0",
+    "symbol": "_ZN2nn2fs18IsSaveDataExistingERKNS_7account3UidE"
+  },
+  {
+    "plt_address": "0x7102fc56d0",
+    "got_address": "0x7103ce9ee8",
+    "got_offset": "0x3ce9ee8",
+    "symbol": "_ZN2nn2fs13MountSaveDataEPKcRKNS_7account3UidE"
+  },
+  {
+    "plt_address": "0x7102fc56e0",
+    "got_address": "0x7103ce9ef0",
+    "got_offset": "0x3ce9ef0",
+    "symbol": "_ZN2nn2fs14EnsureSaveDataERKNS_7account3UidE"
+  },
+  {
+    "plt_address": "0x7102fc56f0",
+    "got_address": "0x7103ce9ef8",
+    "got_offset": "0x3ce9ef8",
+    "symbol": "_ZN2nn2fs6CommitEPKc"
+  },
+  {
+    "plt_address": "0x7102fc5700",
+    "got_address": "0x7103ce9f00",
+    "got_offset": "0x3ce9f00",
+    "symbol": "_ZN2nn2os24ReceiveLightMessageQueueEPmPNS0_21LightMessageQueueTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5710",
+    "got_address": "0x7103ce9f08",
+    "got_offset": "0x3ce9f08",
+    "symbol": "_ZN2nn2os27InitializeLightMessageQueueEPNS0_21LightMessageQueueTypeEPmm"
+  },
+  {
+    "plt_address": "0x7102fc5720",
+    "got_address": "0x7103ce9f10",
+    "got_offset": "0x3ce9f10",
+    "symbol": "_ZN2nn2os25FinalizeLightMessageQueueEPNS0_21LightMessageQueueTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5730",
+    "got_address": "0x7103ce9f18",
+    "got_offset": "0x3ce9f18",
+    "symbol": "_ZN2nn2os20JamLightMessageQueueEPNS0_21LightMessageQueueTypeEm"
+  },
+  {
+    "plt_address": "0x7102fc5760",
+    "got_address": "0x7103ce9f30",
+    "got_offset": "0x3ce9f30",
+    "symbol": "_ZN2nn2os15QueryMemoryInfoEPNS0_10MemoryInfoE"
+  },
+  {
+    "plt_address": "0x7102fc5810",
+    "got_address": "0x7103ce9f88",
+    "got_offset": "0x3ce9f88",
+    "symbol": "_ZN2nn2os36GetVirtualAddressMemoryResourceUsageEv"
+  },
+  {
+    "plt_address": "0x7102fc58c0",
+    "got_address": "0x7103ce9fe0",
+    "got_offset": "0x3ce9fe0",
+    "symbol": "_ZN2nn2os21SetDyingMessageRegionEmm"
+  },
+  {
+    "plt_address": "0x7102fc58e0",
+    "got_address": "0x7103ce9ff0",
+    "got_offset": "0x3ce9ff0",
+    "symbol": "_ZN2nn2os20GetThreadNamePointerEPKNS0_10ThreadTypeE"
+  },
+  {
+    "plt_address": "0x7102fc58f0",
+    "got_address": "0x7103ce9ff8",
+    "got_offset": "0x3ce9ff8",
+    "symbol": "_ZN2nn2os32SetMemoryAllocatorForThreadLocalEPFPvmmEPFvS1_mE"
+  },
+  {
+    "plt_address": "0x7102fc5900",
+    "got_address": "0x7103cea000",
+    "got_offset": "0x3cea000",
+    "symbol": "_ZN2nn2fs12SetAllocatorEPFPvmEPFvS1_mE"
+  },
+  {
+    "plt_address": "0x7102fc5910",
+    "got_address": "0x7103cea008",
+    "got_offset": "0x3cea008",
+    "symbol": "_ZN2nn2os11GetHostArgcEv"
+  },
+  {
+    "plt_address": "0x7102fc5920",
+    "got_address": "0x7103cea010",
+    "got_offset": "0x3cea010",
+    "symbol": "_ZN2nn2os11GetHostArgvEv"
+  },
+  {
+    "plt_address": "0x7102fc5a70",
+    "got_address": "0x7103cea0b8",
+    "got_offset": "0x3cea0b8",
+    "symbol": "_ZN2nn2os10ClearEventEPNS0_9EventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5a80",
+    "got_address": "0x7103cea0c0",
+    "got_offset": "0x3cea0c0",
+    "symbol": "_ZN2nn2os9WaitEventEPNS0_9EventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5a90",
+    "got_address": "0x7103cea0c8",
+    "got_offset": "0x3cea0c8",
+    "symbol": "_ZN2nn2os13FinalizeFiberEPNS0_9FiberTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5aa0",
+    "got_address": "0x7103cea0d0",
+    "got_offset": "0x3cea0d0",
+    "symbol": "_ZN2nn2os15InitializeFiberEPNS0_9FiberTypeEPFS2_PvES3_S3_mi"
+  },
+  {
+    "plt_address": "0x7102fc5ab0",
+    "got_address": "0x7103cea0d8",
+    "got_offset": "0x3cea0d8",
+    "symbol": "_ZN2nn2os15GetCurrentFiberEv"
+  },
+  {
+    "plt_address": "0x7102fc5ac0",
+    "got_address": "0x7103cea0e0",
+    "got_offset": "0x3cea0e0",
+    "symbol": "_ZN2nn2os13SwitchToFiberEPNS0_9FiberTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5ad0",
+    "got_address": "0x7103cea0e8",
+    "got_offset": "0x3cea0e8",
+    "symbol": "_ZN2nn2os12CreateThreadEPNS0_10ThreadTypeEPFvPvES3_S3_mii"
+  },
+  {
+    "plt_address": "0x7102fc5ae0",
+    "got_address": "0x7103cea0f0",
+    "got_offset": "0x3cea0f0",
+    "symbol": "_ZN2nn2os13SetThreadNameEPNS0_10ThreadTypeEPKc"
+  },
+  {
+    "plt_address": "0x7102fc5af0",
+    "got_address": "0x7103cea0f8",
+    "got_offset": "0x3cea0f8",
+    "symbol": "_ZN2nn2os11GetTlsValueENS0_7TlsSlotE"
+  },
+  {
+    "plt_address": "0x7102fc5b00",
+    "got_address": "0x7103cea100",
+    "got_offset": "0x3cea100",
+    "symbol": "_ZN2nn2os19TryAcquireWriteLockEPNS0_20ReaderWriterLockTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5b10",
+    "got_address": "0x7103cea108",
+    "got_offset": "0x3cea108",
+    "symbol": "_ZN2nn2os14TimedWaitEventEPNS0_9EventTypeENS_8TimeSpanE"
+  },
+  {
+    "plt_address": "0x7102fc5c30",
+    "got_address": "0x7103cea198",
+    "got_offset": "0x3cea198",
+    "symbol": "_ZN2nn2os15WaitSystemEventEPNS0_15SystemEventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5cf0",
+    "got_address": "0x7103cea1f8",
+    "got_offset": "0x3cea1f8",
+    "symbol": "_ZN2nn3hid25GetVibrationDeviceHandlesEPNS0_21VibrationDeviceHandleEiRKjNS_4util10BitFlagSetILi32ENS0_12NpadStyleTagEEE"
+  },
+  {
+    "plt_address": "0x7102fc5d00",
+    "got_address": "0x7103cea200",
+    "got_offset": "0x3cea200",
+    "symbol": "_ZN2nn3hid25InitializeVibrationDeviceERKNS0_21VibrationDeviceHandleE"
+  },
+  {
+    "plt_address": "0x7102fc5d10",
+    "got_address": "0x7103cea208",
+    "got_offset": "0x3cea208",
+    "symbol": "_ZN2nn2os20InitializeTimerEventEPNS0_14TimerEventTypeENS0_14EventClearModeE"
+  },
+  {
+    "plt_address": "0x7102fc5d20",
+    "got_address": "0x7103cea210",
+    "got_offset": "0x3cea210",
+    "symbol": "_ZN2nn2os23StartPeriodicTimerEventEPNS0_14TimerEventTypeENS_8TimeSpanES3_"
+  },
+  {
+    "plt_address": "0x7102fc5d30",
+    "got_address": "0x7103cea218",
+    "got_offset": "0x3cea218",
+    "symbol": "_ZN2nn2os18FinalizeTimerEventEPNS0_14TimerEventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5d40",
+    "got_address": "0x7103cea220",
+    "got_offset": "0x3cea220",
+    "symbol": "_ZN2nn3hid18SendVibrationValueERKNS0_21VibrationDeviceHandleERKNS0_14VibrationValueE"
+  },
+  {
+    "plt_address": "0x7102fc5d50",
+    "got_address": "0x7103cea228",
+    "got_offset": "0x3cea228",
+    "symbol": "_ZN2nn2os16SignalTimerEventEPNS0_14TimerEventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc5d60",
+    "got_address": "0x7103cea230",
+    "got_offset": "0x3cea230",
+    "symbol": "_ZN2nn2os14WaitTimerEventEPNS0_14TimerEventTypeE"
+  },
+  {
+    "plt_address": "0x7102fc6110",
+    "got_address": "0x7103cea408",
+    "got_offset": "0x3cea408",
+    "symbol": "_ZN2nn2fs22GetDirectoryEntryCountEPlNS0_15DirectoryHandleE"
+  },
+  {
+    "plt_address": "0x7102fc64e0",
+    "got_address": "0x7103cea5f0",
+    "got_offset": "0x3cea5f0",
+    "symbol": "_ZN2nn2os22StartOneShotTimerEventEPNS0_14TimerEventTypeENS_8TimeSpanE"
+  },
+  {
+    "plt_address": "0x7102fc66e0",
+    "got_address": "0x7103cea6f0",
+    "got_offset": "0x3cea6f0",
+    "symbol": "_ZN2nn2fs25GetCurrentThreadFsContextEv"
+  },
+  {
+    "plt_address": "0x7102fc66f0",
+    "got_address": "0x7103cea6f8",
+    "got_offset": "0x3cea6f8",
+    "symbol": "_ZN2nn2fs25SetCurrentThreadFsContextEPKNS0_9FsContextE"
+  },
+  {
+    "plt_address": "0x7102fc6700",
+    "got_address": "0x7103cea700",
+    "got_offset": "0x3cea700",
+    "symbol": "_ZN2nn2fs8MountRomEPKc"
+  },
+  {
+    "plt_address": "0x7102fc6cb0",
+    "got_address": "0x7103cea9d8",
+    "got_offset": "0x3cea9d8",
+    "symbol": "_ZN2nn2os18SdkAllocateTlsSlotEPNS0_7TlsSlotEPFvmE"
+  },
+  {
+    "plt_address": "0x7102fc6e90",
+    "got_address": "0x7103ceaac8",
+    "got_offset": "0x3ceaac8",
+    "symbol": "_ZN2nn2os19GetCurrentStackInfoEPmS1_"
+  },
+  {
+    "plt_address": "0x7102fc6ea0",
+    "got_address": "0x7103ceaad0",
+    "got_offset": "0x3ceaad0",
+    "symbol": "_ZN2nn2os22InitializeMessageQueueEPNS0_16MessageQueueTypeEPmm"
+  },
+  {
+    "plt_address": "0x7102fc6eb0",
+    "got_address": "0x7103ceaad8",
+    "got_offset": "0x3ceaad8",
+    "symbol": "_ZN2nn2os20FinalizeMessageQueueEPNS0_16MessageQueueTypeE"
+  },
+  {
+    "plt_address": "0x7102fc6ec0",
+    "got_address": "0x7103ceaae0",
+    "got_offset": "0x3ceaae0",
+    "symbol": "_ZN2nn2os19TrySendMessageQueueEPNS0_16MessageQueueTypeEm"
+  },
+  {
+    "plt_address": "0x7102fc6ed0",
+    "got_address": "0x7103ceaae8",
+    "got_offset": "0x3ceaae8",
+    "symbol": "_ZN2nn2os16SendMessageQueueEPNS0_16MessageQueueTypeEm"
+  },
+  {
+    "plt_address": "0x7102fc6ee0",
+    "got_address": "0x7103ceaaf0",
+    "got_offset": "0x3ceaaf0",
+    "symbol": "_ZN2nn2os22TryReceiveMessageQueueEPmPNS0_16MessageQueueTypeE"
+  },
+  {
+    "plt_address": "0x7102fc6ef0",
+    "got_address": "0x7103ceaaf8",
+    "got_offset": "0x3ceaaf8",
+    "symbol": "_ZN2nn2os19ReceiveMessageQueueEPmPNS0_16MessageQueueTypeE"
+  },
+  {
+    "plt_address": "0x7102fc6f00",
+    "got_address": "0x7103ceab00",
+    "got_offset": "0x3ceab00",
+    "symbol": "_ZN2nn2os18TryJamMessageQueueEPNS0_16MessageQueueTypeEm"
+  },
+  {
+    "plt_address": "0x7102fc6f10",
+    "got_address": "0x7103ceab08",
+    "got_offset": "0x3ceab08",
+    "symbol": "_ZN2nn2os15JamMessageQueueEPNS0_16MessageQueueTypeEm"
+  }
+]

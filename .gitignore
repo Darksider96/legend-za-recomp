@@ -1,0 +1,61 @@
+# Dump do jogo, chaves e qualquer material protegido — nunca versionar
+*.nsp
+*.xci
+*.keys
+romfs/
+exefs/
+za_port/oo2core_*.dll
+
+# Bytes extraidos do binario do jogo e projetos Ghidra (regeneraveis a partir do proprio dump)
+# Regra: so trabalho original vai para o repositorio (ferramentas, runtime, testes, scripts geradores, notas).
+# Codigo descompilado/desmontado, dados extraidos do RomFS e dumps derivados ficam apenas locais.
+*.bin
+*.bfbs
+analysis/**/*.txt
+!analysis/trpfs_names.txt
+analysis/boot/*.log
+analysis/boot/*-assets/
+analysis/boot/phase5-audio-banks.json
+analysis/boot/phase5-params-assets.json
+analysis/recovered_dictionary.txt
+analysis/boot/project/
+analysis/boot/sdk-project/
+analysis/boot/__pycache__/
+analysis/recomp/generated/
+*.gpr
+*.rep/
+
+# Saida gerada pelo recompilador (contem codigo do jogo traduzido)
+recomp/out/
+recomp/generated/
+
+# Assets exportados do RomFS
+za_port/extracted_assets/
+za_port/test_*/
+za_port/trpfs_export/
+*.bmp
+*.png
+*.dds
+*.wem
+*.wav
+*.gltf
+*.glb
+
+# Extensao de terceiros do Ghidra (instalar separadamente)
+SwitchLoader/
+
+# Builds e binarios
+build/
+build*/
+cmake-build*/
+*.exe
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.pdb
+za_port/za_config.ini
+
+# Logs de execucao
+*.log

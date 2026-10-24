@@ -1,0 +1,106 @@
+[
+  {
+    "index": 0,
+    "va": "0x7103d262b8",
+    "engine_hash64": "0x29510046018cf6cb",
+    "pointer": "0x7103148741",
+    "length": 5,
+    "name": "INDEX"
+  },
+  {
+    "index": 1,
+    "va": "0x7103d262d0",
+    "engine_hash64": "0x52f98726d9bcf7a7",
+    "pointer": "0x71030ff464",
+    "length": 3,
+    "name": "SAD"
+  },
+  {
+    "index": 2,
+    "va": "0x7103d262e8",
+    "engine_hash64": "0xbb9aa56caee02dd0",
+    "pointer": "0x710312888c",
+    "length": 5,
+    "name": "ANGER"
+  },
+  {
+    "index": 3,
+    "va": "0x7103d26300",
+    "engine_hash64": "0xb7343a26818cc319",
+    "pointer": "0x71030d621b",
+    "length": 3,
+    "name": "ATK"
+  },
+  {
+    "index": 4,
+    "va": "0x7103d26318",
+    "engine_hash64": "0x1153c6425ba6bb08",
+    "pointer": "0x710313dd85",
+    "length": 5,
+    "name": "SPATK"
+  },
+  {
+    "index": 5,
+    "va": "0x7103d26330",
+    "engine_hash64": "0x95d3008c888cc96e",
+    "pointer": "0x710308bb75",
+    "length": 5,
+    "name": "GLAD1"
+  },
+  {
+    "index": 6,
+    "va": "0x7103d26348",
+    "engine_hash64": "0x95d2ff8c888cc7bb",
+    "pointer": "0x71030ff468",
+    "length": 5,
+    "name": "GLAD2"
+  },
+  {
+    "index": 7,
+    "va": "0x7103d26360",
+    "engine_hash64": "0x95d2fe8c888cc608",
+    "pointer": "0x7103148747",
+    "length": 5,
+    "name": "GLAD3"
+  },
+  {
+    "index": 8,
+    "va": "0x7103d26378",
+    "engine_hash64": "0x966a8c266f81cb5b",
+    "pointer": "0x710306cf3a",
+    "length": 3,
+    "name": "EX1"
+  },
+  {
+    "index": 9,
+    "va": "0x7103d26390",
+    "engine_hash64": "0x966a8d266f81cd0e",
+    "pointer": "0x71030ac308",
+    "length": 3,
+    "name": "EX2"
+  },
+  {
+    "index": 10,
+    "va": "0x7103d263a8",
+    "engine_hash64": "0x966a8e266f81cec1",
+    "pointer": "0x71030437eb",
+    "length": 3,
+    "name": "EX3"
+  },
+  {
+    "index": 11,
+    "va": "0x7103d263c0",
+    "engine_hash64": "0x966a8f266f81d074",
+    "pointer": "0x710304dd2b",
+    "length": 3,
+    "name": "EX4"
+  },
+  {
+    "index": 12,
+    "va": "0x7103d263d8",
+    "engine_hash64": "0x9648b1266f6523d4",
+    "pointer": "0x710314391d",
+    "length": 3,
+    "name": "ENV"
+  }
+]

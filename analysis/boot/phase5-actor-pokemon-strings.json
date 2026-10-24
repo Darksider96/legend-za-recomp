@@ -1,0 +1,1066 @@
+[
+  {
+    "va": "0x710300b249",
+    "text": "PokemonWazaMoveActionNone"
+  },
+  {
+    "va": "0x710300b263",
+    "text": "PokemonPlayWazaAction"
+  },
+  {
+    "va": "0x710300f9ce",
+    "text": "SpawnPokemon"
+  },
+  {
+    "va": "0x710300fc01",
+    "text": "world/ik_obj_template/parts/pokemon/effect/ice_/ice.trsot"
+  },
+  {
+    "va": "0x710300fc3b",
+    "text": "world/ik_obj_template/parts/pokemon/effect/water_land_/water_land.trsot"
+  },
+  {
+    "va": "0x7103010730",
+    "text": "msg_ui_status_pokemon_defense_00"
+  },
+  {
+    "va": "0x7103010751",
+    "text": "msg_ui_status_pokemon_speed_00"
+  },
+  {
+    "va": "0x71030127c3",
+    "text": "trinity_ModelComponent"
+  },
+  {
+    "va": "0x7103015e76",
+    "text": "PokemonWazaMoveTarget"
+  },
+  {
+    "va": "0x7103015e8c",
+    "text": "PokemonWazaMoveTrainerRange"
+  },
+  {
+    "va": "0x7103017297",
+    "text": "set_tag_Ev_Npc_Pokemon_move3_16525"
+  },
+  {
+    "va": "0x710301a288",
+    "text": "Validate Pokemon HTTP Request"
+  },
+  {
+    "va": "0x710301a363",
+    "text": "world/ik_obj_template/parts/pokemon/effect/idlling_water_s_/idlling_water_s.trsot"
+  },
+  {
+    "va": "0x710301aa42",
+    "text": "WaitCreatePokemon"
+  },
+  {
+    "va": "0x710301af3a",
+    "text": "MAPNAME_POKEMONFYESUTA26"
+  },
+  {
+    "va": "0x71030221e0",
+    "text": "ContactNpcPokemonTurn_14533"
+  },
+  {
+    "va": "0x71030221fc",
+    "text": "SimpleTalkPokemonSad_14539"
+  },
+  {
+    "va": "0x71030230ed",
+    "text": "TrainerNPCChaseOpponentPokemon_22511"
+  },
+  {
+    "va": "0x7103025379",
+    "text": "ti_FieldPokemonComponent"
+  },
+  {
+    "va": "0x7103025653",
+    "text": "TwinPokemonMag"
+  },
+  {
+    "va": "0x7103025756",
+    "text": "have_pokemon_box_total_condition"
+  },
+  {
+    "va": "0x7103025777",
+    "text": "StartContactNpcPokemonEvent"
+  },
+  {
+    "va": "0x7103025cda",
+    "text": "ui/tex/icon_pokemon_last/icon_ob0009_00/icon_ob0009_00.bntx"
+  },
+  {
+    "va": "0x71030261a1",
+    "text": "MAPNAME_POKEMONIBENTO27"
+  },
+  {
+    "va": "0x710302f00b",
+    "text": "CheckOnTheGroundPokemon"
+  },
+  {
+    "va": "0x710302f247",
+    "text": "ik_pokemon/loc_search_move/loc_poke_seachmove/loc_poke_seachmove.trmdl"
+  },
+  {
+    "va": "0x710302fccc",
+    "text": "BOOT_CONDITION_POKEMON_PUTOUT"
+  },
+  {
+    "va": "0x71030300b6",
+    "text": "have_pokemon_box_condition"
+  },
+  {
+    "va": "0x71030309ee",
+    "text": "msg_ui_waza_omoidashi_pokemon_name_00"
+  },
+  {
+    "va": "0x7103030c5a",
+    "text": "static const char *boost::detail::ctti<(anonymous namespace)::CommandSelectPokemon>::n() [T = (anonymous namespace)::CommandSelectPokemon]"
+  },
+  {
+    "va": "0x7103036a14",
+    "text": "wp_pokemon_release_kurebe2_11584"
+  },
+  {
+    "va": "0x7103036c17",
+    "text": "katikoru_ride_on_pokemon_event_12450"
+  },
+  {
+    "va": "0x7103036fbd",
+    "text": "SimpleTalkPokemonTurn_14537"
+  },
+  {
+    "va": "0x71030372f2",
+    "text": "set_tag_Ev_Npc_Pokemon_move14_16536"
+  },
+  {
+    "va": "0x710303973c",
+    "text": "SetPokemonTimeZoneMode"
+  },
+  {
+    "va": "0x710303a6c4",
+    "text": "msg_ui_strinput_pokemon_name_00"
+  },
+  {
+    "va": "0x71030402b6",
+    "text": "PokemonWazaMoveMain"
+  },
+  {
+    "va": "0x7103041855",
+    "text": "set_tag_Ev_Npc_Pokemon_move7_16529"
+  },
+  {
+    "va": "0x710304381b",
+    "text": "CheckInTheWaterPokemon"
+  },
+  {
+    "va": "0x710304462d",
+    "text": "world/ik_data/pokemon/ai_action/define/random_time_data/random_time_data_array"
+  },
+  {
+    "va": "0x710304467c",
+    "text": "world/ik_data/pokemon/pokemon_unique_path_data/pokemon_collision_unique_data"
+  },
+  {
+    "va": "0x71030446c9",
+    "text": "world/ik_obj_template/parts/pokemon/effect/poison_/poison.trsot"
+  },
+  {
+    "va": "0x7103045140",
+    "text": "msg_ui_status_pokemon_level_00"
+  },
+  {
+    "va": "0x71030451e1",
+    "text": "MAPNAME_POKEMONIBENTO26"
+  },
+  {
+    "va": "0x710304537f",
+    "text": "PokemonModel_Obj_%d"
+  },
+  {
+    "va": "0x7103046f46",
+    "text": "gfx2/shader/NX64/env_ikkaku/material/pokemon_effect.trsha"
+  },
+  {
+    "va": "0x710304bd44",
+    "text": "set_tag_Ev_Npc_Pokemon_move4_16526"
+  },
+  {
+    "va": "0x710304eb38",
+    "text": "param_chr/data/pokemon/poke_model_param/poke_model_param_array.bin"
+  },
+  {
+    "va": "0x710304ed0b",
+    "text": "world/ik_data/pokemon/collision/pokemon_collision_height_data/pokemon_collision_height_data_array"
+  },
+  {
+    "va": "0x710304ed78",
+    "text": "world/ik_obj_template/parts/pokemon/effect/dive_mud_/dive_mud.trsot"
+  },
+  {
+    "va": "0x710304edbc",
+    "text": "world/ik_obj_template/parts/pokemon/effect/water_ripples_/water_ripples.trsot"
+  },
+  {
+    "va": "0x710304ee0a",
+    "text": "world/ik_obj_template/parts/pokemon/effect/water_ripples_l_/water_ripples_l.trsot"
+  },
+  {
+    "va": "0x710304f8f8",
+    "text": "msg_ui_status_pokemon_equip_01"
+  },
+  {
+    "va": "0x710305647e",
+    "text": "SetTagEndContactNpcPokemonTurn_14530"
+  },
+  {
+    "va": "0x71030564a3",
+    "text": "ContactNpcPokemonLookAt_14534"
+  },
+  {
+    "va": "0x710305676d",
+    "text": "set_tag_Ev_Npc_Pokemon_move8_16530"
+  },
+  {
+    "va": "0x71030592db",
+    "text": "BOOT_CONDITION_SCAN_POKEMON"
+  },
+  {
+    "va": "0x71030598e7",
+    "text": "world/ik_data/pokemon/collision/pokemon_collision_unique_data/"
+  },
+  {
+    "va": "0x7103059926",
+    "text": "world/ik_obj_template/parts/pokemon/effect/dive_snow_/dive_snow.trsot"
+  },
+  {
+    "va": "0x7103059b86",
+    "text": "Title/Pokemon/NotifyEscapePokemon"
+  },
+  {
+    "va": "0x7103062e46",
+    "text": "ik_pokemon/loc_search_move/loc_poke_seachmove/loc_poke_seachmove_slow.tranm"
+  },
+  {
+    "va": "0x7103063626",
+    "text": "partner_pokemon"
+  },
+  {
+    "va": "0x71030636cd",
+    "text": "BOOT_CONDITION_DEPLETION_WILD_POKEMON"
+  },
+  {
+    "va": "0x71030639dc",
+    "text": "world/ik_obj_template/parts/pokemon/effect/teleport_/teleport.trsot"
+  },
+  {
+    "va": "0x7103063a20",
+    "text": "world/ik_obj_template/parts/pokemon/effect/poke_splash_/poke_splash.trsot"
+  },
+  {
+    "va": "0x710306a40a",
+    "text": "wp_pokemon_release_11581"
+  },
+  {
+    "va": "0x710306aa3c",
+    "text": "SetTagEndContactNpcPokemonEvent_14531"
+  },
+  {
+    "va": "0x710306ad62",
+    "text": "set_tag_Ev_Npc_Pokemon_move10_16532"
+  },
+  {
+    "va": "0x710306df8c",
+    "text": "https://news-%.pokemon-home.com/plza/list/news/"
+  },
+  {
+    "va": "0x710306e07d",
+    "text": "world/ik_obj_template/parts/pokemon/effect/silence_/silence.trsot"
+  },
+  {
+    "va": "0x710306e0bf",
+    "text": "PokemonAIComponent"
+  },
+  {
+    "va": "0x7103070a65",
+    "text": "static const char *boost::detail::ctti<gfl::WeakHandle<gfl::anm2::AnimationComponent>>::n() [T = gfl::WeakHandle<gfl::anm2::AnimationComponent>]"
+  },
+  {
+    "va": "0x7103074ff0",
+    "text": "Npc_Traffic_reaction_PartnerPokemon_13538"
+  },
+  {
+    "va": "0x710307517b",
+    "text": "Placement_Npc_Pokemon_GroundWait_1_14511"
+  },
+  {
+    "va": "0x71030781d4",
+    "text": "wild_pokemon_base_behavior"
+  },
+  {
+    "va": "0x7103078522",
+    "text": "world/ik_obj_template/parts/pokemon/effect/question_/question.trsot"
+  },
+  {
+    "va": "0x7103078566",
+    "text": "world/ik_obj_template/parts/pokemon/effect/sleeping_/sleeping.trsot"
+  },
+  {
+    "va": "0x71030785aa",
+    "text": "world/ik_obj_template/parts/pokemon/effect/pop_mud_/pop_mud.trsot"
+  },
+  {
+    "va": "0x71030785ec",
+    "text": "world/ik_obj_template/parts/pokemon/effect/run_water_m_/run_water_m.trsot"
+  },
+  {
+    "va": "0x7103078645",
+    "text": "world/ik_obj_template/parts/pokemon/ball/monster_ball_/monster_ball.trsot"
+  },
+  {
+    "va": "0x71030790e0",
+    "text": "MAPNAME_POKEMONIBENTO28"
+  },
+  {
+    "va": "0x71030827d4",
+    "text": "world/ik_data/pokemon/wild/wild_pokemon_action_data/wild_pokemon_action_data_array"
+  },
+  {
+    "va": "0x7103082827",
+    "text": "world/ik_obj_template/parts/pokemon/effect/silence_z_/silence_z.trsot"
+  },
+  {
+    "va": "0x710308286d",
+    "text": "world/ik_obj_template/parts/pokemon/effect/pop_snow_/pop_snow.trsot"
+  },
+  {
+    "va": "0x7103083368",
+    "text": "msg_ui_status_pokemon_equip_00"
+  },
+  {
+    "va": "0x71030833a8",
+    "text": "MAPNAME_POKEMONIBENTO25"
+  },
+  {
+    "va": "0x71030833c0",
+    "text": "MAPNAME_POKEMONFYESUTA28"
+  },
+  {
+    "va": "0x7103089bbf",
+    "text": "set_tag_Ev_Npc_Pokemon_move11_16533"
+  },
+  {
+    "va": "0x710308c717",
+    "text": "BOOT_CONDITION_POKEMON_CAPTURED_TUTORIAL"
+  },
+  {
+    "va": "0x710308c855",
+    "text": "pokemon_spawner"
+  },
+  {
+    "va": "0x710308c9c2",
+    "text": "https://battle-%.pokemon-home.com/plza/terms/callback"
+  },
+  {
+    "va": "0x710308ce59",
+    "text": "Title/Pokemon/HideFloorEnable"
+  },
+  {
+    "va": "0x710308ce77",
+    "text": "Title/Pokemon/CaptureExecuteSkipFrame"
+  },
+  {
+    "va": "0x710308d892",
+    "text": "MAPNAME_POKEMONIBENTO"
+  },
+  {
+    "va": "0x710308d8a8",
+    "text": "MAPNAME_POKEMONFYESUTA24"
+  },
+  {
+    "va": "0x7103094790",
+    "text": "set_tag_Ev_Npc_Pokemon_move1_16523"
+  },
+  {
+    "va": "0x7103097569",
+    "text": "BOOT_CONDITION_ESCAPE_POKEMON_TUTORIAL"
+  },
+  {
+    "va": "0x7103097707",
+    "text": "pokemonPopId"
+  },
+  {
+    "va": "0x7103097a46",
+    "text": "partner_pokemon_base_behavior"
+  },
+  {
+    "va": "0x7103097b98",
+    "text": "world/ik_data/pokemon/collision/pokemon_collision_offset_data/pokemon_collision_offset_data_array"
+  },
+  {
+    "va": "0x7103097bfa",
+    "text": "world/ik_obj_template/parts/pokemon/effect/sweat_z_/sweat_z.trsot"
+  },
+  {
+    "va": "0x7103097c3c",
+    "text": "world/ik_obj_template/parts/pokemon/effect/moyamoya_z_/moyamoya_z.trsot"
+  },
+  {
+    "va": "0x7103097c84",
+    "text": "world/ik_obj_template/parts/pokemon/effect/ef_poke_bom_pre02_/ef_poke_bom_pre02.trsot"
+  },
+  {
+    "va": "0x7103097cda",
+    "text": "world/ik_obj_template/parts/pokemon/effect/water_ripples_s_/water_ripples_s.trsot"
+  },
+  {
+    "va": "0x7103097d8a",
+    "text": "momiji_pokemon_waza_used_condition"
+  },
+  {
+    "va": "0x71030989f0",
+    "text": "msg_ui_status_pokemon_hp_01"
+  },
+  {
+    "va": "0x710309df9a",
+    "text": "PokemonWazaMoveActionTrainer"
+  },
+  {
+    "va": "0x71030a208b",
+    "text": "ik_FullTimeAnimationComponent"
+  },
+  {
+    "va": "0x71030a2513",
+    "text": "https://battle-%.pokemon-home.com/plza/terms/"
+  },
+  {
+    "va": "0x71030a2643",
+    "text": "world/ik_obj_template/parts/pokemon/effect/exclamation_blue_z_/exclamation_blue_z.trsot"
+  },
+  {
+    "va": "0x71030a26e8",
+    "text": "world/ik_obj_template/parts/pokemon/effect/move_ground_loop_/move_ground_loop.trsot"
+  },
+  {
+    "va": "0x71030a273c",
+    "text": "world/ik_obj_template/parts/pokemon/effect/idlling_water_l_/idlling_water_l.trsot"
+  },
+  {
+    "va": "0x71030a2a3d",
+    "text": "Title/Pokemon/InFrameScale"
+  },
+  {
+    "va": "0x71030a350f",
+    "text": "MAPNAME_POKEMONSENTAH"
+  },
+  {
+    "va": "0x71030a3533",
+    "text": "MAPNAME_POKEMONFYESUTA"
+  },
+  {
+    "va": "0x71030a35d8",
+    "text": "msg_ui_status_pokemon_attack_00"
+  },
+  {
+    "va": "0x71030a8fd7",
+    "text": "PokemonWazaMoveCheckTrainer"
+  },
+  {
+    "va": "0x71030a9c31",
+    "text": "wp_pokemon_release_kurebe1_11583"
+  },
+  {
+    "va": "0x71030aa1ad",
+    "text": "Placement_Npc_Pokemon_GroundWait_1_14509"
+  },
+  {
+    "va": "0x71030ad054",
+    "text": "world/ik_obj_template/parts/pokemon/effect/question_z_/question_z.trsot"
+  },
+  {
+    "va": "0x71030ad09c",
+    "text": "world/ik_obj_template/parts/pokemon/effect/note_/note.trsot"
+  },
+  {
+    "va": "0x71030ad0d8",
+    "text": "world/ik_obj_template/parts/pokemon/effect/idlling_water_m_/idlling_water_m.trsot"
+  },
+  {
+    "va": "0x71030adb8c",
+    "text": "MAPNAME_POKEMONIBENTO24"
+  },
+  {
+    "va": "0x71030b482e",
+    "text": "set_tag_Ev_Npc_Pokemon_move6_16528"
+  },
+  {
+    "va": "0x71030b7219",
+    "text": "npcPokemonGroupInfoList"
+  },
+  {
+    "va": "0x71030b7604",
+    "text": "world/ik_obj_template/parts/pokemon/effect/ef_poke_bom02_/ef_poke_bom02.trsot"
+  },
+  {
+    "va": "0x71030b76d6",
+    "text": "world/ik_obj_template/parts/pokemon/nuts/orange_/orange.trsot"
+  },
+  {
+    "va": "0x71030b7781",
+    "text": "complete_pokemon_encyclopedia_condition"
+  },
+  {
+    "va": "0x71030bd49f",
+    "text": "PokemonWazaMoveTrainer"
+  },
+  {
+    "va": "0x71030be9b8",
+    "text": "set_tag_Ev_Npc_Pokemon_move13_16535"
+  },
+  {
+    "va": "0x71030c16a0",
+    "text": "BOOT_CONDITION_POKEMON_CAPTURED"
+  },
+  {
+    "va": "0x71030c1a1a",
+    "text": "world/ik_obj_template/parts/pokemon/effect/ef_poke_bom01_/ef_poke_bom01.trsot"
+  },
+  {
+    "va": "0x71030c1a68",
+    "text": "world/ik_obj_template/parts/pokemon/effect/poke_sandsmoke_/poke_sandsmoke.trsot"
+  },
+  {
+    "va": "0x71030c1c65",
+    "text": "Title/Pokemon/NotifyGimmickSweep"
+  },
+  {
+    "va": "0x71030c275d",
+    "text": "ik_pokemon/data/pm0000/pm0000_00_00/icon/pm0000_00_00_00_0.bntx"
+  },
+  {
+    "va": "0x71030c953e",
+    "text": "set_tag_Ev_Npc_Pokemon_move2_16524"
+  },
+  {
+    "va": "0x71030c9561",
+    "text": "set_tag_Ev_Npc_Pokemon_move9_16531"
+  },
+  {
+    "va": "0x71030cb2d3",
+    "text": "RareAppear_WildPokemon"
+  },
+  {
+    "va": "0x71030cc4ae",
+    "text": "pokemon_spawner_streaming"
+  },
+  {
+    "va": "0x71030cc648",
+    "text": "https://news-%.pokemon-home.com/plza/list/"
+  },
+  {
+    "va": "0x71030cc6c9",
+    "text": "world/ik_data/pokemon/collision/pokemon_collision_category_data/pokemon_collision_category_data_array"
+  },
+  {
+    "va": "0x71030cc741",
+    "text": "world/ik_obj_template/parts/pokemon/effect/exclamation_red_z_/exclamation_red_z.trsot"
+  },
+  {
+    "va": "0x71030cc797",
+    "text": "world/ik_obj_template/parts/pokemon/effect/discovery_hop_/discovery_hop.trsot"
+  },
+  {
+    "va": "0x71030cc847",
+    "text": "have_pokemon_on_hand_condition"
+  },
+  {
+    "va": "0x71030cca73",
+    "text": "Title/Pokemon/PokeUniqueScale"
+  },
+  {
+    "va": "0x71030cca91",
+    "text": "Title/Pokemon/PokeUniqueScaleReset"
+  },
+  {
+    "va": "0x71030cce25",
+    "text": "WaitSwapPokemon"
+  },
+  {
+    "va": "0x71030cd409",
+    "text": "MAPNAME_POKEMONFYESUTA27"
+  },
+  {
+    "va": "0x71030d7083",
+    "text": "world/ik_obj_template/parts/pokemon/effect/angry_/angry.trsot"
+  },
+  {
+    "va": "0x71030d70c1",
+    "text": "world/ik_obj_template/parts/pokemon/effect/ef_poke_bom_pre01_/ef_poke_bom_pre01.trsot"
+  },
+  {
+    "va": "0x71030d7117",
+    "text": "world/ik_obj_template/parts/pokemon/effect/run_water_s_/run_water_s.trsot"
+  },
+  {
+    "va": "0x71030d7a82",
+    "text": "msg_ui_status_pokemon_name_00"
+  },
+  {
+    "va": "0x71030d7b44",
+    "text": "msg_ui_status_pokemon_spattack_00"
+  },
+  {
+    "va": "0x71030dc28d",
+    "text": "ik_ActorComponent"
+  },
+  {
+    "va": "0x71030e04e9",
+    "text": "PopBackWildPokemonAction"
+  },
+  {
+    "va": "0x71030e0ce8",
+    "text": "pokemon_get"
+  },
+  {
+    "va": "0x71030e0d9e",
+    "text": "BOOT_CONDITION_POKEMON_DOWN"
+  },
+  {
+    "va": "0x71030e0feb",
+    "text": "ik_pokemon/catalog/catalog/poke_resource_table.trpmcatalog"
+  },
+  {
+    "va": "0x71030e125b",
+    "text": "world/ik_data/pokemon/ai/pokemon_action_loop_data/pokemon_action_loop_data_array"
+  },
+  {
+    "va": "0x71030e12b7",
+    "text": "world/ik_obj_template/parts/pokemon/effect/sweat_/sweat.trsot"
+  },
+  {
+    "va": "0x71030e12f5",
+    "text": "world/ik_obj_template/parts/pokemon/effect/burn_/burn.trsot"
+  },
+  {
+    "va": "0x71030e166c",
+    "text": "msg_ui_strinput_pokemon_name_04"
+  },
+  {
+    "va": "0x71030e3e71",
+    "text": "trinity_AnimationComponent"
+  },
+  {
+    "va": "0x71030e7216",
+    "text": "PokemonWazaMoveNone"
+  },
+  {
+    "va": "0x71030ea3d2",
+    "text": "Pokemon"
+  },
+  {
+    "va": "0x71030ea4ef",
+    "text": "LastHitPokemon"
+  },
+  {
+    "va": "0x71030eadf3",
+    "text": "param_chr/data/character/pokemon/poke_movement_param/poke_movement_param_array"
+  },
+  {
+    "va": "0x71030ebacf",
+    "text": "world/ik_data/pokemon/ai/pokemon_ai_nature_table/pokemon_ai_nature_table_array"
+  },
+  {
+    "va": "0x71030ebb24",
+    "text": "world/ik_obj_template/parts/pokemon/effect/run_water_ll_/run_water_ll.trsot"
+  },
+  {
+    "va": "0x71030ebbf2",
+    "text": "have_pokemon_whole_condition"
+  },
+  {
+    "va": "0x71030ebc0f",
+    "text": "unfolding_pokemon_condition"
+  },
+  {
+    "va": "0x71030ebd7f",
+    "text": "Title/Pokemon/ChangeForm"
+  },
+  {
+    "va": "0x71030ebd98",
+    "text": "Title/Pokemon/SetToBallHitPos"
+  },
+  {
+    "va": "0x71030ec124",
+    "text": "ui/tex/icon_pokemon_last/icon_ob0005_00/icon_ob0005_00.bntx"
+  },
+  {
+    "va": "0x71030ec160",
+    "text": "ui/tex/icon_pokemon_last/icon_ob0009_01/icon_ob0009_01.bntx"
+  },
+  {
+    "va": "0x71030ec728",
+    "text": "msg_ui_status_pokemon_hp_00"
+  },
+  {
+    "va": "0x71030f1e47",
+    "text": "PokemonMoveAndPlay"
+  },
+  {
+    "va": "0x71030f233f",
+    "text": "pokemon_common_3ac_return_invincible_7611"
+  },
+  {
+    "va": "0x71030f2a95",
+    "text": "wp_pokemon_pop_11582"
+  },
+  {
+    "va": "0x71030f3045",
+    "text": "Placement_Npc_Pokemon_GroundWait_1_14510"
+  },
+  {
+    "va": "0x71030f5e9c",
+    "text": "get_alpha_pokemon"
+  },
+  {
+    "va": "0x71030f5fd5",
+    "text": "BOOT_CONDITION_POKEMON_CAPTURED_IMMEDIATE"
+  },
+  {
+    "va": "0x71030f6121",
+    "text": "npcPokemonGroupId"
+  },
+  {
+    "va": "0x71030f6133",
+    "text": "PokemonDropItem"
+  },
+  {
+    "va": "0x71030f633c",
+    "text": "world/ik_data/pokemon/collision/pokemon_collision_radius_data/pokemon_collision_radius_data_array"
+  },
+  {
+    "va": "0x71030f639e",
+    "text": "world/ik_obj_template/parts/pokemon/effect/water_ripples_ll_/water_ripples_ll.trsot"
+  },
+  {
+    "va": "0x71030f6490",
+    "text": "have_pokemon_total_condition"
+  },
+  {
+    "va": "0x71030f64ad",
+    "text": "have_pokemon_encyclopedia_total_condition"
+  },
+  {
+    "va": "0x71030f675c",
+    "text": "msg_ui_strinput_pokemon_name_03"
+  },
+  {
+    "va": "0x71030f6e85",
+    "text": "MAPNAME_POKEMONFYESUTA25"
+  },
+  {
+    "va": "0x71030f8eda",
+    "text": "trinity_CameraAnimationComponent"
+  },
+  {
+    "va": "0x71030fd135",
+    "text": "SimpleTalkPokemon_14535"
+  },
+  {
+    "va": "0x71031002eb",
+    "text": "ik_PokemonModelComponent"
+  },
+  {
+    "va": "0x71031004be",
+    "text": "world/ik_data/pokemon/ai/pokemon_between_action_table/pokemon_between_action_table_array"
+  },
+  {
+    "va": "0x710310059c",
+    "text": "have_pokemon_hand_total_condition"
+  },
+  {
+    "va": "0x7103100c44",
+    "text": "WaitReturnPokemon"
+  },
+  {
+    "va": "0x71031058bb",
+    "text": "WildPokemon"
+  },
+  {
+    "va": "0x710310700c",
+    "text": "fokko_8a_base_ride_pokemon_9806"
+  },
+  {
+    "va": "0x7103107aef",
+    "text": "set_tag_Ev_Npc_Pokemon_move5_16527"
+  },
+  {
+    "va": "0x7103107b12",
+    "text": "set_tag_Ev_Npc_Pokemon_move15_16537"
+  },
+  {
+    "va": "0x71031086e7",
+    "text": "PartnerPokemonPutout"
+  },
+  {
+    "va": "0x7103109c7f",
+    "text": "wild_pokemon_base_behavior/wild_pokemon_base_behavior"
+  },
+  {
+    "va": "0x7103109fb7",
+    "text": "ik_pokemon/loc_search_move/loc_poke_seachmove/loc_poke_seachmove_middle.tranm"
+  },
+  {
+    "va": "0x710310a922",
+    "text": "PokemonData"
+  },
+  {
+    "va": "0x710310aeb4",
+    "text": "world/ik_obj_template/parts/pokemon/effect/run_water_l_/run_water_l.trsot"
+  },
+  {
+    "va": "0x710310aefe",
+    "text": "world/exl/pokemon/megaevo_data/megaevo_data"
+  },
+  {
+    "va": "0x710310af7f",
+    "text": "have_pokemon_encyclopedia_discovery_condition"
+  },
+  {
+    "va": "0x710310b0fe",
+    "text": "Title/Pokemon/PauseCaptureChanceAtFirst"
+  },
+  {
+    "va": "0x710310b126",
+    "text": "Title/Pokemon/SkipCaptureWhenEventBegin"
+  },
+  {
+    "va": "0x710310bb08",
+    "text": "MAPNAME_POKEMONBANGUMI"
+  },
+  {
+    "va": "0x710310bd09",
+    "text": "https://api-%.fushigi.switch1.pokemon-gl.com/serial.auth"
+  },
+  {
+    "va": "0x71031109f0",
+    "text": "PokemonWazaMoveCheckTrainerRange"
+  },
+  {
+    "va": "0x71031139ed",
+    "text": "RareAppear_PartnerPokemon"
+  },
+  {
+    "va": "0x7103113a07",
+    "text": "RareAppearing_WildPokemon"
+  },
+  {
+    "va": "0x71031141a6",
+    "text": "ob0604_00_ModelComponentT"
+  },
+  {
+    "va": "0x7103114d82",
+    "text": "world/ik_obj_template/parts/pokemon/effect/exclamation_blue_/exclamation_blue.trsot"
+  },
+  {
+    "va": "0x710311502f",
+    "text": "Title/Pokemon/NotifyFailedCaptureCharacterMove"
+  },
+  {
+    "va": "0x710311505e",
+    "text": "Title/Pokemon/HitAndAway"
+  },
+  {
+    "va": "0x7103115077",
+    "text": "PokemonModelComponentLayerNode"
+  },
+  {
+    "va": "0x710311bd19",
+    "text": "ContactNpcPokemonEvent_14532"
+  },
+  {
+    "va": "0x710311c159",
+    "text": "set_tag_Ev_Npc_Pokemon_move12_16534"
+  },
+  {
+    "va": "0x710311dff2",
+    "text": "partner_pokemon_base_behavior/partner_pokemon_base_behavior"
+  },
+  {
+    "va": "0x710311e2a8",
+    "text": "ik_pokemon/loc_search_move/loc_poke_seachmove/loc_poke_seachmove_fast.tranm"
+  },
+  {
+    "va": "0x710311f0be",
+    "text": "world/ik_data/pokemon/ai/pokemon_action_preset_data/pokemon_action_preset_data_array"
+  },
+  {
+    "va": "0x710311f1c1",
+    "text": "pokemon_encyclopedia_registration_condition"
+  },
+  {
+    "va": "0x710311fd99",
+    "text": "msg_ui_status_pokemon_spdefense_00"
+  },
+  {
+    "va": "0x7103121fb5",
+    "text": "PokemonEngine"
+  },
+  {
+    "va": "0x71031294dc",
+    "text": "BOOT_CONDITION_DESTROY_POKEMON_GET_ITEM_IMMEDIATELY"
+  },
+  {
+    "va": "0x7103129558",
+    "text": "BOOT_CONDITION_DEPLETION_WILD_POKEMON_IMMEDIATE"
+  },
+  {
+    "va": "0x7103129603",
+    "text": "FieldPokemonRecvHit"
+  },
+  {
+    "va": "0x7103129626",
+    "text": "pokemonIdList"
+  },
+  {
+    "va": "0x71031297e7",
+    "text": "ik_PokemonModelComponentForSimpleParam"
+  },
+  {
+    "va": "0x710312994e",
+    "text": "world/ik_data/pokemon/ai/pokemon_interest_common_param/common"
+  },
+  {
+    "va": "0x710312999d",
+    "text": "world/ik_obj_template/parts/pokemon/effect/pop_water_/pop_water.trsot"
+  },
+  {
+    "va": "0x7103129cfc",
+    "text": "PokemonList"
+  },
+  {
+    "va": "0x710312a81a",
+    "text": "https://api-%.fushigi.switch1.pokemon-gl.com/serial.update"
+  },
+  {
+    "va": "0x710312a86a",
+    "text": "ik_pokemon/data/"
+  },
+  {
+    "va": "0x710312d61e",
+    "text": "SpineAnimationComponent"
+  },
+  {
+    "va": "0x7103134698",
+    "text": "world/ik_obj_template/parts/pokemon/effect/moyamoya_/moyamoya.trsot"
+  },
+  {
+    "va": "0x71031346dc",
+    "text": "world/ik_obj_template/parts/pokemon/effect/dive_water_/dive_water.trsot"
+  },
+  {
+    "va": "0x7103134811",
+    "text": "have_pokemon_with_item_party_condition"
+  },
+  {
+    "va": "0x71031348cd",
+    "text": "Title/Pokemon/NotifyFailedCapture"
+  },
+  {
+    "va": "0x7103134fc6",
+    "text": "world/exl/pokemon_icon_offset/pokemon_icon_offset/pokemon_icon_offset"
+  },
+  {
+    "va": "0x71031351d5",
+    "text": "msg_ui_status_pokemon_name_03"
+  },
+  {
+    "va": "0x710313b4b7",
+    "text": "wp_pokemon_ride_11580"
+  },
+  {
+    "va": "0x710313baf0",
+    "text": "SimpleTalkPokemonSadTurn_14540"
+  },
+  {
+    "va": "0x710313e09f",
+    "text": "param_chr/catalog/bin/sources/flatbuffers/character/pokemon/wild_single.data.bin"
+  },
+  {
+    "va": "0x710313e833",
+    "text": "param_chr/data/character/pokemon/wild_single/"
+  },
+  {
+    "va": "0x710313e98b",
+    "text": "BOOT_CONDITION_ESCAPE_POKEMON"
+  },
+  {
+    "va": "0x710313ed26",
+    "text": "world/ik_obj_template/parts/pokemon/effect/angry_z_/angry_z.trsot"
+  },
+  {
+    "va": "0x710313ed68",
+    "text": "world/ik_obj_template/parts/pokemon/effect/paralysis_/paralysis.trsot"
+  },
+  {
+    "va": "0x710313edae",
+    "text": "world/ik_obj_template/parts/pokemon/effect/idlling_water_ll_/idlling_water_ll.trsot"
+  },
+  {
+    "va": "0x710313ee02",
+    "text": "world/ik_obj_template/parts/pokemon/effect/sand_swim_/sand_swim.trsot"
+  },
+  {
+    "va": "0x710313fac4",
+    "text": "msg_ui_status_pokemon_01_01"
+  },
+  {
+    "va": "0x71031451e0",
+    "text": "PokemonWazaMoveActionTarget"
+  },
+  {
+    "va": "0x710314878b",
+    "text": "ConditionPokemon"
+  },
+  {
+    "va": "0x7103148ae4",
+    "text": "PartnerPokemon"
+  },
+  {
+    "va": "0x7103149759",
+    "text": "world/ik_data/pokemon/ai/pokemon_species_cant_action/pokemon_species_cant_action_array"
+  },
+  {
+    "va": "0x71031497b8",
+    "text": "world/ik_obj_template/parts/pokemon/effect/exclamation_red_/exclamation_red.trsot"
+  },
+  {
+    "va": "0x710314980a",
+    "text": "world/ik_obj_template/parts/pokemon/effect/note_z_/note_z.trsot"
+  },
+  {
+    "va": "0x710314a0b6",
+    "text": "PokemonModelView"
+  },
+  {
+    "va": "0x71031538ab",
+    "text": "world/ik_data/pokemon/ai/pokemon_nature_categorize/pokemon_nature_categorize_array"
+  },
+  {
+    "va": "0x7103153a3b",
+    "text": "Title/Pokemon/GetManagedObject"
+  },
+  {
+    "va": "0x71031542a5",
+    "text": "msg_ui_status_pokemon_equip_02"
+  },
+  {
+    "va": "0x7103158dac",
+    "text": "PokemonEffect"
+  },
+  {
+    "va": "0x7103158dcc",
+    "text": "PokemonEffectClearCoat"
+  }
+]

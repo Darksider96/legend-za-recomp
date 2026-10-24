@@ -1,0 +1,47 @@
+[
+  {
+    "site": "0x7100511c4c",
+    "first_mov": "0x7100511c38",
+    "value": "0x1893bf2ac7c07795",
+    "name": "ti_FieldPokemonComponent",
+    "function": "0x7100511c2c",
+    "size": "0x68",
+    "fde_valid": true
+  },
+  {
+    "site": "0x7100512660",
+    "first_mov": "0x710051264c",
+    "value": "0xb1fe48ffe890a6a",
+    "name": "ik_ActorComponent",
+    "function": "0x7100512640",
+    "size": "0x6c",
+    "fde_valid": true
+  },
+  {
+    "site": "0x710052770c",
+    "first_mov": "0x71005276f8",
+    "value": "0xa3191011980a41cf",
+    "name": "ik_PokemonModelComponent",
+    "function": "0x71005276e4",
+    "size": "0xb0",
+    "fde_valid": true
+  },
+  {
+    "site": "0x7100fa581c",
+    "first_mov": "0x7100fa5810",
+    "value": "0xe7d2d8591b038f6d",
+    "name": "trinity_ModelComponent",
+    "function": "0x7100fa4b30",
+    "size": "0x2c84",
+    "fde_valid": true
+  },
+  {
+    "site": "0x7100fa5d78",
+    "first_mov": "0x7100fa5d6c",
+    "value": "0x9ebc6b30366a841c",
+    "name": "trinity_AnimationComponent",
+    "function": "0x7100fa4b30",
+    "size": "0x2c84",
+    "fde_valid": true
+  }
+]

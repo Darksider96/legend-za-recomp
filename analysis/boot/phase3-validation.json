@@ -1,0 +1,489 @@
+{
+  "method": "Static NSO snapshot and AArch64 instruction/pointer validation; no game execution",
+  "passed": 67,
+  "total": 67,
+  "results": [
+    {
+      "label": "main identity",
+      "ok": true,
+      "sha256": "056eef7956b09414bfa0489b8de3ed0674393513f09a78d5312354cbd9557720"
+    },
+    {
+      "label": "text segment identity",
+      "ok": true
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71019e8bc4",
+      "target": "0x71019e31b0",
+      "expected": "0x71019e31b0",
+      "instruction": "0x97ffe97b"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71019e8bbc",
+      "target": "0x7100b10bd0",
+      "expected": "0x7100b10bd0",
+      "instruction": "0x97c4a005"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x7102890fd8",
+      "target": "0x71019e32ec",
+      "expected": "0x71019e32ec",
+      "instruction": "0x97c548c5"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71019e3440",
+      "target": "0x71019e3730",
+      "expected": "0x71019e3730",
+      "instruction": "0x940000bc"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71009e08b8",
+      "target": "0x71009e0f20",
+      "expected": "0x71009e0f20",
+      "instruction": "0x1400019a"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71009e0f88",
+      "target": "0x71019e4530",
+      "expected": "0x71019e4530",
+      "instruction": "0x94400d6a"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71009e1120",
+      "target": "0x7100d26b90",
+      "expected": "0x7100d26b90",
+      "instruction": "0x940d169c"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71019e67c0",
+      "target": "0x7102fc5830",
+      "expected": "0x7102fc5830",
+      "instruction": "0x94577c1c"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71019e67d4",
+      "target": "0x7102fc5840",
+      "expected": "0x7102fc5840",
+      "instruction": "0x94577c1b"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71019e67e0",
+      "target": "0x7102fc5850",
+      "expected": "0x7102fc5850",
+      "instruction": "0x94577c1c"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71019e67f4",
+      "target": "0x7102fc5860",
+      "expected": "0x7102fc5860",
+      "instruction": "0x14577c1b"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71016b5538",
+      "target": "0x71016b58d0",
+      "expected": "0x71016b58d0",
+      "instruction": "0x940000e6"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71016b5930",
+      "target": "0x710175e880",
+      "expected": "0x710175e880",
+      "instruction": "0x9402a3d4"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x710175ea7c",
+      "target": "0x7101779978",
+      "expected": "0x7101779978",
+      "instruction": "0x94006bbf"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x7100d29078",
+      "target": "0x71016b5fa0",
+      "expected": "0x71016b5fa0",
+      "instruction": "0x942633ca"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71016b5fa4",
+      "target": "0x71016cdc30",
+      "expected": "0x71016cdc30",
+      "instruction": "0x14005f23"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71016cdd10",
+      "target": "0x71016cf324",
+      "expected": "0x71016cf324",
+      "instruction": "0x94000585"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71016cdd54",
+      "target": "0x71016cf324",
+      "expected": "0x71016cf324",
+      "instruction": "0x94000574"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71016cf440",
+      "target": "0x71016ce3c0",
+      "expected": "0x71016ce3c0",
+      "instruction": "0x17fffbe0"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71016cf178",
+      "target": "0x710177486c",
+      "expected": "0x710177486c",
+      "instruction": "0x940295bd"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71016cf180",
+      "target": "0x71016b6010",
+      "expected": "0x71016b6010",
+      "instruction": "0x97ff9ba4"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71016b6048",
+      "target": "0x710175efd0",
+      "expected": "0x710175efd0",
+      "instruction": "0x9402a3e2"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71016b605c",
+      "target": "0x710175e858",
+      "expected": "0x710175e858",
+      "instruction": "0x9402a1ff"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x710175e874",
+      "target": "0x7101779a74",
+      "expected": "0x7101779a74",
+      "instruction": "0x14006c80"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71016b606c",
+      "target": "0x710175ead4",
+      "expected": "0x710175ead4",
+      "instruction": "0x9402a29a"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71019e37c4",
+      "target": "0x71016b5a04",
+      "expected": "0x71016b5a04",
+      "instruction": "0x97f34890"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x71019e348c",
+      "target": "0x7101baf180",
+      "expected": "0x7101baf180",
+      "instruction": "0x94072f3d"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x7101baf300",
+      "target": "0x7101bb11f0",
+      "expected": "0x7101bb11f0",
+      "instruction": "0x940007bc"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x7101bb12cc",
+      "target": "0x7101bad400",
+      "expected": "0x7101bad400",
+      "instruction": "0x97fff04d"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x7100d275b4",
+      "target": "0x7100d28c80",
+      "expected": "0x7100d28c80",
+      "instruction": "0x940005b3"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x7100d28ca0",
+      "target": "0x7100d28d50",
+      "expected": "0x7100d28d50",
+      "instruction": "0x9400002c"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x7100d28dac",
+      "target": "0x7100d28e60",
+      "expected": "0x7100d28e60",
+      "instruction": "0x9400002d"
+    },
+    {
+      "label": "direct branch",
+      "ok": true,
+      "site": "0x7100d28dd0",
+      "target": "0x710055d900",
+      "expected": "0x710055d900",
+      "instruction": "0x97e0d2cc"
+    },
+    {
+      "label": "indirect branch",
+      "ok": true,
+      "site": "0x7100d26bc8",
+      "instruction": "0xd63f0100",
+      "link": true
+    },
+    {
+      "label": "indirect branch",
+      "ok": true,
+      "site": "0x71019e32c0",
+      "instruction": "0xd63f0100",
+      "link": true
+    },
+    {
+      "label": "indirect branch",
+      "ok": true,
+      "site": "0x71017799b4",
+      "instruction": "0xd63f0100",
+      "link": true
+    },
+    {
+      "label": "indirect branch",
+      "ok": true,
+      "site": "0x71017799cc",
+      "instruction": "0xd63f0100",
+      "link": true
+    },
+    {
+      "label": "indirect branch",
+      "ok": true,
+      "site": "0x71017799e4",
+      "instruction": "0xd63f0100",
+      "link": true
+    },
+    {
+      "label": "indirect branch",
+      "ok": true,
+      "site": "0x7101779a00",
+      "instruction": "0xd63f0100",
+      "link": true
+    },
+    {
+      "label": "indirect branch",
+      "ok": true,
+      "site": "0x7101779a18",
+      "instruction": "0xd63f0100",
+      "link": true
+    },
+    {
+      "label": "indirect branch",
+      "ok": true,
+      "site": "0x710175f154",
+      "instruction": "0xd63f0100",
+      "link": true
+    },
+    {
+      "label": "indirect branch",
+      "ok": true,
+      "site": "0x7101779a80",
+      "instruction": "0xd61f0040",
+      "link": false
+    },
+    {
+      "label": "indirect branch",
+      "ok": true,
+      "site": "0x7101bad54c",
+      "instruction": "0xd63f0100",
+      "link": true
+    },
+    {
+      "label": "pointer",
+      "ok": true,
+      "address": "0x7103b93158",
+      "value": "0x7102890fb0",
+      "expected": "0x7102890fb0"
+    },
+    {
+      "label": "pointer",
+      "ok": true,
+      "address": "0x7103b93180",
+      "value": "0x71009e0898",
+      "expected": "0x71009e0898"
+    },
+    {
+      "label": "pointer",
+      "ok": true,
+      "address": "0x7103a39568",
+      "value": "0x71019e67a4",
+      "expected": "0x71019e67a4"
+    },
+    {
+      "label": "pointer",
+      "ok": true,
+      "address": "0x7103a39578",
+      "value": "0x71019e6a24",
+      "expected": "0x71019e6a24"
+    },
+    {
+      "label": "pointer",
+      "ok": true,
+      "address": "0x7103cdccd0",
+      "value": "0x7103d9af10",
+      "expected": "0x7103d9af10"
+    },
+    {
+      "label": "pointer",
+      "ok": true,
+      "address": "0x7103cd2398",
+      "value": "0x71039e5d30",
+      "expected": "0x71039e5d30"
+    },
+    {
+      "label": "pointer",
+      "ok": true,
+      "address": "0x71039e5de0",
+      "value": "0x7100d29014",
+      "expected": "0x7100d29014"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71009e1100",
+      "instruction": "0981c039"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71009e1104",
+      "instruction": "e98300b9"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71016b59e4",
+      "instruction": "885a40b9"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71016b59ec",
+      "instruction": "684201b9"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71019e9c64",
+      "instruction": "29008052"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71019e9c70",
+      "instruction": "09400079"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71019e9eec",
+      "instruction": "68820039"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71019e9f24",
+      "instruction": "28008052"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71019e9f28",
+      "instruction": "68820039"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71019e37a8",
+      "instruction": "3481c039"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71016b5a04",
+      "instruction": "014001b9"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71016b604c",
+      "instruction": "684241b9"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71016b6054",
+      "instruction": "02050011"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71016cf408",
+      "instruction": "a8010010"
+    },
+    {
+      "label": "data-flow instruction (see Ghidra disassembly)",
+      "ok": true,
+      "site": "0x71016cf418",
+      "instruction": "68aa02a9"
+    }
+  ]
+}

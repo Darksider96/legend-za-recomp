@@ -1,0 +1,82 @@
+{
+  "descricao": "Eventos Wwise de SFX de combate do Pokemon Legends Z-A. Ids = FNV-1 32 bits do nome em minusculas (za::audio::WwiseHash). Nao existe SE.bnk no RomFS (romfs/audio/wwise/bin/Switch). Os 4 nomes pedidos nao estao no HIRC de nenhum dos 16 bancos nem nas strings do executavel/tabelas de audio; os eventos reais abaixo foram nomeados por forca bruta de vocabulario sobre os ids do HIRC.",
+  "solicitados": [
+    {
+      "nome": "PLAY_SE_BT_HIT_NORMAL",
+      "significado": "acerto normal",
+      "wwise_id": 644100257,
+      "encontrado": false
+    },
+    {
+      "nome": "PLAY_SE_BT_HIT_SUPER",
+      "significado": "super efetivo",
+      "wwise_id": 609149001,
+      "encontrado": false
+    },
+    {
+      "nome": "PLAY_SE_BT_HIT_NOTVERY",
+      "significado": "pouco efetivo",
+      "wwise_id": 4022121151,
+      "encontrado": false
+    },
+    {
+      "nome": "PLAY_SE_BT_CRITICAL",
+      "significado": "golpe critico",
+      "wwise_id": 3546451193,
+      "encontrado": false
+    }
+  ],
+  "encontrados": [
+    {
+      "nome": "PLAY_BA_SYS_HIT_L",
+      "wwise_id": 3311143776,
+      "banco": "BATTLE_SYSTEM.bnk",
+      "observacao": "acerto de sistema, intensidade L (grande); candidato a impacto forte — semantica de efetividade NAO confirmada",
+      "sound_id": 503916957,
+      "midia": {
+        "media_id": 656051336,
+        "origem": "Stream.pck",
+        "codec": "Vorbis",
+        "canais": 1,
+        "taxa_hz": 32000,
+        "bytes": 4889
+      }
+    },
+    {
+      "nome": "PLAY_BA_SYS_HIT_M",
+      "wwise_id": 3311143777,
+      "banco": "BATTLE_SYSTEM.bnk",
+      "observacao": "acerto de sistema, intensidade M (media); candidato a impacto normal — semantica de efetividade NAO confirmada",
+      "sound_id": 883093394,
+      "midia": {
+        "media_id": 362307504,
+        "origem": "Stream.pck",
+        "codec": "Vorbis",
+        "canais": 1,
+        "taxa_hz": 44100,
+        "bytes": 8511
+      }
+    },
+    {
+      "nome": "PLAY_BA_SYS_POKE_DOWN",
+      "wwise_id": 1729420796,
+      "banco": "BATTLE_SYSTEM.bnk",
+      "observacao": "Pokemon derrubado/desmaiado em batalha",
+      "sound_id": 1026029483,
+      "midia": {
+        "media_id": 723387808,
+        "origem": "Stream.pck",
+        "codec": "Vorbis",
+        "canais": 1,
+        "taxa_hz": 44100,
+        "bytes": 26375
+      }
+    },
+    {
+      "nome": "PLAY_KYUSHO_KOUKA_DAMAGE",
+      "wwise_id": 1251434145,
+      "banco": "DEMO.bnk",
+      "observacao": "dano de golpe critico (kyusho) em cena de DEMO; evento sem cadeia Play resolvida"
+    }
+  ]
+}

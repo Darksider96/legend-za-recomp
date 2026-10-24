@@ -1,0 +1,395 @@
+{
+  "trpfd": {
+    "path": "C:\\Users\\johna\\OneDrive\\Documentos\\legend za\\romfs\\arc\\data.trpfd",
+    "size": 7383624,
+    "sha256": "139d5ac4b7699ad91a082d48d22bb883c7107ca47c92ab7c8e2ab29bace0a60a",
+    "root": "0x14",
+    "root_layout": {
+      "address": "0x14",
+      "vtable": "0x8",
+      "object_size": 20,
+      "offsets": [
+        4,
+        8,
+        12,
+        16
+      ],
+      "raw": "0c00000044ec5a00c4525000083a040004000000"
+    },
+    "vectors": [
+      {
+        "field": 0,
+        "offset": "0x5aec5c",
+        "count": 178109
+      },
+      {
+        "field": 1,
+        "offset": "0x5052e0",
+        "count": 9892
+      },
+      {
+        "field": 2,
+        "offset": "0x43a28",
+        "count": 178109
+      },
+      {
+        "field": 3,
+        "offset": "0x28",
+        "count": 9892
+      }
+    ],
+    "hashes_sorted_unsigned": true,
+    "file_tables": {
+      "layouts": [
+        {
+          "object_size": 16,
+          "offsets": [
+            8,
+            4
+          ],
+          "count": 2
+        },
+        {
+          "object_size": 20,
+          "offsets": [
+            8,
+            4
+          ],
+          "count": 178106
+        },
+        {
+          "object_size": 8,
+          "offsets": [
+            0,
+            4
+          ],
+          "count": 1
+        }
+      ],
+      "samples": [
+        {
+          "address": "0x5052c8",
+          "vtable": "0x5052c0",
+          "object_size": 16,
+          "offsets": [
+            8,
+            4
+          ],
+          "raw": "0800000010000000201e000000000000"
+        },
+        {
+          "address": "0x5052a8",
+          "vtable": "0x5052a0",
+          "object_size": 20,
+          "offsets": [
+            8,
+            4
+          ],
+          "raw": "0800000010000000110f00000000000000000000"
+        },
+        {
+          "address": "0x505288",
+          "vtable": "0x5052a0",
+          "object_size": 20,
+          "offsets": [
+            8,
+            4
+          ],
+          "raw": "e8ffffff100000008a1f00000000000000000000"
+        },
+        {
+          "address": "0xf1920",
+          "vtable": "0x5052a0",
+          "object_size": 20,
+          "offsets": [
+            8,
+            4
+          ],
+          "raw": "80c6beff10000000841d00000000000000000000"
+        }
+      ]
+    },
+    "pack_tables": {
+      "layouts": [
+        {
+          "object_size": 20,
+          "offsets": [
+            4,
+            12
+          ],
+          "count": 1
+        },
+        {
+          "object_size": 24,
+          "offsets": [
+            4,
+            12
+          ],
+          "count": 9891
+        }
+      ],
+      "samples": [
+        {
+          "address": "0x43a14",
+          "vtable": "0x43a0c",
+          "object_size": 20,
+          "offsets": [
+            4,
+            12
+          ],
+          "raw": "08000000b0080000000000000100000000000000"
+        },
+        {
+          "address": "0x439f4",
+          "vtable": "0x439ec",
+          "object_size": 24,
+          "offsets": [
+            4,
+            12
+          ],
+          "raw": "08000000f807000000000000010000000000000000000000"
+        },
+        {
+          "address": "0x439d4",
+          "vtable": "0x439ec",
+          "object_size": 24,
+          "offsets": [
+            4,
+            12
+          ],
+          "raw": "e8ffffffb008000000000000010000000000000000000000"
+        },
+        {
+          "address": "0x9abc",
+          "vtable": "0x439ec",
+          "object_size": 24,
+          "offsets": [
+            4,
+            12
+          ],
+          "raw": "d060fcffe02a020000000000980000000000000000000000"
+        }
+      ]
+    },
+    "names_samples": [
+      {
+        "index": 0,
+        "name": "arc/ai_influenceba_battle_area_0003_01_00_00.imap.trpak",
+        "fnv1a64": "0x7b906e2233f42e3b"
+      },
+      {
+        "index": 1,
+        "name": "arc/ai_influenceba_battle_area_0009_01_00_00.imap.trpak",
+        "fnv1a64": "0xb398643e12dce9c9"
+      },
+      {
+        "index": 2,
+        "name": "arc/ai_influenceba_battle_area_0015_01_00_00.imap.trpak",
+        "fnv1a64": "0xed31ee2f30dfff98"
+      },
+      {
+        "index": 9891,
+        "name": "arc/worldik_scenesystemoutgame_outgame_0.trscn.trpak",
+        "fnv1a64": "0xda3027a771377e2e"
+      }
+    ]
+  },
+  "trpfs": {
+    "path": "C:\\Users\\johna\\OneDrive\\Documentos\\legend za\\romfs\\arc\\data.trpfs",
+    "size": 3322680544,
+    "header_hex": "4f4e455041434b0070aa09c600000000",
+    "footer_offset": "0xc609aa70",
+    "footer_size": 158320,
+    "footer_sha256": "e5127cdb18fe027e74a0311b728146f7373b86d389c144c09d753b54358af0bf",
+    "root_layout": {
+      "address": "0x10",
+      "vtable": "0x8",
+      "object_size": 12,
+      "offsets": [
+        4,
+        8
+      ],
+      "raw": "080000003035010004000000"
+    },
+    "vectors": [
+      {
+        "field": 0,
+        "offset_in_footer": "0x13544",
+        "count": 9892
+      },
+      {
+        "field": 1,
+        "offset_in_footer": "0x1c",
+        "count": 9892
+      }
+    ],
+    "offsets_strictly_increasing": true,
+    "hashes_sorted_unsigned": true,
+    "member_prefixes": [
+      {
+        "index": 0,
+        "offset": "0x10",
+        "length": 174304,
+        "prefix_hex": "100000000000000008000c000400080008000000c0a8020004000000010000001400000000000e0018000000060007000c0008000e0000000000030710000000b0720a00000000000000000082a802008c0a01a12180a1fd5646584220202020"
+      },
+      {
+        "index": 1,
+        "offset": "0x2a8f0",
+        "length": 1120,
+        "prefix_hex": "100000000000000008000c0004000800080000003804000004000000010000001400000000000e0018000000060007000c0008000e0000000000030710000000980700000000000000000000fc0300008c0a0003f68803f41c00000000000000"
+      },
+      {
+        "index": 2,
+        "offset": "0x2ad50",
+        "length": 20176,
+        "prefix_hex": "0c00000008000c000400080008000000a44e000004000000020000002828000004000000eed7ffff000003071000000068b000000000000000000000f52700008c0a0027ef8827ed424e545800000000001bda01010400fffe0c40ba01000000"
+      },
+      {
+        "index": 9891,
+        "offset": "0xc609a5f0",
+        "length": 1152,
+        "prefix_hex": "0c00000008000c000400080008000000540400000400000002000000d80200001400000000000e0018000000060007000c0008000e0000000000030710000000dc0200000000000000000000940200008c0a00028e88028c01001700cc020000"
+      }
+    ]
+  },
+  "name_fnv_correlations": {
+    "seed": "0xcbf29ce484222645",
+    "prime": "0x100000001b3",
+    "names": 9892,
+    "matches": 9892,
+    "same_index_matches": 0,
+    "samples": [
+      [
+        0,
+        4800
+      ],
+      [
+        1,
+        6995
+      ],
+      [
+        2,
+        9192
+      ],
+      [
+        3,
+        8381
+      ],
+      [
+        4,
+        2812
+      ],
+      [
+        5,
+        5709
+      ],
+      [
+        6,
+        3364
+      ],
+      [
+        7,
+        782
+      ],
+      [
+        8,
+        5948
+      ],
+      [
+        9,
+        1477
+      ]
+    ]
+  },
+  "trpfd_semantic_checks": {
+    "file_pack_index_range": [
+      0,
+      9891
+    ],
+    "file_entry_field1_targets": {
+      "layouts": [
+        {
+          "object_size": 4,
+          "offsets": [],
+          "count": 178109
+        }
+      ],
+      "samples": [
+        {
+          "address": "0x5052dc",
+          "vtable": "0x5052d8",
+          "object_size": 4,
+          "offsets": [],
+          "raw": "04000000"
+        },
+        {
+          "address": "0x5052bc",
+          "vtable": "0x5052d8",
+          "object_size": 4,
+          "offsets": [],
+          "raw": "e4ffffff"
+        },
+        {
+          "address": "0x50529c",
+          "vtable": "0x5052d8",
+          "object_size": 4,
+          "offsets": [],
+          "raw": "c4ffffff"
+        },
+        {
+          "address": "0xf1934",
+          "vtable": "0x5052d8",
+          "object_size": 4,
+          "offsets": [],
+          "raw": "5cc6beff"
+        }
+      ]
+    },
+    "pack_file_count_sum": 178109,
+    "pack_file_counts_match_index_references": 9892,
+    "pack_length_range": [
+      96,
+      25278776
+    ],
+    "trpfs_span_minus_trpfd_length_histogram": {
+      "0": 4754,
+      "8": 5138
+    }
+  },
+  "inner_trpak_hash_checks": {
+    "members_checked": 9892,
+    "hashes_checked": 178109,
+    "matching_trpfd_members": 9892,
+    "matching_trpfd_counts": 9892,
+    "samples": [
+      {
+        "name_index": 0,
+        "footer_index": 4800,
+        "hashes": 1,
+        "matches_trpfd": true,
+        "count_matches_metadata": true
+      },
+      {
+        "name_index": 1,
+        "footer_index": 6995,
+        "hashes": 1,
+        "matches_trpfd": true,
+        "count_matches_metadata": true
+      },
+      {
+        "name_index": 2,
+        "footer_index": 9192,
+        "hashes": 1,
+        "matches_trpfd": true,
+        "count_matches_metadata": true
+      },
+      {
+        "name_index": 9891,
+        "footer_index": 8472,
+        "hashes": 152,
+        "matches_trpfd": true,
+        "count_matches_metadata": true
+      }
+    ]
+  }
+}

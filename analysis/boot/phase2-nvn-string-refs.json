@@ -1,0 +1,272 @@
+[
+  {
+    "site": "0x7101775dc4",
+    "adrp": "0x7101775dc0",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103012e3f",
+    "name": "nvnDeviceBuilderSetDefaults"
+  },
+  {
+    "site": "0x7101775dd8",
+    "adrp": "0x7101775dd4",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x710314c602",
+    "name": "nvnDeviceBuilderSetFlags"
+  },
+  {
+    "site": "0x7101775e10",
+    "adrp": "0x7101775e0c",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103122704",
+    "name": "nvnDeviceInitialize"
+  },
+  {
+    "site": "0x7101775e64",
+    "adrp": "0x7101775e60",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103047624",
+    "name": "nvnDeviceGetProcAddress"
+  },
+  {
+    "site": "0x7101776174",
+    "adrp": "0x7101776170",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103122718",
+    "name": "nvnQueueBuilderSetDevice"
+  },
+  {
+    "site": "0x7101776190",
+    "adrp": "0x710177618c",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103052225",
+    "name": "nvnQueueBuilderSetDefaults"
+  },
+  {
+    "site": "0x71017761ac",
+    "adrp": "0x71017761a8",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x71030a5f4a",
+    "name": "nvnQueueBuilderSetFlags"
+  },
+  {
+    "site": "0x71017761c8",
+    "adrp": "0x71017761c4",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x71030b0298",
+    "name": "nvnQueueBuilderSetCommandMemorySize"
+  },
+  {
+    "site": "0x71017761e4",
+    "adrp": "0x71017761e0",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x710314c61b",
+    "name": "nvnQueueBuilderSetComputeMemorySize"
+  },
+  {
+    "site": "0x7101776200",
+    "adrp": "0x71017761fc",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103122731",
+    "name": "nvnQueueBuilderSetControlMemorySize"
+  },
+  {
+    "site": "0x7101776238",
+    "adrp": "0x7101776234",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103137709",
+    "name": "nvnQueueBuilderSetQueueMemory"
+  },
+  {
+    "site": "0x7101776254",
+    "adrp": "0x7101776250",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x71030710f7",
+    "name": "nvnQueueBuilderSetCommandFlushThreshold"
+  },
+  {
+    "site": "0x7101776270",
+    "adrp": "0x710177626c",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x710308ffe4",
+    "name": "nvnQueueBuilderSetQueuePriority"
+  },
+  {
+    "site": "0x7101776388",
+    "adrp": "0x7101776384",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103028994",
+    "name": "nvnQueueInitialize"
+  },
+  {
+    "site": "0x7101779854",
+    "adrp": "0x7101779850",
+    "function": "0x7101779834",
+    "size": "0x64",
+    "fde_valid": true,
+    "string": "0x7103122704",
+    "name": "nvnDeviceInitialize"
+  },
+  {
+    "site": "0x710177986c",
+    "adrp": "0x7101779868",
+    "function": "0x7101779834",
+    "size": "0x64",
+    "fde_valid": true,
+    "string": "0x7103047624",
+    "name": "nvnDeviceGetProcAddress"
+  },
+  {
+    "site": "0x710254f5d4",
+    "adrp": "0x710254f5d0",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103012e3f",
+    "name": "nvnDeviceBuilderSetDefaults"
+  },
+  {
+    "site": "0x710254f5e8",
+    "adrp": "0x710254f5e4",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x710314c602",
+    "name": "nvnDeviceBuilderSetFlags"
+  },
+  {
+    "site": "0x710254f620",
+    "adrp": "0x710254f61c",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103122704",
+    "name": "nvnDeviceInitialize"
+  },
+  {
+    "site": "0x710254f674",
+    "adrp": "0x710254f670",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103047624",
+    "name": "nvnDeviceGetProcAddress"
+  },
+  {
+    "site": "0x710254f984",
+    "adrp": "0x710254f980",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103122718",
+    "name": "nvnQueueBuilderSetDevice"
+  },
+  {
+    "site": "0x710254f9a0",
+    "adrp": "0x710254f99c",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103052225",
+    "name": "nvnQueueBuilderSetDefaults"
+  },
+  {
+    "site": "0x710254f9bc",
+    "adrp": "0x710254f9b8",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x71030a5f4a",
+    "name": "nvnQueueBuilderSetFlags"
+  },
+  {
+    "site": "0x710254f9d8",
+    "adrp": "0x710254f9d4",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x71030b0298",
+    "name": "nvnQueueBuilderSetCommandMemorySize"
+  },
+  {
+    "site": "0x710254f9f4",
+    "adrp": "0x710254f9f0",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x710314c61b",
+    "name": "nvnQueueBuilderSetComputeMemorySize"
+  },
+  {
+    "site": "0x710254fa10",
+    "adrp": "0x710254fa0c",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103122731",
+    "name": "nvnQueueBuilderSetControlMemorySize"
+  },
+  {
+    "site": "0x710254fa48",
+    "adrp": "0x710254fa44",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103137709",
+    "name": "nvnQueueBuilderSetQueueMemory"
+  },
+  {
+    "site": "0x710254fa64",
+    "adrp": "0x710254fa60",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x71030710f7",
+    "name": "nvnQueueBuilderSetCommandFlushThreshold"
+  },
+  {
+    "site": "0x710254fa80",
+    "adrp": "0x710254fa7c",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x710308ffe4",
+    "name": "nvnQueueBuilderSetQueuePriority"
+  },
+  {
+    "site": "0x710254fb98",
+    "adrp": "0x710254fb94",
+    "function": "0x710254f5c0",
+    "size": "0x3a84",
+    "fde_valid": true,
+    "string": "0x7103028994",
+    "name": "nvnQueueInitialize"
+  }
+]

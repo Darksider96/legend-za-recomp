@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "analysis_mode": "static; no target execution",
+  "executable": {
+    "path": "exefs/main",
+    "sha256": "056eef7956b09414bfa0489b8de3ed0674393513f09a78d5312354cbd9557720",
+    "image_base": "0x7100000000",
+    "format_va": "0x710306CF3E",
+    "format_string": "PLAY_PV_%04hu"
+  },
+  "bank": {
+    "path": "romfs/audio/wwise/bin/Switch/PM_VOICE.bnk",
+    "sha256": "99ccf7e032d5cd0878aee11a60e4615d1a885690be3b43d626a3532e523fa0da",
+    "bkhd_version": 145,
+    "hirc_objects": 5056,
+    "hirc_events": 258
+  },
+  "correction_to_initial_hypothesis": {
+    "PM_bnk_media_count": 1749,
+    "PM_bnk_event_count": 410,
+    "four_cry_events_found_in": "PM_VOICE.bnk"
+  },
+  "hash_algorithm": {
+    "name": "Wwise FNV-1 32, ASCII lowercase",
+    "offset_basis": "0x811C9DC5",
+    "prime": "0x01000193",
+    "recurrence": "h = ((h * 16777619) XOR lowercase_byte) mod 2^32",
+    "confidence": "Verified in main 0x710045F4A0 (multiply then XOR, ASCII A-Z to lowercase) and four exact HIRC Event objects."
+  },
+  "main_callsites": {
+    "format_construction": [
+      "0x71003CADF8",
+      "0x710084F75C",
+      "0x71009DF094"
+    ],
+    "post_wrappers": [
+      "0x710084F6F4",
+      "0x71009DF02C"
+    ],
+    "shared_dispatch": "0x710084F90C",
+    "dispatch_callsite": "0x710084F938",
+    "engine_post_event_wrapper": "0x71003AD92C",
+    "backend_dispatch": "0x7101C3FA54",
+    "backend_indirect_callsite": "0x7101C3FA7C",
+    "backend_virtual_slot": "0xD8",
+    "backend_vptr": "0x7103A42788",
+    "backend_post_thunk": "0x7101C41610",
+    "ak_post_event_string": "0x710045F4A0",
+    "ak_post_event_numeric": "0x710045F590",
+    "string_to_numeric_tail_callsite": "0x710045F50C",
+    "form_switch_formatter": "0x710084FB8C",
+    "form_switch_format": "FORM%02hu",
+    "engine_set_switch": "0x7101C3FC80",
+    "engine_set_switch_callsite": "0x7101C3FC9C",
+    "backend_set_switch_thunk": "0x7101C415D0",
+    "ak_set_switch_string": "0x7100CD30D0",
+    "engine_set_rtpc": "0x7101C3FC4C",
+    "engine_set_rtpc_callsite": "0x7101C3FC6C",
+    "backend_set_rtpc_thunk": "0x7101C415A8",
+    "ak_set_rtpc_string": "0x7102F0DE80",
+    "pokemon_data_species_getter_vslot": "0x1A8",
+    "pokemon_data_form_getter_vslot": "0x1B0"
+  },
+  "main_evidence_checks": [
+    {
+      "site": "0x71003CADF8",
+      "target": "0x7102FC3AC0",
+      "kind": "B_or_BL"
+    },
+    {
+      "site": "0x710084F75C",
+      "target": "0x7102FC3AC0",
+      "kind": "B_or_BL"
+    },
+    {
+      "site": "0x71009DF094",
+      "target": "0x7102FC3AC0",
+      "kind": "B_or_BL"
+    },
+    {
+      "site": "0x710084F8AC",
+      "target": "0x710084F90C",
+      "kind": "B_or_BL"
+    },
+    {
+      "site": "0x71009DF248",
+      "target": "0x710084F90C",
+      "kind": "B_or_BL"
+    },
+    {
+      "site": "0x710084F938",
+      "target": "0x71003AD92C",
+      "kind": "B_or_BL"
+    },
+    {
+      "site": "0x71003AD940",
+      "target": "0x7101C3FA54",
+      "kind": "B_or_BL"
+    },
+    {
+      "site": "0x7101C41634",
+      "target": "0x710045F4A0",
+      "kind": "B_or_BL"
+    },
+    {
+      "site": "0x710045F50C",
+      "target": "0x710045F590",
+      "kind": "B_or_BL"
+    },
+    {
+      "site": "0x710045F568",
+      "target": "0x710045F590",
+      "kind": "B_or_BL"
+    },
+    {
+      "site": "0x710084FC38",
+      "target": "0x7101C3FC80",
+      "kind": "B_or_BL"
+    },
+    {
+      "site": "0x7101C415DC",
+      "target": "0x7100CD30D0",
+      "kind": "B_or_BL"
+    },
+    {
+      "site": "0x7101C415BC",
+      "target": "0x7102F0DE80",
+      "kind": "B_or_BL"
+    },
+    {
+      "vptr": "0x7103A42788",
+      "slot": "0xd8",
+      "target": "0x7101C41610",
+      "kind": "vtable"
+    },
+    {
+      "vptr": "0x7103A42788",
+      "slot": "0xb0",
+      "target": "0x7101C415D0",
+      "kind": "vtable"
+    },
+    {
+      "vptr": "0x7103A42788",
+      "slot": "0xa0",
+      "target": "0x7101C415A8",
+      "kind": "vtable"
+    },
+    {
+      "site": "0x7101C3FA7C",
+      "kind": "BLR"
+    },
+    {
+      "site": "0x7101C3FC9C",
+      "kind": "BLR"
+    },
+    {
+      "site": "0x7101C3FC6C",
+      "kind": "BLR"
+    }
+  ],
+  "pokemon": [
+    {
+      "species_id": 150,
+      "asset_species_key": "pm0150",
+      "name": "Mewtwo",
+      "event_name": "PLAY_PV_0150",
+      "event_id": 2296219905,
+      "event_id_hex": "0x88DD8901",
+      "event_bank": "PM_VOICE.bnk",
+      "hirc_event_type": 4,
+      "event_object_file_offset": "0xC6A73",
+      "event_id_file_offset": "0xC6A78",
+      "action_id": 211802658,
+      "action_object_file_offset": "0xC6A58",
+      "target_switch_container_id": 262373802,
+      "target_object_file_offset": "0x9C200",
+      "target_hirc_type": 6,
+      "unique_media_id": null,
+      "media_note": "One Event selects a SwitchContainer; no single unconditional Media ID is established.",
+      "evidence_status": "verified_name_format_and_HIRC_event_action_target_chain"
+    },
+    {
+      "species_id": 25,
+      "asset_species_key": "pm0025",
+      "name": "Pikachu",
+      "event_name": "PLAY_PV_0025",
+      "event_id": 1944037004,
+      "event_id_hex": "0x73DFA68C",
+      "event_bank": "PM_VOICE.bnk",
+      "hirc_event_type": 4,
+      "event_object_file_offset": "0xC633E",
+      "event_id_file_offset": "0xC6343",
+      "action_id": 530197658,
+      "action_object_file_offset": "0xC6323",
+      "target_switch_container_id": 42095902,
+      "target_object_file_offset": "0x6E059",
+      "target_hirc_type": 6,
+      "unique_media_id": null,
+      "media_note": "One Event selects a SwitchContainer; no single unconditional Media ID is established.",
+      "evidence_status": "verified_name_format_and_HIRC_event_action_target_chain"
+    },
+    {
+      "species_id": 1,
+      "asset_species_key": "pm0001",
+      "name": "Bulbasaur",
+      "event_name": "PLAY_PV_0001",
+      "event_id": 1910481826,
+      "event_id_hex": "0x71DFA3A2",
+      "event_bank": "PM_VOICE.bnk",
+      "hirc_event_type": 4,
+      "event_object_file_offset": "0xC61A4",
+      "event_id_file_offset": "0xC61A9",
+      "action_id": 418804259,
+      "action_object_file_offset": "0xC6189",
+      "target_switch_container_id": 702153992,
+      "target_object_file_offset": "0x769F2",
+      "target_hirc_type": 6,
+      "unique_media_id": null,
+      "media_note": "One Event selects a SwitchContainer; no single unconditional Media ID is established.",
+      "evidence_status": "verified_name_format_and_HIRC_event_action_target_chain"
+    },
+    {
+      "species_id": 8,
+      "asset_species_key": "pm0008",
+      "name": "Wartortle",
+      "event_name": "PLAY_PV_0008",
+      "event_id": 1910481835,
+      "event_id_hex": "0x71DFA3AB",
+      "event_bank": "PM_VOICE.bnk",
+      "hirc_event_type": 4,
+      "event_object_file_offset": "0xC629A",
+      "event_id_file_offset": "0xC629F",
+      "action_id": 17934557,
+      "action_object_file_offset": "0xC627F",
+      "target_switch_container_id": 271553487,
+      "target_object_file_offset": "0x6FBF5",
+      "target_hirc_type": 6,
+      "unique_media_id": null,
+      "media_note": "One Event selects a SwitchContainer; no single unconditional Media ID is established.",
+      "evidence_status": "verified_name_format_and_HIRC_event_action_target_chain"
+    }
+  ],
+  "limitations": [
+    "Event IDs are verified; selected media depends on form/context switch state.",
+    "No measured runtime execution or audio playback was performed."
+  ]
+}

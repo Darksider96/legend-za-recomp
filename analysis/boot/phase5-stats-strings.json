@@ -1,0 +1,26 @@
+[
+  {
+    "va": "0x7103007de0",
+    "text": "tokusei_array.bin"
+  },
+  {
+    "va": "0x71030344c9",
+    "text": "id-on-personalData"
+  },
+  {
+    "va": "0x710303cb6a",
+    "text": "waza_array.bin"
+  },
+  {
+    "va": "0x710309a87e",
+    "text": "personal_array.bin"
+  },
+  {
+    "va": "0x71030cefd4",
+    "text": "growTable.bin"
+  },
+  {
+    "va": "0x71031536a3",
+    "text": "avalon/data"
+  }
+]

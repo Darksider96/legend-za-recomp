@@ -1,0 +1,366 @@
+[
+  {
+    "va": "0x7103011e01",
+    "text": "USAGE_BLEND_MATRIX_INDEX"
+  },
+  {
+    "va": "0x7103012f96",
+    "text": "nvnColorStateSetBlendEnable"
+  },
+  {
+    "va": "0x710301cf3d",
+    "text": "doSubtractiveBlend"
+  },
+  {
+    "va": "0x7103027f45",
+    "text": "blendParameter"
+  },
+  {
+    "va": "0x71030322ae",
+    "text": "hkbBlendingTransitionEffect"
+  },
+  {
+    "va": "0x7103032829",
+    "text": "IridescenceBlend2"
+  },
+  {
+    "va": "0x710303b3ee",
+    "text": "TtAnimation Sample and Blend"
+  },
+  {
+    "va": "0x710303c4db",
+    "text": "USAGE_BLEND_WEIGHTS"
+  },
+  {
+    "va": "0x710303cce0",
+    "text": "BlendType"
+  },
+  {
+    "va": "0x710303cd36",
+    "text": "gfx2/shader/NX64/env_ikkaku/system/blend_buffer_composit.bnsh"
+  },
+  {
+    "va": "0x710303d747",
+    "text": "nvnBlendStateGetBlendEquation"
+  },
+  {
+    "va": "0x710304574c",
+    "text": "HK_JOB_TYPE_ANIMATION_SAMPLE_AND_BLEND"
+  },
+  {
+    "va": "0x7103046a51",
+    "text": "blendWeight"
+  },
+  {
+    "va": "0x71030470a8",
+    "text": "BlendColor/ResetRim"
+  },
+  {
+    "va": "0x71030519aa",
+    "text": "ColorPaletteBlendType"
+  },
+  {
+    "va": "0x710305238c",
+    "text": "nvnBlendStateGetAdvancedNormalizedDst"
+  },
+  {
+    "va": "0x710305be54",
+    "text": "EnableMorphAddBlend"
+  },
+  {
+    "va": "0x7103066016",
+    "text": "durationToBlend"
+  },
+  {
+    "va": "0x710307029b",
+    "text": "blendEntries"
+  },
+  {
+    "va": "0x7103070774",
+    "text": "gfx2/shader/NX64/env_ikkaku/system/partial_blend_shape_pass1.trsha"
+  },
+  {
+    "va": "0x7103070a59",
+    "text": "IsBlendWait"
+  },
+  {
+    "va": "0x710307122c",
+    "text": "nvnBlendStateGetAdvancedMode"
+  },
+  {
+    "va": "0x710307155c",
+    "text": "__blendShape"
+  },
+  {
+    "va": "0x710307ae23",
+    "text": "hkbBlenderGenerator"
+  },
+  {
+    "va": "0x710307b03f",
+    "text": "EnableBlendStateOpaque"
+  },
+  {
+    "va": "0x710307b1db",
+    "text": "[BlendShape]"
+  },
+  {
+    "va": "0x710307bae3",
+    "text": "nvnBlendStateSetAdvancedPremultipliedSrc"
+  },
+  {
+    "va": "0x7103084f77",
+    "text": "hkbBlenderGeneratorChild"
+  },
+  {
+    "va": "0x710308524e",
+    "text": "EmissionBlendEndColor"
+  },
+  {
+    "va": "0x7103085285",
+    "text": "BlendMap0"
+  },
+  {
+    "va": "0x710308f6c2",
+    "text": "[PartialBlendShape_Pass2]"
+  },
+  {
+    "va": "0x710308f6dc",
+    "text": "[PartialBlendShape_Pass1]"
+  },
+  {
+    "va": "0x710308fa6d",
+    "text": "BlendColor/ObjectBlendColor"
+  },
+  {
+    "va": "0x710308fa89",
+    "text": "BlendColor/Rim"
+  },
+  {
+    "va": "0x710308fa98",
+    "text": "BlendColor/RimBlend"
+  },
+  {
+    "va": "0x710309a9d0",
+    "text": "BlendMap1"
+  },
+  {
+    "va": "0x710309a9fe",
+    "text": "gfx2/shader/NX64/env_ikkaku/system/partial_blend_shape_pass2.trsha"
+  },
+  {
+    "va": "0x71030a5209",
+    "text": "blendCurve"
+  },
+  {
+    "va": "0x71030a57e7",
+    "text": "[Blend Buffer Composit]"
+  },
+  {
+    "va": "0x71030a5fc1",
+    "text": "nvnBlendStateGetAdvancedPremultipliedSrc"
+  },
+  {
+    "va": "0x71030a6003",
+    "text": "nvnColorStateGetBlendEnable"
+  },
+  {
+    "va": "0x71030afa82",
+    "text": "IridescenceBlend1"
+  },
+  {
+    "va": "0x71030afa94",
+    "text": "IridescenceBlend3"
+  },
+  {
+    "va": "0x71030b03fb",
+    "text": "nvnCommandBufferSetBlendColor"
+  },
+  {
+    "va": "0x71030ba91d",
+    "text": "nvnCommandBufferBindBlendState"
+  },
+  {
+    "va": "0x71030c41a4",
+    "text": "animationName"
+  },
+  {
+    "va": "0x71030c4e20",
+    "text": "nvnBlendStateSetBlendFunc"
+  },
+  {
+    "va": "0x71030cf0b4",
+    "text": "IridescenceBlend4"
+  },
+  {
+    "va": "0x71030cf0c6",
+    "text": "IridescenceAOBlend"
+  },
+  {
+    "va": "0x71030d9730",
+    "text": "minCyclicBlendParameter"
+  },
+  {
+    "va": "0x71030d9774",
+    "text": "blendInTime"
+  },
+  {
+    "va": "0x71030d97d8",
+    "text": "animationNames"
+  },
+  {
+    "va": "0x71030d9ae3",
+    "text": "IridescenceBlend"
+  },
+  {
+    "va": "0x71030eef61",
+    "text": "nvnBlendStateSetBlendEquation"
+  },
+  {
+    "va": "0x71030eef7f",
+    "text": "nvnBlendStateSetAdvancedMode"
+  },
+  {
+    "va": "0x71030f88e0",
+    "text": "hclBlendSomeVerticesOperatorBlendEntry"
+  },
+  {
+    "va": "0x7103102697",
+    "text": "USAGE_BLEND_WEIGHTS_LAST_IMPLIED"
+  },
+  {
+    "va": "0x7103103651",
+    "text": "CurveBlend"
+  },
+  {
+    "va": "0x71031036e3",
+    "text": "nvnBlendStateSetAdvancedOverlap"
+  },
+  {
+    "va": "0x710310d256",
+    "text": "blendSpeed"
+  },
+  {
+    "va": "0x7103116f63",
+    "text": "hclBlendSomeVerticesOperator"
+  },
+  {
+    "va": "0x7103117099",
+    "text": "hkbHoldFromBlendingTransitionEffect"
+  },
+  {
+    "va": "0x7103121d72",
+    "text": "gfx2/shader/NX64/env_ikkaku/special/ground_vertex_blend_3mt.trsha"
+  },
+  {
+    "va": "0x7103121e17",
+    "text": "gfx2/shader/NX64/env_ikkaku/material/fresnel_blend.trsha"
+  },
+  {
+    "va": "0x710312ce9d",
+    "text": "nvnBlendStateGetBlendTarget"
+  },
+  {
+    "va": "0x7103136c4e",
+    "text": "previousTargetBlendWeight"
+  },
+  {
+    "va": "0x71031377f1",
+    "text": "nvnBlendStateSetDefaults"
+  },
+  {
+    "va": "0x710313780a",
+    "text": "nvnBlendStateSetAdvancedNormalizedDst"
+  },
+  {
+    "va": "0x7103140eff",
+    "text": "This parameter blends the desired target for a bone between model space: zero, or local space: one. Usually the controller will be much stiffer and more stable when driving to model space. However local space targeting can look more natural."
+  },
+  {
+    "va": "0x710314205e",
+    "text": "PfxFeedbackBlendWeight"
+  },
+  {
+    "va": "0x710314262b",
+    "text": "nvnBlendStateSetBlendTarget"
+  },
+  {
+    "va": "0x7103142647",
+    "text": "nvnBlendStateGetBlendFunc"
+  },
+  {
+    "va": "0x710314bb69",
+    "text": "maxCyclicBlendParameter"
+  },
+  {
+    "va": "0x710314bf34",
+    "text": "gfx2/shader/NX64/env_ikkaku/system/blend_shape.trsha"
+  },
+  {
+    "va": "0x710314c6ec",
+    "text": "nvnBlendStateGetAdvancedOverlap"
+  },
+  {
+    "va": "0x7103155bc4",
+    "text": "blendHint"
+  },
+  {
+    "va": "0x7103157226",
+    "text": "BlendShape"
+  },
+  {
+    "va": "0x7103157246",
+    "text": "PartialBlendShape_Pass1"
+  },
+  {
+    "va": "0x7103157266",
+    "text": "PartialBlendShape_Pass2"
+  },
+  {
+    "va": "0x7103157446",
+    "text": "BlendBufferComposit"
+  },
+  {
+    "va": "0x71031580e6",
+    "text": "BlendBufferComposit"
+  },
+  {
+    "va": "0x710315872c",
+    "text": "RT_BlendBuffer"
+  },
+  {
+    "va": "0x7103158fcc",
+    "text": "FresnelBlend"
+  },
+  {
+    "va": "0x710315994c",
+    "text": "EnableBlendStateOpaque"
+  },
+  {
+    "va": "0x7103159c4c",
+    "text": "ObjectBlendColor"
+  },
+  {
+    "va": "0x7103159d2c",
+    "text": "EnablePartialBlendShape"
+  },
+  {
+    "va": "0x710315d0d8",
+    "text": "DofBlendFocusThreshold"
+  },
+  {
+    "va": "0x710315d0f8",
+    "text": "DofBlendRange"
+  },
+  {
+    "va": "0x710315d118",
+    "text": "PfxFeedbackBlendWeight"
+  },
+  {
+    "va": "0x710315ffb0",
+    "text": "EdgeBlendRatio"
+  },
+  {
+    "va": "0x710316019c",
+    "text": "PointTextureBlendWeight"
+  }
+]

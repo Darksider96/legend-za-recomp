@@ -1,0 +1,34 @@
+{
+  "main_sha256": "056eef7956b09414bfa0489b8de3ed0674393513f09a78d5312354cbd9557720",
+  "text_sha256": "996ff2d7ffa3954837b62475cdcb6605306beff39f3b2eed2bd3624ee2ab649b",
+  "graphics_callback_record": [
+    64,
+    1
+  ],
+  "boot_compute_control_override": [
+    0,
+    32768
+  ],
+  "effective_control_memory_size": 524288,
+  "nvn_slot_bindings": {
+    "0x7103cdd4c8": {
+      "slot": "0x7103d9ad50",
+      "name": "nvnDeviceInitialize"
+    },
+    "0x7103cdd038": {
+      "slot": "0x7103d9aee0",
+      "name": "nvnQueueInitialize"
+    },
+    "0x7103cdcca0": {
+      "slot": "0x7103d9ad70",
+      "name": "nvnDeviceGetInteger"
+    },
+    "0x7103cdd028": {
+      "slot": "0x7103d9ae78",
+      "name": "nvnQueueBuilderGetQueueMemorySize"
+    }
+  },
+  "critical_blr_instructions": "PASS",
+  "first_asset_path": "data:/system/config/data/trinity_config.trowc",
+  "report_direct_edges": "PASS: 27 BL/B edges"
+}

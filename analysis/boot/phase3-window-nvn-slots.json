@@ -1,0 +1,938 @@
+[
+  {
+    "name": "nvnDeviceBuilderSetDefaults",
+    "resolver_call": "0x7101775dcc",
+    "store": "0x7101775de0",
+    "slot": "0x7103d9ad38"
+  },
+  {
+    "name": "nvnDeviceBuilderSetFlags",
+    "resolver_call": "0x7101775de8",
+    "store": "0x7101775dfc",
+    "slot": "0x7103d9ad40"
+  },
+  {
+    "name": "nvnDeviceBuilderGetFlags",
+    "resolver_call": "0x7101775e04",
+    "store": "0x7101775e18",
+    "slot": "0x7103d9ad48"
+  },
+  {
+    "name": "nvnDeviceInitialize",
+    "resolver_call": "0x7101775e20",
+    "store": "0x7101775e34",
+    "slot": "0x7103d9ad50"
+  },
+  {
+    "name": "nvnDeviceFinalize",
+    "resolver_call": "0x7101775e3c",
+    "store": "0x7101775e50",
+    "slot": "0x7103d9ad58"
+  },
+  {
+    "name": "nvnDeviceSetDebugLabel",
+    "resolver_call": "0x7101775e58",
+    "store": "0x7101775e6c",
+    "slot": "0x7103d9ad60"
+  },
+  {
+    "name": "nvnDeviceGetProcAddress",
+    "resolver_call": "0x7101775e74",
+    "store": "0x7101775e88",
+    "slot": "0x7103d9ad68"
+  },
+  {
+    "name": "nvnDeviceGetInteger",
+    "resolver_call": "0x7101775e90",
+    "store": "0x7101775ea4",
+    "slot": "0x7103d9ad70"
+  },
+  {
+    "name": "nvnDeviceGetCurrentTimestampInNanoseconds",
+    "resolver_call": "0x7101775eac",
+    "store": "0x7101775ec0",
+    "slot": "0x7103d9ad78"
+  },
+  {
+    "name": "nvnDeviceSetIntermediateShaderCache",
+    "resolver_call": "0x7101775ec8",
+    "store": "0x7101775edc",
+    "slot": "0x7103d9ad80"
+  },
+  {
+    "name": "nvnDeviceGetTextureHandle",
+    "resolver_call": "0x7101775ee4",
+    "store": "0x7101775ef8",
+    "slot": "0x7103d9ad88"
+  },
+  {
+    "name": "nvnDeviceGetTexelFetchHandle",
+    "resolver_call": "0x7101775f00",
+    "store": "0x7101775f14",
+    "slot": "0x7103d9ad90"
+  },
+  {
+    "name": "nvnDeviceGetImageHandle",
+    "resolver_call": "0x7101775f1c",
+    "store": "0x7101775f30",
+    "slot": "0x7103d9ad98"
+  },
+  {
+    "name": "nvnDeviceInstallDebugCallback",
+    "resolver_call": "0x7101775f38",
+    "store": "0x7101775f4c",
+    "slot": "0x7103d9ada0"
+  },
+  {
+    "name": "nvnDeviceGenerateDebugDomainId",
+    "resolver_call": "0x7101775f54",
+    "store": "0x7101775f68",
+    "slot": "0x7103d9ada8"
+  },
+  {
+    "name": "nvnDeviceSetWindowOriginMode",
+    "resolver_call": "0x7101775f70",
+    "store": "0x7101775f84",
+    "slot": "0x7103d9adb0"
+  },
+  {
+    "name": "nvnDeviceSetDepthMode",
+    "resolver_call": "0x7101775f8c",
+    "store": "0x7101775fa0",
+    "slot": "0x7103d9adb8"
+  },
+  {
+    "name": "nvnDeviceRegisterFastClearColor",
+    "resolver_call": "0x7101775fa8",
+    "store": "0x7101775fbc",
+    "slot": "0x7103d9adc0"
+  },
+  {
+    "name": "nvnDeviceRegisterFastClearColori",
+    "resolver_call": "0x7101775fc4",
+    "store": "0x7101775fd8",
+    "slot": "0x7103d9adc8"
+  },
+  {
+    "name": "nvnDeviceRegisterFastClearColorui",
+    "resolver_call": "0x7101775fe0",
+    "store": "0x7101775ff4",
+    "slot": "0x7103d9add0"
+  },
+  {
+    "name": "nvnDeviceRegisterFastClearDepth",
+    "resolver_call": "0x7101775ffc",
+    "store": "0x7101776010",
+    "slot": "0x7103d9add8"
+  },
+  {
+    "name": "nvnDeviceGetWindowOriginMode",
+    "resolver_call": "0x7101776018",
+    "store": "0x710177602c",
+    "slot": "0x7103d9ade0"
+  },
+  {
+    "name": "nvnDeviceGetDepthMode",
+    "resolver_call": "0x7101776034",
+    "store": "0x7101776048",
+    "slot": "0x7103d9ade8"
+  },
+  {
+    "name": "nvnDeviceGetTimestampInNanoseconds",
+    "resolver_call": "0x7101776050",
+    "store": "0x7101776064",
+    "slot": "0x7103d9adf0"
+  },
+  {
+    "name": "nvnDeviceFinalizeCommandHandle",
+    "resolver_call": "0x710177606c",
+    "store": "0x7101776080",
+    "slot": "0x7103d9adf8"
+  },
+  {
+    "name": "nvnDeviceWalkDebugDatabase",
+    "resolver_call": "0x7101776088",
+    "store": "0x710177609c",
+    "slot": "0x7103d9ae00"
+  },
+  {
+    "name": "nvnDeviceGetSeparateTextureHandle",
+    "resolver_call": "0x71017760a4",
+    "store": "0x71017760b8",
+    "slot": "0x7103d9ae08"
+  },
+  {
+    "name": "nvnDeviceGetSeparateSamplerHandle",
+    "resolver_call": "0x71017760c0",
+    "store": "0x71017760d4",
+    "slot": "0x7103d9ae10"
+  },
+  {
+    "name": "nvnDeviceIsExternalDebuggerAttached",
+    "resolver_call": "0x71017760dc",
+    "store": "0x71017760f0",
+    "slot": "0x7103d9ae18"
+  },
+  {
+    "name": "nvnQueueGetError",
+    "resolver_call": "0x71017760f8",
+    "store": "0x710177610c",
+    "slot": "0x7103d9ae20"
+  },
+  {
+    "name": "nvnQueueGetTotalCommandMemoryUsed",
+    "resolver_call": "0x7101776114",
+    "store": "0x7101776128",
+    "slot": "0x7103d9ae28"
+  },
+  {
+    "name": "nvnQueueGetTotalControlMemoryUsed",
+    "resolver_call": "0x7101776130",
+    "store": "0x7101776144",
+    "slot": "0x7103d9ae30"
+  },
+  {
+    "name": "nvnQueueGetTotalComputeMemoryUsed",
+    "resolver_call": "0x710177614c",
+    "store": "0x7101776160",
+    "slot": "0x7103d9ae38"
+  },
+  {
+    "name": "nvnQueueResetMemoryUsageCounts",
+    "resolver_call": "0x7101776168",
+    "store": "0x710177617c",
+    "slot": "0x7103d9ae40"
+  },
+  {
+    "name": "nvnQueueBuilderSetDevice",
+    "resolver_call": "0x7101776184",
+    "store": "0x7101776198",
+    "slot": "0x7103d9ae48"
+  },
+  {
+    "name": "nvnQueueBuilderSetDefaults",
+    "resolver_call": "0x71017761a0",
+    "store": "0x71017761b4",
+    "slot": "0x7103d9ae50"
+  },
+  {
+    "name": "nvnQueueBuilderSetFlags",
+    "resolver_call": "0x71017761bc",
+    "store": "0x71017761d0",
+    "slot": "0x7103d9ae58"
+  },
+  {
+    "name": "nvnQueueBuilderSetCommandMemorySize",
+    "resolver_call": "0x71017761d8",
+    "store": "0x71017761ec",
+    "slot": "0x7103d9ae60"
+  },
+  {
+    "name": "nvnQueueBuilderSetComputeMemorySize",
+    "resolver_call": "0x71017761f4",
+    "store": "0x7101776208",
+    "slot": "0x7103d9ae68"
+  },
+  {
+    "name": "nvnQueueBuilderSetControlMemorySize",
+    "resolver_call": "0x7101776210",
+    "store": "0x7101776224",
+    "slot": "0x7103d9ae70"
+  },
+  {
+    "name": "nvnQueueBuilderGetQueueMemorySize",
+    "resolver_call": "0x710177622c",
+    "store": "0x7101776240",
+    "slot": "0x7103d9ae78"
+  },
+  {
+    "name": "nvnQueueBuilderSetQueueMemory",
+    "resolver_call": "0x7101776248",
+    "store": "0x710177625c",
+    "slot": "0x7103d9ae80"
+  },
+  {
+    "name": "nvnQueueBuilderSetCommandFlushThreshold",
+    "resolver_call": "0x7101776264",
+    "store": "0x7101776278",
+    "slot": "0x7103d9ae88"
+  },
+  {
+    "name": "nvnQueueBuilderSetQueuePriority",
+    "resolver_call": "0x7101776280",
+    "store": "0x7101776294",
+    "slot": "0x7103d9ae90"
+  },
+  {
+    "name": "nvnQueueBuilderGetQueuePriority",
+    "resolver_call": "0x710177629c",
+    "store": "0x71017762b0",
+    "slot": "0x7103d9ae98"
+  },
+  {
+    "name": "nvnQueueBuilderGetDevice",
+    "resolver_call": "0x71017762b8",
+    "store": "0x71017762cc",
+    "slot": "0x7103d9aea0"
+  },
+  {
+    "name": "nvnQueueBuilderGetFlags",
+    "resolver_call": "0x71017762d4",
+    "store": "0x71017762e8",
+    "slot": "0x7103d9aea8"
+  },
+  {
+    "name": "nvnQueueBuilderGetCommandMemorySize",
+    "resolver_call": "0x71017762f0",
+    "store": "0x7101776304",
+    "slot": "0x7103d9aeb0"
+  },
+  {
+    "name": "nvnQueueBuilderGetComputeMemorySize",
+    "resolver_call": "0x710177630c",
+    "store": "0x7101776320",
+    "slot": "0x7103d9aeb8"
+  },
+  {
+    "name": "nvnQueueBuilderGetControlMemorySize",
+    "resolver_call": "0x7101776328",
+    "store": "0x710177633c",
+    "slot": "0x7103d9aec0"
+  },
+  {
+    "name": "nvnQueueBuilderGetCommandFlushThreshold",
+    "resolver_call": "0x7101776344",
+    "store": "0x7101776358",
+    "slot": "0x7103d9aec8"
+  },
+  {
+    "name": "nvnQueueBuilderGetMemorySize",
+    "resolver_call": "0x7101776360",
+    "store": "0x7101776374",
+    "slot": "0x7103d9aed0"
+  },
+  {
+    "name": "nvnQueueBuilderGetMemory",
+    "resolver_call": "0x710177637c",
+    "store": "0x7101776390",
+    "slot": "0x7103d9aed8"
+  },
+  {
+    "name": "nvnQueueInitialize",
+    "resolver_call": "0x7101776398",
+    "store": "0x71017763ac",
+    "slot": "0x7103d9aee0"
+  },
+  {
+    "name": "nvnQueueFinalize",
+    "resolver_call": "0x71017763b4",
+    "store": "0x71017763c8",
+    "slot": "0x7103d9aee8"
+  },
+  {
+    "name": "nvnQueueSetDebugLabel",
+    "resolver_call": "0x71017763d0",
+    "store": "0x71017763e4",
+    "slot": "0x7103d9aef0"
+  },
+  {
+    "name": "nvnQueueSubmitCommands",
+    "resolver_call": "0x71017763ec",
+    "store": "0x7101776400",
+    "slot": "0x7103d9aef8"
+  },
+  {
+    "name": "nvnQueueFlush",
+    "resolver_call": "0x7101776408",
+    "store": "0x710177641c",
+    "slot": "0x7103d9af00"
+  },
+  {
+    "name": "nvnQueueFinish",
+    "resolver_call": "0x7101776424",
+    "store": "0x7101776438",
+    "slot": "0x7103d9af08"
+  },
+  {
+    "name": "nvnQueuePresentTexture",
+    "resolver_call": "0x7101776440",
+    "store": "0x7101776454",
+    "slot": "0x7103d9af10"
+  },
+  {
+    "name": "nvnWindowBuilderSetDevice",
+    "resolver_call": "0x710177645c",
+    "store": "0x7101776470",
+    "slot": "0x7103d9af18"
+  },
+  {
+    "name": "nvnWindowBuilderSetDefaults",
+    "resolver_call": "0x7101776478",
+    "store": "0x710177648c",
+    "slot": "0x7103d9af20"
+  },
+  {
+    "name": "nvnWindowBuilderSetNativeWindow",
+    "resolver_call": "0x7101776494",
+    "store": "0x71017764a8",
+    "slot": "0x7103d9af28"
+  },
+  {
+    "name": "nvnWindowBuilderSetTextures",
+    "resolver_call": "0x71017764b0",
+    "store": "0x71017764c4",
+    "slot": "0x7103d9af30"
+  },
+  {
+    "name": "nvnWindowBuilderSetPresentInterval",
+    "resolver_call": "0x71017764cc",
+    "store": "0x71017764e0",
+    "slot": "0x7103d9af38"
+  },
+  {
+    "name": "nvnWindowBuilderSetNumActiveTextures",
+    "resolver_call": "0x71017764e8",
+    "store": "0x71017764fc",
+    "slot": "0x7103d9af40"
+  },
+  {
+    "name": "nvnWindowBuilderGetDevice",
+    "resolver_call": "0x7101776504",
+    "store": "0x7101776518",
+    "slot": "0x7103d9af48"
+  },
+  {
+    "name": "nvnWindowBuilderGetNumTextures",
+    "resolver_call": "0x7101776520",
+    "store": "0x7101776534",
+    "slot": "0x7103d9af50"
+  },
+  {
+    "name": "nvnWindowBuilderGetTexture",
+    "resolver_call": "0x710177653c",
+    "store": "0x7101776550",
+    "slot": "0x7103d9af58"
+  },
+  {
+    "name": "nvnWindowBuilderGetNativeWindow",
+    "resolver_call": "0x7101776558",
+    "store": "0x710177656c",
+    "slot": "0x7103d9af60"
+  },
+  {
+    "name": "nvnWindowBuilderGetPresentInterval",
+    "resolver_call": "0x7101776574",
+    "store": "0x7101776588",
+    "slot": "0x7103d9af68"
+  },
+  {
+    "name": "nvnWindowBuilderGetNumActiveTextures",
+    "resolver_call": "0x7101776590",
+    "store": "0x71017765a4",
+    "slot": "0x7103d9af70"
+  },
+  {
+    "name": "nvnWindowInitialize",
+    "resolver_call": "0x71017765ac",
+    "store": "0x71017765c0",
+    "slot": "0x7103d9af78"
+  },
+  {
+    "name": "nvnWindowFinalize",
+    "resolver_call": "0x71017765c8",
+    "store": "0x71017765dc",
+    "slot": "0x7103d9af80"
+  },
+  {
+    "name": "nvnWindowSetDebugLabel",
+    "resolver_call": "0x71017765e4",
+    "store": "0x71017765f8",
+    "slot": "0x7103d9af88"
+  },
+  {
+    "name": "nvnWindowAcquireTexture",
+    "resolver_call": "0x7101776600",
+    "store": "0x7101776614",
+    "slot": "0x7103d9af90"
+  },
+  {
+    "name": "nvnWindowGetNativeWindow",
+    "resolver_call": "0x710177661c",
+    "store": "0x7101776630",
+    "slot": "0x7103d9af98"
+  },
+  {
+    "name": "nvnWindowGetPresentInterval",
+    "resolver_call": "0x7101776638",
+    "store": "0x710177664c",
+    "slot": "0x7103d9afa0"
+  },
+  {
+    "name": "nvnWindowSetPresentInterval",
+    "resolver_call": "0x7101776654",
+    "store": "0x7101776668",
+    "slot": "0x7103d9afa8"
+  },
+  {
+    "name": "nvnWindowSetCrop",
+    "resolver_call": "0x7101776670",
+    "store": "0x7101776684",
+    "slot": "0x7103d9afb0"
+  },
+  {
+    "name": "nvnWindowGetCrop",
+    "resolver_call": "0x710177668c",
+    "store": "0x71017766a0",
+    "slot": "0x7103d9afb8"
+  },
+  {
+    "name": "nvnWindowSetNumActiveTextures",
+    "resolver_call": "0x71017766a8",
+    "store": "0x71017766bc",
+    "slot": "0x7103d9afc0"
+  },
+  {
+    "name": "nvnWindowGetNumActiveTextures",
+    "resolver_call": "0x71017766c4",
+    "store": "0x71017766d8",
+    "slot": "0x7103d9afc8"
+  },
+  {
+    "name": "nvnWindowGetNumTextures",
+    "resolver_call": "0x71017766e0",
+    "store": "0x71017766f4",
+    "slot": "0x7103d9afd0"
+  },
+  {
+    "name": "nvnProgramInitialize",
+    "resolver_call": "0x71017766fc",
+    "store": "0x7101776710",
+    "slot": "0x7103d9afd8"
+  },
+  {
+    "name": "nvnProgramFinalize",
+    "resolver_call": "0x7101776718",
+    "store": "0x710177672c",
+    "slot": "0x7103d9afe0"
+  },
+  {
+    "name": "nvnProgramSetDebugLabel",
+    "resolver_call": "0x7101776734",
+    "store": "0x7101776748",
+    "slot": "0x7103d9afe8"
+  },
+  {
+    "name": "nvnProgramSetShaders",
+    "resolver_call": "0x7101776750",
+    "store": "0x7101776764",
+    "slot": "0x7103d9aff0"
+  },
+  {
+    "name": "nvnProgramSetShadersExt",
+    "resolver_call": "0x710177676c",
+    "store": "0x7101776780",
+    "slot": "0x7103d9aff8"
+  },
+  {
+    "name": "nvnProgramSetSampleShading",
+    "resolver_call": "0x7101776788",
+    "store": "0x710177679c",
+    "slot": "0x7103d9b000"
+  },
+  {
+    "name": "nvnProgramGetSubtileSize",
+    "resolver_call": "0x71017767a4",
+    "store": "0x71017767b8",
+    "slot": "0x7103d9b008"
+  },
+  {
+    "name": "nvnMemoryPoolBuilderSetDevice",
+    "resolver_call": "0x71017767c0",
+    "store": "0x71017767d4",
+    "slot": "0x7103d9b010"
+  },
+  {
+    "name": "nvnMemoryPoolBuilderSetDefaults",
+    "resolver_call": "0x71017767dc",
+    "store": "0x71017767f0",
+    "slot": "0x7103d9b018"
+  },
+  {
+    "name": "nvnMemoryPoolBuilderSetStorage",
+    "resolver_call": "0x71017767f8",
+    "store": "0x710177680c",
+    "slot": "0x7103d9b020"
+  },
+  {
+    "name": "nvnMemoryPoolBuilderSetFlags",
+    "resolver_call": "0x7101776814",
+    "store": "0x7101776828",
+    "slot": "0x7103d9b028"
+  },
+  {
+    "name": "nvnMemoryPoolBuilderGetDevice",
+    "resolver_call": "0x7101776830",
+    "store": "0x7101776844",
+    "slot": "0x7103d9b030"
+  },
+  {
+    "name": "nvnMemoryPoolBuilderGetMemory",
+    "resolver_call": "0x710177684c",
+    "store": "0x7101776860",
+    "slot": "0x7103d9b038"
+  },
+  {
+    "name": "nvnMemoryPoolBuilderGetSize",
+    "resolver_call": "0x7101776868",
+    "store": "0x710177687c",
+    "slot": "0x7103d9b040"
+  },
+  {
+    "name": "nvnMemoryPoolBuilderGetFlags",
+    "resolver_call": "0x7101776884",
+    "store": "0x7101776898",
+    "slot": "0x7103d9b048"
+  },
+  {
+    "name": "nvnMemoryPoolInitialize",
+    "resolver_call": "0x71017768a0",
+    "store": "0x71017768b4",
+    "slot": "0x7103d9b050"
+  },
+  {
+    "name": "nvnMemoryPoolSetDebugLabel",
+    "resolver_call": "0x71017768bc",
+    "store": "0x71017768d0",
+    "slot": "0x7103d9b058"
+  },
+  {
+    "name": "nvnMemoryPoolFinalize",
+    "resolver_call": "0x71017768d8",
+    "store": "0x71017768ec",
+    "slot": "0x7103d9b060"
+  },
+  {
+    "name": "nvnMemoryPoolMap",
+    "resolver_call": "0x71017768f4",
+    "store": "0x7101776908",
+    "slot": "0x7103d9b068"
+  },
+  {
+    "name": "nvnMemoryPoolFlushMappedRange",
+    "resolver_call": "0x7101776910",
+    "store": "0x7101776924",
+    "slot": "0x7103d9b070"
+  },
+  {
+    "name": "nvnMemoryPoolInvalidateMappedRange",
+    "resolver_call": "0x710177692c",
+    "store": "0x7101776940",
+    "slot": "0x7103d9b078"
+  },
+  {
+    "name": "nvnMemoryPoolGetBufferAddress",
+    "resolver_call": "0x7101776948",
+    "store": "0x710177695c",
+    "slot": "0x7103d9b080"
+  },
+  {
+    "name": "nvnMemoryPoolMapVirtual",
+    "resolver_call": "0x7101776964",
+    "store": "0x7101776978",
+    "slot": "0x7103d9b088"
+  },
+  {
+    "name": "nvnMemoryPoolGetSize",
+    "resolver_call": "0x7101776980",
+    "store": "0x7101776994",
+    "slot": "0x7103d9b090"
+  },
+  {
+    "name": "nvnMemoryPoolGetFlags",
+    "resolver_call": "0x710177699c",
+    "store": "0x71017769b0",
+    "slot": "0x7103d9b098"
+  },
+  {
+    "name": "nvnTexturePoolInitialize",
+    "resolver_call": "0x71017769b8",
+    "store": "0x71017769cc",
+    "slot": "0x7103d9b0a0"
+  },
+  {
+    "name": "nvnTexturePoolSetDebugLabel",
+    "resolver_call": "0x71017769d4",
+    "store": "0x71017769e8",
+    "slot": "0x7103d9b0a8"
+  },
+  {
+    "name": "nvnTexturePoolFinalize",
+    "resolver_call": "0x71017769f0",
+    "store": "0x7101776a04",
+    "slot": "0x7103d9b0b0"
+  },
+  {
+    "name": "nvnTexturePoolRegisterTexture",
+    "resolver_call": "0x7101776a0c",
+    "store": "0x7101776a20",
+    "slot": "0x7103d9b0b8"
+  },
+  {
+    "name": "nvnTexturePoolRegisterImage",
+    "resolver_call": "0x7101776a28",
+    "store": "0x7101776a3c",
+    "slot": "0x7103d9b0c0"
+  },
+  {
+    "name": "nvnTexturePoolGetMemoryPool",
+    "resolver_call": "0x7101776a44",
+    "store": "0x7101776a58",
+    "slot": "0x7103d9b0c8"
+  },
+  {
+    "name": "nvnTexturePoolGetMemoryOffset",
+    "resolver_call": "0x7101776a60",
+    "store": "0x7101776a74",
+    "slot": "0x7103d9b0d0"
+  },
+  {
+    "name": "nvnTexturePoolGetSize",
+    "resolver_call": "0x7101776a7c",
+    "store": "0x7101776a90",
+    "slot": "0x7103d9b0d8"
+  },
+  {
+    "name": "nvnSamplerPoolInitialize",
+    "resolver_call": "0x7101776a98",
+    "store": "0x7101776aac",
+    "slot": "0x7103d9b0e0"
+  },
+  {
+    "name": "nvnSamplerPoolSetDebugLabel",
+    "resolver_call": "0x7101776ab4",
+    "store": "0x7101776ac8",
+    "slot": "0x7103d9b0e8"
+  },
+  {
+    "name": "nvnSamplerPoolFinalize",
+    "resolver_call": "0x7101776ad0",
+    "store": "0x7101776ae4",
+    "slot": "0x7103d9b0f0"
+  },
+  {
+    "name": "nvnSamplerPoolRegisterSampler",
+    "resolver_call": "0x7101776aec",
+    "store": "0x7101776b00",
+    "slot": "0x7103d9b0f8"
+  },
+  {
+    "name": "nvnSamplerPoolRegisterSamplerBuilder",
+    "resolver_call": "0x7101776b08",
+    "store": "0x7101776b1c",
+    "slot": "0x7103d9b100"
+  },
+  {
+    "name": "nvnSamplerPoolGetMemoryPool",
+    "resolver_call": "0x7101776b24",
+    "store": "0x7101776b38",
+    "slot": "0x7103d9b108"
+  },
+  {
+    "name": "nvnSamplerPoolGetMemoryOffset",
+    "resolver_call": "0x7101776b40",
+    "store": "0x7101776b54",
+    "slot": "0x7103d9b110"
+  },
+  {
+    "name": "nvnSamplerPoolGetSize",
+    "resolver_call": "0x7101776b5c",
+    "store": "0x7101776b70",
+    "slot": "0x7103d9b118"
+  },
+  {
+    "name": "nvnBufferBuilderSetDevice",
+    "resolver_call": "0x7101776b78",
+    "store": "0x7101776b8c",
+    "slot": "0x7103d9b120"
+  },
+  {
+    "name": "nvnBufferBuilderSetDefaults",
+    "resolver_call": "0x7101776b94",
+    "store": "0x7101776ba8",
+    "slot": "0x7103d9b128"
+  },
+  {
+    "name": "nvnBufferBuilderSetStorage",
+    "resolver_call": "0x7101776bb0",
+    "store": "0x7101776bc4",
+    "slot": "0x7103d9b130"
+  },
+  {
+    "name": "nvnBufferBuilderGetDevice",
+    "resolver_call": "0x7101776bcc",
+    "store": "0x7101776be0",
+    "slot": "0x7103d9b138"
+  },
+  {
+    "name": "nvnBufferBuilderGetMemoryPool",
+    "resolver_call": "0x7101776be8",
+    "store": "0x7101776bfc",
+    "slot": "0x7103d9b140"
+  },
+  {
+    "name": "nvnBufferBuilderGetMemoryOffset",
+    "resolver_call": "0x7101776c04",
+    "store": "0x7101776c18",
+    "slot": "0x7103d9b148"
+  },
+  {
+    "name": "nvnBufferBuilderGetSize",
+    "resolver_call": "0x7101776c20",
+    "store": "0x7101776c34",
+    "slot": "0x7103d9b150"
+  },
+  {
+    "name": "nvnBufferInitialize",
+    "resolver_call": "0x7101776c3c",
+    "store": "0x7101776c50",
+    "slot": "0x7103d9b158"
+  },
+  {
+    "name": "nvnBufferSetDebugLabel",
+    "resolver_call": "0x7101776c58",
+    "store": "0x7101776c6c",
+    "slot": "0x7103d9b160"
+  },
+  {
+    "name": "nvnBufferFinalize",
+    "resolver_call": "0x7101776c74",
+    "store": "0x7101776c88",
+    "slot": "0x7103d9b168"
+  },
+  {
+    "name": "nvnBufferMap",
+    "resolver_call": "0x7101776c90",
+    "store": "0x7101776ca4",
+    "slot": "0x7103d9b170"
+  },
+  {
+    "name": "nvnBufferGetAddress",
+    "resolver_call": "0x7101776cac",
+    "store": "0x7101776cc0",
+    "slot": "0x7103d9b178"
+  },
+  {
+    "name": "nvnBufferFlushMappedRange",
+    "resolver_call": "0x7101776cc8",
+    "store": "0x7101776cdc",
+    "slot": "0x7103d9b180"
+  },
+  {
+    "name": "nvnBufferInvalidateMappedRange",
+    "resolver_call": "0x7101776ce4",
+    "store": "0x7101776cf8",
+    "slot": "0x7103d9b188"
+  },
+  {
+    "name": "nvnBufferGetMemoryPool",
+    "resolver_call": "0x7101776d00",
+    "store": "0x7101776d14",
+    "slot": "0x7103d9b190"
+  },
+  {
+    "name": "nvnBufferGetMemoryOffset",
+    "resolver_call": "0x7101776d1c",
+    "store": "0x7101776d30",
+    "slot": "0x7103d9b198"
+  },
+  {
+    "name": "nvnBufferGetSize",
+    "resolver_call": "0x7101776d38",
+    "store": "0x7101776d4c",
+    "slot": "0x7103d9b1a0"
+  },
+  {
+    "name": "nvnBufferGetDebugID",
+    "resolver_call": "0x7101776d54",
+    "store": "0x7101776d68",
+    "slot": "0x7103d9b1a8"
+  },
+  {
+    "name": "nvnTextureBuilderSetDevice",
+    "resolver_call": "0x7101776d70",
+    "store": "0x7101776d84",
+    "slot": "0x7103d9b1b0"
+  },
+  {
+    "name": "nvnTextureBuilderSetDefaults",
+    "resolver_call": "0x7101776d8c",
+    "store": "0x7101776da0",
+    "slot": "0x7103d9b1b8"
+  },
+  {
+    "name": "nvnTextureBuilderSetFlags",
+    "resolver_call": "0x7101776da8",
+    "store": "0x7101776dbc",
+    "slot": "0x7103d9b1c0"
+  },
+  {
+    "name": "nvnTextureBuilderSetTarget",
+    "resolver_call": "0x7101776dc4",
+    "store": "0x7101776dd8",
+    "slot": "0x7103d9b1c8"
+  },
+  {
+    "name": "nvnTextureBuilderSetWidth",
+    "resolver_call": "0x7101776de0",
+    "store": "0x7101776df4",
+    "slot": "0x7103d9b1d0"
+  },
+  {
+    "name": "nvnTextureBuilderSetHeight",
+    "resolver_call": "0x7101776dfc",
+    "store": "0x7101776e10",
+    "slot": "0x7103d9b1d8"
+  },
+  {
+    "name": "nvnTextureBuilderSetDepth",
+    "resolver_call": "0x7101776e18",
+    "store": "0x7101776e2c",
+    "slot": "0x7103d9b1e0"
+  },
+  {
+    "name": "nvnTextureBuilderSetSize1D",
+    "resolver_call": "0x7101776e34",
+    "store": "0x7101776e48",
+    "slot": "0x7103d9b1e8"
+  },
+  {
+    "name": "nvnTextureBuilderSetSize2D",
+    "resolver_call": "0x7101776e50",
+    "store": "0x7101776e64",
+    "slot": "0x7103d9b1f0"
+  },
+  {
+    "name": "nvnTextureBuilderSetSize3D",
+    "resolver_call": "0x7101776e6c",
+    "store": "0x7101776e80",
+    "slot": "0x7103d9b1f8"
+  },
+  {
+    "name": "nvnTextureBuilderSetLevels",
+    "resolver_call": "0x7101776e88",
+    "store": "0x7101776e9c",
+    "slot": "0x7103d9b200"
+  },
+  {
+    "name": "nvnTextureBuilderSetFormat",
+    "resolver_call": "0x7101776ea4",
+    "store": "0x7101776eb8",
+    "slot": "0x7103d9b208"
+  },
+  {
+    "name": "nvnTextureBuilderSetSamples",
+    "resolver_call": "0x7101776ec0",
+    "store": "0x7101776ed4",
+    "slot": "0x7103d9b210"
+  }
+]

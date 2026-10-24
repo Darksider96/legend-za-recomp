@@ -1,0 +1,290 @@
+[
+  {
+    "name": "nvnWindowAcquireTexture",
+    "site": "0x710175eb18",
+    "refaddr": "0x7103d9af90",
+    "function": "0x710175ead4",
+    "size": "0x68",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowSetCrop",
+    "site": "0x710175eb68",
+    "refaddr": "0x7103d9afb0",
+    "function": "0x710175eb3c",
+    "size": "0x3c",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnQueuePresentTexture",
+    "site": "0x710175f144",
+    "refaddr": "0x7103cdccd0",
+    "function": "0x710175efd0",
+    "size": "0x350",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnQueuePresentTexture",
+    "site": "0x7101776450",
+    "refaddr": "0x7103cdccd0",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderSetDevice",
+    "site": "0x710177646c",
+    "refaddr": "0x7103cdd5d8",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderSetDefaults",
+    "site": "0x7101776488",
+    "refaddr": "0x7103cdd5e0",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderSetNativeWindow",
+    "site": "0x71017764a4",
+    "refaddr": "0x7103cdd5e8",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderSetTextures",
+    "site": "0x71017764c0",
+    "refaddr": "0x7103cdd5f0",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderSetPresentInterval",
+    "site": "0x71017764dc",
+    "refaddr": "0x7103cdd5f8",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderSetNumActiveTextures",
+    "site": "0x71017764f8",
+    "refaddr": "0x7103cdd600",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderGetDevice",
+    "site": "0x7101776514",
+    "refaddr": "0x7103cdd608",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderGetNumTextures",
+    "site": "0x7101776530",
+    "refaddr": "0x7103cdd610",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderGetTexture",
+    "site": "0x710177654c",
+    "refaddr": "0x7103cdd618",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderGetNativeWindow",
+    "site": "0x7101776568",
+    "refaddr": "0x7103cdd620",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderGetPresentInterval",
+    "site": "0x7101776584",
+    "refaddr": "0x7103cdd628",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderGetNumActiveTextures",
+    "site": "0x71017765a0",
+    "refaddr": "0x7103cdd630",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowInitialize",
+    "site": "0x71017765bc",
+    "refaddr": "0x7103cdd638",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowFinalize",
+    "site": "0x71017765d8",
+    "refaddr": "0x7103cdd640",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowSetDebugLabel",
+    "site": "0x71017765f4",
+    "refaddr": "0x7103cdd648",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowAcquireTexture",
+    "site": "0x7101776610",
+    "refaddr": "0x7103cdcca8",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowGetNativeWindow",
+    "site": "0x710177662c",
+    "refaddr": "0x7103cdd650",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowGetPresentInterval",
+    "site": "0x7101776648",
+    "refaddr": "0x7103cdd658",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowSetPresentInterval",
+    "site": "0x7101776664",
+    "refaddr": "0x7103cdd660",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowSetCrop",
+    "site": "0x7101776680",
+    "refaddr": "0x7103cdccb0",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowGetCrop",
+    "site": "0x710177669c",
+    "refaddr": "0x7103cdd668",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowSetNumActiveTextures",
+    "site": "0x71017766b8",
+    "refaddr": "0x7103cdd670",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowGetNumActiveTextures",
+    "site": "0x71017766d4",
+    "refaddr": "0x7103cdd678",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowGetNumTextures",
+    "site": "0x71017766f0",
+    "refaddr": "0x7103cdd680",
+    "function": "0x7101775db0",
+    "size": "0x3a84",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderSetDefaults",
+    "site": "0x7101779998",
+    "refaddr": "0x7103cdd5e0",
+    "function": "0x7101779978",
+    "size": "0xe0",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderSetDevice",
+    "site": "0x71017799c0",
+    "refaddr": "0x7103cdd5d8",
+    "function": "0x7101779978",
+    "size": "0xe0",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderSetNativeWindow",
+    "site": "0x71017799dc",
+    "refaddr": "0x7103cdd5e8",
+    "function": "0x7101779978",
+    "size": "0xe0",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowBuilderSetTextures",
+    "site": "0x71017799f0",
+    "refaddr": "0x7103cdd5f0",
+    "function": "0x7101779978",
+    "size": "0xe0",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowInitialize",
+    "site": "0x7101779a0c",
+    "refaddr": "0x7103cdd638",
+    "function": "0x7101779978",
+    "size": "0xe0",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowFinalize",
+    "site": "0x7101779a64",
+    "refaddr": "0x7103d9af80",
+    "function": "0x7101779a58",
+    "size": "0x1c",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowSetPresentInterval",
+    "site": "0x7101779a78",
+    "refaddr": "0x7103d9afa8",
+    "function": "0x7101779a74",
+    "size": "0x10",
+    "fde_valid": true
+  },
+  {
+    "name": "nvnWindowSetPresentInterval",
+    "site": "0x7101779a78",
+    "refaddr": "0x7103d9afa8",
+    "function": "0x7101779a74",
+    "size": "0x10",
+    "fde_valid": true
+  }
+]

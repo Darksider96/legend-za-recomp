@@ -1,0 +1,64 @@
+{
+  "slots": {
+    "0x7103d9aef8": "nvnQueueSubmitCommands",
+    "0x7103d9af00": "nvnQueueFlush",
+    "0x7103d9af08": "nvnQueueFinish",
+    "0x7103d9af10": "nvnQueuePresentTexture"
+  },
+  "got": {
+    "0x7103cdccc8": "nvnQueueSubmitCommands",
+    "0x7103cdccd0": "nvnQueuePresentTexture",
+    "0x7103cdccd8": "nvnQueueFlush",
+    "0x7103cdd5d0": "nvnQueueFinish"
+  },
+  "refs": [
+    {
+      "name": "nvnQueueSubmitCommands",
+      "site": "0x710175ef2c",
+      "got": "0x7103cdccc8",
+      "function": "0x710175edd0",
+      "size": "0x1f8",
+      "fde_valid": true
+    },
+    {
+      "name": "nvnQueuePresentTexture",
+      "site": "0x710175f144",
+      "got": "0x7103cdccd0",
+      "function": "0x710175efd0",
+      "size": "0x350",
+      "fde_valid": true
+    },
+    {
+      "name": "nvnQueueSubmitCommands",
+      "site": "0x71017763fc",
+      "got": "0x7103cdccc8",
+      "function": "0x7101775db0",
+      "size": "0x3a84",
+      "fde_valid": true
+    },
+    {
+      "name": "nvnQueueFlush",
+      "site": "0x7101776418",
+      "got": "0x7103cdccd8",
+      "function": "0x7101775db0",
+      "size": "0x3a84",
+      "fde_valid": true
+    },
+    {
+      "name": "nvnQueueFinish",
+      "site": "0x7101776434",
+      "got": "0x7103cdd5d0",
+      "function": "0x7101775db0",
+      "size": "0x3a84",
+      "fde_valid": true
+    },
+    {
+      "name": "nvnQueuePresentTexture",
+      "site": "0x7101776450",
+      "got": "0x7103cdccd0",
+      "function": "0x7101775db0",
+      "size": "0x3a84",
+      "fde_valid": true
+    }
+  ]
+}

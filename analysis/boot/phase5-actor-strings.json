@@ -1,0 +1,347 @@
+[
+  {
+    "va": "0x7103019647",
+    "rva": "0x3019647",
+    "text": "SexMale"
+  },
+  {
+    "va": "0x710301ef92",
+    "rva": "0x301ef92",
+    "text": "tlsext_tick_lifetime_hint"
+  },
+  {
+    "va": "0x71030203ce",
+    "rva": "0x30203ce",
+    "text": "PartsExclJeeringAreaGoodFightBattleCoercion"
+  },
+  {
+    "va": "0x7103020c54",
+    "rva": "0x3020c54",
+    "text": "PartsExclSurprise"
+  },
+  {
+    "va": "0x7103024810",
+    "rva": "0x3024810",
+    "text": "FormNo"
+  },
+  {
+    "va": "0x7103025379",
+    "rva": "0x3025379",
+    "text": "ti_FieldPokemonComponent"
+  },
+  {
+    "va": "0x7103028420",
+    "rva": "0x3028420",
+    "text": "convexVsExternMesh"
+  },
+  {
+    "va": "0x710302c857",
+    "rva": "0x302c857",
+    "text": "SickKooriPlayAnim12615"
+  },
+  {
+    "va": "0x710302f247",
+    "rva": "0x302f247",
+    "text": "ik_pokemon/loc_search_move/loc_poke_seachmove/loc_poke_seachmove.trmdl"
+  },
+  {
+    "va": "0x7103033fa2",
+    "rva": "0x3033fa2",
+    "text": "SSL_CTX_set_tlsext_max_fragment_length"
+  },
+  {
+    "va": "0x710303ea6f",
+    "rva": "0x303ea6f",
+    "text": "id-pda-gender"
+  },
+  {
+    "va": "0x710304765b",
+    "rva": "0x304765b",
+    "text": "nvnDeviceIsExternalDebuggerAttached"
+  },
+  {
+    "va": "0x71030532c1",
+    "rva": "0x30532c1",
+    "text": "tlsext_tick"
+  },
+  {
+    "va": "0x7103053765",
+    "rva": "0x3053765",
+    "text": "msExtReq"
+  },
+  {
+    "va": "0x710305a5b7",
+    "rva": "0x305a5b7",
+    "text": "parentSex"
+  },
+  {
+    "va": "0x7103062e46",
+    "rva": "0x3062e46",
+    "text": "ik_pokemon/loc_search_move/loc_poke_seachmove/loc_poke_seachmove_slow.tranm"
+  },
+  {
+    "va": "0x7103067d04",
+    "rva": "0x3067d04",
+    "text": "serverhello tlsext"
+  },
+  {
+    "va": "0x710306a62a",
+    "rva": "0x306a62a",
+    "text": "SickNemuriPlayAnim12617"
+  },
+  {
+    "va": "0x710306d159",
+    "rva": "0x306d159",
+    "text": "FormNoKey"
+  },
+  {
+    "va": "0x710307764a",
+    "rva": "0x307764a",
+    "text": "PL_EFV_SEX"
+  },
+  {
+    "va": "0x71030808d9",
+    "rva": "0x30808d9",
+    "text": "play_anim_think_loop_26514"
+  },
+  {
+    "va": "0x7103085902",
+    "rva": "0x3085902",
+    "text": "nvnProgramSetShadersExt"
+  },
+  {
+    "va": "0x7103086696",
+    "rva": "0x3086696",
+    "text": "tlsext_tick_age_add"
+  },
+  {
+    "va": "0x710308675c",
+    "rva": "0x308675c",
+    "text": "SSL_set_tlsext_max_fragment_length"
+  },
+  {
+    "va": "0x7103087a37",
+    "rva": "0x3087a37",
+    "text": "PartsExclJeeringAreaMenacingBattleCoercion"
+  },
+  {
+    "va": "0x7103087a62",
+    "rva": "0x3087a62",
+    "text": "NotTreeBranchLargePartsExclJeeringAreaGoodFightBattleCoercion"
+  },
+  {
+    "va": "0x71030958a2",
+    "rva": "0x30958a2",
+    "text": "play_anim_think_26513"
+  },
+  {
+    "va": "0x7103096cc8",
+    "rva": "0x3096cc8",
+    "text": "SexUnknown"
+  },
+  {
+    "va": "0x7103097f91",
+    "rva": "0x3097f91",
+    "text": "ItemProcessExp"
+  },
+  {
+    "va": "0x710309dcca",
+    "rva": "0x309dcca",
+    "text": "PartsExclHeadlong"
+  },
+  {
+    "va": "0x71030a2a75",
+    "rva": "0x30a2a75",
+    "text": "Title/UI/PlayAnimationForRefRank"
+  },
+  {
+    "va": "0x71030a46a2",
+    "rva": "0x30a46a2",
+    "text": "hknpParticlesExitedSafeRegionEvent particleColliderId="
+  },
+  {
+    "va": "0x71030a4c0c",
+    "rva": "0x30a4c0c",
+    "text": "raiseParticlesExitedSafeRegionEvents"
+  },
+  {
+    "va": "0x71030a51ee",
+    "rva": "0x30a51ee",
+    "text": "currentStateId"
+  },
+  {
+    "va": "0x71030b707a",
+    "rva": "0x30b707a",
+    "text": "gender"
+  },
+  {
+    "va": "0x71030b70bf",
+    "rva": "0x30b70bf",
+    "text": "PlayerGender"
+  },
+  {
+    "va": "0x71030ba9d6",
+    "rva": "0x30ba9d6",
+    "text": "%s/%s/%s%s/%s/%s.trmdl"
+  },
+  {
+    "va": "0x71030bd295",
+    "rva": "0x30bd295",
+    "text": "PartsExclEscapeToUnderground"
+  },
+  {
+    "va": "0x71030c0e3f",
+    "rva": "0x30c0e3f",
+    "text": "SexFemale"
+  },
+  {
+    "va": "0x71030c5260",
+    "rva": "0x30c5260",
+    "text": ".trmdl"
+  },
+  {
+    "va": "0x71030c5d48",
+    "rva": "0x30c5d48",
+    "text": "tlsext_max_fragment_len_mode"
+  },
+  {
+    "va": "0x71030c5f29",
+    "rva": "0x30c5f29",
+    "text": "parse tlsext"
+  },
+  {
+    "va": "0x71030d205e",
+    "rva": "0x30d205e",
+    "text": "PartsExclJeeringAreaPanicNone"
+  },
+  {
+    "va": "0x71030d2327",
+    "rva": "0x30d2327",
+    "text": "Patch0PartsExclusionAreaEscapeRunIfOutOfRange"
+  },
+  {
+    "va": "0x71030e04a2",
+    "rva": "0x30e04a2",
+    "text": "ChangeAnimationState"
+  },
+  {
+    "va": "0x71030e146e",
+    "rva": "0x30e146e",
+    "text": "Title/UI/PlayAnimeLastBattleGauge"
+  },
+  {
+    "va": "0x71030e2e17",
+    "rva": "0x30e2e17",
+    "text": "hknpParticlesExitedSafeRegionEvent"
+  },
+  {
+    "va": "0x71030e9af2",
+    "rva": "0x30e9af2",
+    "text": "play_anim_disappointed_26512"
+  },
+  {
+    "va": "0x71030ee851",
+    "rva": "0x30ee851",
+    "text": "Layout/PlayAnimation"
+  },
+  {
+    "va": "0x71030fb6e0",
+    "rva": "0x30fb6e0",
+    "text": "PartsExclJeeringAreaWatchingGamesNone"
+  },
+  {
+    "va": "0x710310005a",
+    "rva": "0x310005a",
+    "text": "trainerSex"
+  },
+  {
+    "va": "0x7103102872",
+    "rva": "0x3102872",
+    "text": "deformNormals"
+  },
+  {
+    "va": "0x7103109fb7",
+    "rva": "0x3109fb7",
+    "text": "ik_pokemon/loc_search_move/loc_poke_seachmove/loc_poke_seachmove_middle.tranm"
+  },
+  {
+    "va": "0x710310ab09",
+    "rva": "0x310ab09",
+    "text": "ik_chara/model_ob/ob9999_99_joint/ob9999_99.trmdl"
+  },
+  {
+    "va": "0x710310ae94",
+    "rva": "0x310ae94",
+    "text": "SpeciesTableFavObjTypeMag"
+  },
+  {
+    "va": "0x710310eb81",
+    "rva": "0x310eb81",
+    "text": "tlsext_hostname"
+  },
+  {
+    "va": "0x7103110b7a",
+    "rva": "0x3110b7a",
+    "text": "LandRotom_PlayAnim"
+  },
+  {
+    "va": "0x710311679d",
+    "rva": "0x311679d",
+    "text": "isExclusive"
+  },
+  {
+    "va": "0x710311e2a8",
+    "rva": "0x311e2a8",
+    "text": "ik_pokemon/loc_search_move/loc_poke_seachmove/loc_poke_seachmove_fast.tranm"
+  },
+  {
+    "va": "0x7103129603",
+    "rva": "0x3129603",
+    "text": "FieldPokemonRecvHit"
+  },
+  {
+    "va": "0x71031344a9",
+    "rva": "0x31344a9",
+    "text": "formNo"
+  },
+  {
+    "va": "0x71031347fc",
+    "rva": "0x31347fc",
+    "text": "player_sex_condition"
+  },
+  {
+    "va": "0x71031371f6",
+    "rva": "0x31371f6",
+    "text": "flip<convexVsExternMesh>"
+  },
+  {
+    "va": "0x7103138b9a",
+    "rva": "0x3138b9a",
+    "text": "clienthello tlsext"
+  },
+  {
+    "va": "0x710313badd",
+    "rva": "0x313badd",
+    "text": "PlayAnimeSad_14538"
+  },
+  {
+    "va": "0x710314500a",
+    "rva": "0x314500a",
+    "text": "PartsExclChase10MVsVigilant"
+  },
+  {
+    "va": "0x7103149759",
+    "rva": "0x3149759",
+    "text": "world/ik_data/pokemon/ai/pokemon_species_cant_action/pokemon_species_cant_action_array"
+  },
+  {
+    "va": "0x71031499fc",
+    "rva": "0x31499fc",
+    "text": "Title/UI/PlayAnimationForLanguage"
+  },
+  {
+    "va": "0x71031e18c7",
+    "rva": "0x31e18c7",
+    "text": "qworld/ik_obj_template/effect/field/poke/red_eye_/red_eye.trsot"
+  }
+]
