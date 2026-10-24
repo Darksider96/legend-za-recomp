@@ -51,6 +51,41 @@ def scratch_pattern():
     return bytes(out)
 
 
+# Valores de borda de FP (bits): zeros, infinitos, NaN silencioso/sinalizador com payload, subnormais, empates de
+# arredondamento, limites de conversao para inteiro e valores comuns
+F32_SPECIAL = [0x00000000, 0x80000000, 0x7F800000, 0xFF800000, 0x7FC00000, 0xFFC00000, 0x7FA00001, 0xFF800123, 0x7FC12345,
+               0x00000001, 0x807FFFFF, 0x00400000, 0x00800000, 0x7F7FFFFF, 0xFF7FFFFF, 0x3F800000, 0xBF800000, 0x3F000000,
+               0x3FC00000, 0x40200000, 0xC0200000, 0x3EC00000, 0x4B800000, 0x4F000000, 0xCF000000, 0x5F000000, 0xDF000000,
+               0x4F800000, 0x5F800000, 0x38800000, 0x387FC000, 0x33800000, 0x477FF000, 0x477FE000, 0x40490FDB]
+F64_SPECIAL = [0x0000000000000000, 0x8000000000000000, 0x7FF0000000000000, 0xFFF0000000000000, 0x7FF8000000000000,
+               0xFFF8000000000000, 0x7FF4000000000001, 0x7FF8000000012345, 0x0000000000000001, 0x800FFFFFFFFFFFFF,
+               0x0010000000000000, 0x7FEFFFFFFFFFFFFF, 0x3FF0000000000000, 0xBFF0000000000000, 0x3FE0000000000000,
+               0x3FF8000000000000, 0x4004000000000000, 0xC004000000000000, 0x41E0000000000000, 0xC1E0000000000000,
+               0x43E0000000000000, 0xC3E0000000000000, 0x41F0000000000000, 0x43F0000000000000, 0x3810000000000000,
+               0x36A0000000000000, 0x400921FB54442D18]
+
+
+def random_vector(rng):
+    mode = rng.randrange(4)
+    if mode == 0:
+        return bytes(rng.getrandbits(8) for _ in range(16))
+    if mode == 1:  # float: especial, normal "comum" ou bits aleatorios
+        lanes = []
+        for _ in range(4):
+            roll = rng.random()
+            lanes.append(rng.choice(F32_SPECIAL) if roll < 0.4 else
+                         struct.unpack("<I", struct.pack("<f", rng.uniform(-1000, 1000)))[0] if roll < 0.8 else rng.getrandbits(32))
+        return struct.pack("<4I", *lanes)
+    if mode == 2:
+        lanes = []
+        for _ in range(2):
+            roll = rng.random()
+            lanes.append(rng.choice(F64_SPECIAL) if roll < 0.4 else
+                         struct.unpack("<Q", struct.pack("<d", rng.uniform(-1e6, 1e6)))[0] if roll < 0.8 else rng.getrandbits(64))
+        return struct.pack("<2Q", *lanes)
+    return bytes(rng.choice([0, 1, 0x7F, 0x80, 0xFF, rng.getrandbits(8)]) for _ in range(16))
+
+
 def random_value(rng):
     roll = rng.random()
     if roll < 0.25:
@@ -76,7 +111,7 @@ def make_case(test, rng):
             sp = target
         else:
             x[test["rn"]] = target
-    vectors = bytes(rng.getrandbits(8) for _ in range(512))
+    vectors = b"".join(random_vector(rng) for _ in range(32))
     nzcv = rng.getrandbits(4) << 28
     return dict(rva=test["rva"], x=x, sp=sp, nzcv=nzcv, fpcr=0, tpidr=rng.getrandbits(64), tpidrro=rng.getrandbits(64), v=vectors)
 

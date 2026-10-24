@@ -5,6 +5,8 @@
 //     imports.csv    nome,namespace,demangled,tipo,got,resolvido_no_sdk
 //     exports.csv    nome,rva,tamanho,tipo
 //     functions.csv  rva,tamanho          (funcoes descritas no .eh_frame)
+//     relocations.csv rva,tipo,segmento,alvo_rva,simbolo   (alvo_rva: relativas; simbolo: as demais)
+//     layout.csv     nome,rva,tamanho     (segmentos, .bss e INIT_ARRAY)
 //   Saida derivada do binario do jogo: a pasta padrao (analysis/recomp/generated) nao e versionada.
 
 #include "recomp/nso.hpp"
@@ -36,7 +38,12 @@ std::string Demangle(const std::string& name) {
 }
 
 // "nn::os", "nn::fs"... a partir do nome demangled; C/NVN/outros pelo prefixo
-std::string Namespace(const std::string& mangled, const std::string& demangled) {
+std::string Namespace(const std::string& mangled, std::string demangled) {
+    // Simbolos gerados pelo compilador: o namespace e o da entidade descrita
+    for (const char* prefix : {"TLS init function for ", "TLS wrapper function for ", "vtable for ", "typeinfo for ", "typeinfo name for ",
+                               "guard variable for ", "VTT for ", "construction vtable for "}) {
+        if (demangled.starts_with(prefix)) demangled = demangled.substr(std::char_traits<char>::length(prefix));
+    }
     if (demangled.starts_with("nn::")) {
         const size_t second = demangled.find("::", 4);
         return second == std::string::npos ? "nn" : demangled.substr(0, second);
@@ -167,6 +174,29 @@ int main(int argc, char** argv) {
         }
     }
 
+    const auto segment_of = [&module](uint64_t rva) {
+        if (rva < module.Rodata().memory_offset) return "text";
+        if (rva < module.Data().memory_offset) return "rodata";
+        return rva < uint64_t{module.Data().memory_offset} + module.Data().size ? "data" : "bss";
+    };
+    std::ofstream relocations(fs::path(out_dir) / "relocations.csv");
+    relocations << "rva,tipo,segmento,alvo_rva,simbolo\n";
+    for (const recomp::Relocation& r : module.Relocations()) {
+        const char* type = r.type == recomp::kRelocRelative ? (r.relr ? "relr" : "relative")
+                           : r.type == recomp::kRelocAbs64 ? "abs64"
+                           : r.type == recomp::kRelocGlobDat ? "glob_dat"
+                           : r.type == recomp::kRelocJumpSlot ? "jump_slot"
+                                                              : "outro";
+        relocations << Hex(r.offset) << "," << type << "," << segment_of(r.offset) << ",";
+        if (r.type == recomp::kRelocRelative) relocations << Hex(static_cast<uint64_t>(r.addend)) << ",\n";
+        else relocations << "," << Csv(r.symbol < symbols.size() ? symbols[r.symbol].name : std::string()) << "\n";
+    }
+    std::ofstream layout(fs::path(out_dir) / "layout.csv");
+    layout << "nome,rva,tamanho\n";
+    for (int i = 0; i < 3; ++i) layout << names[i] << "," << Hex(segments[i]->memory_offset) << "," << segments[i]->size << "\n";
+    layout << ".bss," << Hex(uint64_t{module.Data().memory_offset} + module.Data().size) << "," << module.BssSize() << "\n";
+    layout << "init_array," << Hex(module.InitArray()) << "," << module.InitArrayCount() * 8 << "\n";
+
     uint64_t covered = 0, largest = 0, largest_at = 0, overlaps = 0, previous_end = 0;
     for (const recomp::FunctionRange& f : module.Functions()) {
         functions << Hex(f.start) << "," << f.size << "\n";
@@ -225,6 +255,6 @@ int main(int argc, char** argv) {
                   << "\n";
         for (size_t i = 0; i < unresolved.size() && i < 15; ++i) std::cout << "    " << unresolved[i] << "\n";
     }
-    std::cout << "\n  arquivos em " << out_dir << ": imports.csv, exports.csv, functions.csv\n";
+    std::cout << "\n  arquivos em " << out_dir << ": imports.csv, exports.csv, functions.csv, relocations.csv, layout.csv\n";
     return all_ok ? 0 : 1;
 }

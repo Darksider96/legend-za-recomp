@@ -164,14 +164,22 @@ Insn BranchesSystem(Insn d, uint32_t w) {
 }
 
 Insn LoadsStores(Insn d, uint32_t w) {
-    if (Bit(w, 26)) return d;  // SIMD/FP (R3)
+    const bool vector = Bit(w, 26);
+    d.simd = vector;
     d.rd = static_cast<uint8_t>(Bits(w, 4, 0));
     d.rn = static_cast<uint8_t>(Bits(w, 9, 5));
+    if (vector && Bits(w, 29, 27) == 0b001) return DecodeSimdMemory(d, w);  // LD1-LD4/ST1-ST4
 
     if (Bits(w, 29, 27) == 0b011 && Bits(w, 25, 24) == 0) {  // LDR literal
         const uint32_t opc = Bits(w, 31, 30);
         d.target = d.pc + static_cast<uint64_t>(SignExtend(Bits(w, 23, 5), 19) * 4);
         d.mode = AddrMode::Literal;
+        if (vector) {  // S, D, Q
+            if (opc == 3) return d;
+            d.op = Op::Load;
+            d.size = static_cast<uint8_t>(opc + 2);
+            return d;
+        }
         if (opc == 3) {
             d.op = Op::Prefetch;
             return d;
@@ -205,23 +213,34 @@ Insn LoadsStores(Insn d, uint32_t w) {
     if (Bits(w, 29, 27) == 0b101) {  // pares
         const uint32_t opc = Bits(w, 31, 30), mode = Bits(w, 24, 23);
         const bool load = Bit(w, 22);
-        if (opc == 3 || (opc == 1 && !load)) return d;  // 01 com L=0 e STGP (MTE)
-        d.op = load ? Op::LoadPair : Op::StorePair;
-        d.size = opc == 2 ? 3 : 2;
-        d.sign_extend = opc == 1;
-        d.dest64 = opc != 0;
+        if (vector) {  // S, D, Q
+            if (opc == 3) return d;
+            d.op = load ? Op::LoadPair : Op::StorePair;
+            d.size = static_cast<uint8_t>(opc + 2);
+        } else {
+            if (opc == 3 || (opc == 1 && !load)) return d;  // 01 com L=0 e STGP (MTE)
+            d.op = load ? Op::LoadPair : Op::StorePair;
+            d.size = opc == 2 ? 3 : 2;
+            d.sign_extend = opc == 1;
+            d.dest64 = opc != 0;
+        }
         d.ra = static_cast<uint8_t>(Bits(w, 14, 10));
         d.imm = SignExtend(Bits(w, 21, 15), 7) << d.size;
         d.mode = mode == 1 ? AddrMode::PostIndex : mode == 3 ? AddrMode::PreIndex : AddrMode::Offset;
         return d;
     }
 
-    if (Bits(w, 29, 27) != 0b111) return d;  // exclusivos/atomicos e o restante ficam para a R3
-    const uint32_t size = Bits(w, 31, 30), opc = Bits(w, 23, 22);
+    if (Bits(w, 29, 27) != 0b111) return d;
+    const uint32_t opc = Bits(w, 23, 22);
+    // V = 1: size 00 com opc 1x e Q (128 bits); senao B/H/S/D. Escalas e offsets seguem o tamanho do acesso.
+    if (vector && Bits(w, 31, 30) != 0 && (opc & 2)) return d;
+    const uint32_t size = vector && (opc & 2) ? 4 : Bits(w, 31, 30);
     // opc: 00 store, 01 load, 10 load com sinal para X (ou PRFM com size 3), 11 load com sinal para W
     const auto classify = [&](Insn& insn) {
         insn.size = static_cast<uint8_t>(size);
-        if (opc == 0) {
+        if (vector) {
+            insn.op = (opc & 1) ? Op::Load : Op::Store;
+        } else if (opc == 0) {
             insn.op = Op::Store;
         } else if (opc == 1) {
             insn.op = Op::Load;
@@ -375,21 +394,17 @@ Insn Decode(uint32_t word, uint64_t pc) {
     if ((op0 & 0b1110) == 0b1010) return BranchesSystem(d, word);
     if ((op0 & 0b0101) == 0b0100) return LoadsStores(d, word);
     if ((op0 & 0b0111) == 0b0101) return DataProcessingRegister(d, word);
-    return d;  // SIMD/FP e nao alocados
+    if ((op0 & 0b0111) == 0b0111) return DecodeSimdData(d, word);
+    return d;  // nao alocados
 }
 
 const char* OpName(Op op) {
-    static const char* names[] = {
-        "unknown", "add_imm", "sub_imm", "movz", "movn", "movk", "and_imm", "orr_imm", "eor_imm", "adr", "adrp", "sbfm", "bfm",
-        "ubfm", "extr", "b", "bl", "b.cond", "cbz", "cbnz", "tbz", "tbnz", "br", "blr", "ret", "load", "store", "load_pair",
-        "store_pair", "prefetch", "load_exclusive", "store_exclusive", "load_exclusive_pair",
-        "store_exclusive_pair", "load_acquire", "store_release", "and", "bic", "orr", "orn", "eor", "eon", "add_shift", "sub_shift", "add_ext", "sub_ext",
-        "adc", "sbc", "csel", "csinc", "csinv", "csneg", "ccmp", "ccmn", "udiv", "sdiv", "lslv", "lsrv", "asrv", "rorv", "rbit",
-        "rev16", "rev32", "rev", "clz", "cls", "madd", "msub", "smaddl", "smsubl", "umaddl", "umsubl", "smulh", "umulh",
-        "hint", "barrier", "clrex", "mrs", "msr", "svc", "brk", "udf",
-    };
-    const auto index = static_cast<size_t>(op);
-    return index < sizeof(names) / sizeof(names[0]) ? names[index] : "?";
+    switch (op) {
+#define RECOMP_A64_NAME(name, text)     case Op::name: return text;
+        RECOMP_A64_OPS(RECOMP_A64_NAME)
+#undef RECOMP_A64_NAME
+    }
+    return "?";
 }
 
 std::string Describe(const Insn& insn) {

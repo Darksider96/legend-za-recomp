@@ -1,31 +1,37 @@
 #include "recomp/emit_c.hpp"
 
+#include "emit_internal.hpp"
+
 #include <cstring>
 #include <format>
 
 namespace recomp {
+
+namespace emit {
+
+std::string Reg(unsigned n, bool sf, bool sp) {
+    if (n == 31) return sp ? (sf ? "c.sp" : "static_cast<uint32_t>(c.sp)") : (sf ? "uint64_t{0}" : "uint32_t{0}");
+    return sf ? std::format("c.x[{}]", n) : std::format("static_cast<uint32_t>(c.x[{}])", n);
+}
+
+std::string Write(unsigned n, bool sf, const std::string& value, bool sp) {
+    if (n == 31 && !sp) return std::format("(void)({});", value);
+    const std::string dst = n == 31 ? "c.sp" : std::format("c.x[{}]", n);
+    return sf ? std::format("{} = {};", dst, value) : std::format("{} = static_cast<uint32_t>({});", dst, value);
+}
+
+} // namespace emit
 
 namespace {
 
 using a64::AddrMode;
 using a64::Insn;
 using a64::Op;
+using emit::Reg;
+using emit::Write;
 
 const char* Type(bool sf) { return sf ? "uint64_t" : "uint32_t"; }
 const char* SignedType(bool sf) { return sf ? "int64_t" : "int32_t"; }
-
-// Leitura de registrador: 31 = XZR (zero) ou SP, conforme a instrucao
-std::string Reg(unsigned n, bool sf, bool sp = false) {
-    if (n == 31) return sp ? (sf ? "c.sp" : "static_cast<uint32_t>(c.sp)") : (sf ? "uint64_t{0}" : "uint32_t{0}");
-    return sf ? std::format("c.x[{}]", n) : std::format("static_cast<uint32_t>(c.x[{}])", n);
-}
-
-// Escrita: 32 bits zeram a parte alta; XZR descarta (mas avalia a expressao, que pode atualizar flags)
-std::string Write(unsigned n, bool sf, const std::string& value, bool sp = false) {
-    if (n == 31 && !sp) return std::format("(void)({});", value);
-    const std::string dst = n == 31 ? "c.sp" : std::format("c.x[{}]", n);
-    return sf ? std::format("{} = {};", dst, value) : std::format("{} = static_cast<uint32_t>({});", dst, value);
-}
 
 std::string Shifted(const Insn& d) {
     const std::string rm = Reg(d.rm, d.sf);
@@ -99,6 +105,11 @@ struct Emitter {
         std::string body = std::format("{{ const uint64_t a = {}; ", address);
         const uint64_t stride = uint64_t{1} << d.size;
         const auto access = [&](unsigned reg, const std::string& at) {
+            if (d.simd) {  // V31 e um registrador comum (nao ha registrador zero em SIMD)
+                const unsigned bytes = 1u << d.size;
+                return load ? std::format("c.vreg[{}] = recomp::LoadVector<{}>({}); ", reg, bytes, at)
+                            : std::format("recomp::StoreVector<{}>({}, c.vreg[{}]); ", bytes, at, reg);
+            }
             if (load) {
                 const bool wide = d.sign_extend ? d.dest64 : d.size == 3;
                 return reg == 31 ? std::string() : Write(reg, wide, Loaded(d, at)) + " ";
@@ -287,7 +298,12 @@ struct Emitter {
             else if (d.sysreg == a64::kSysFpsr) Line(std::format("c.fpsr = static_cast<uint32_t>({});", Reg(d.rd, true)));
             else Unsupported(d);
             break;
-        default: Unsupported(d); break;
+        default: {
+            std::string code;
+            if (d.simd && emit::Simd(d, code)) Line(code);
+            else Unsupported(d);
+            break;
+        }
         }
     }
 };
@@ -331,7 +347,7 @@ bool EmitFunction(const NsoModule& module, const FunctionRange& function, EmitRe
 
 std::string EmitFile(const std::vector<EmitResult>& functions) {
     std::string file = "// Gerado por recomp/tools/a64_recomp a partir do dump do usuario — nao versionar\n"
-                       "#include \"recomp/context.hpp\"\n\n#include <bit>\n\nnamespace guest {\n\n";
+                       "#include \"recomp/simd.hpp\"\n\n#include <bit>\n\nnamespace guest {\n\n";
     std::set<uint64_t> declared;
     for (const EmitResult& f : functions) {
         for (uint64_t callee : f.callees) {

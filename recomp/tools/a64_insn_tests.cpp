@@ -32,6 +32,7 @@ bool AccessesMemory(Op op) {
     case Op::Load: case Op::Store: case Op::LoadPair: case Op::StorePair: case Op::Prefetch:
     case Op::LoadExclusive: case Op::StoreExclusive: case Op::LoadExclusivePair: case Op::StoreExclusivePair:
     case Op::LoadAcquire: case Op::StoreRelease:
+    case Op::LoadStruct: case Op::StoreStruct: case Op::LoadLane: case Op::StoreLane: case Op::LoadReplicate:
         return true;
     default:
         return false;
@@ -129,7 +130,7 @@ int main(int argc, char** argv) {
     }
 
     std::string file = "// Gerado por recomp/tools/a64_insn_tests a partir do dump do usuario — nao versionar\n"
-                       "#include \"recomp/context.hpp\"\n#include \"insn_difftest.hpp\"\n\n#include <bit>\n\nnamespace guest {\n\n";
+                       "#include \"recomp/simd.hpp\"\n#include \"insn_difftest.hpp\"\n\n#include <bit>\n\nnamespace guest {\n\n";
     // Stubs: toda saida da instrucao (fall-through, salto, chamada) registra o destino e volta
     for (uint64_t callee : callees) {
         file += std::format("void {}(recomp::Context&) {{ recomp::test::Exit(recomp::kImageBase + 0x{:x}ull); }}\n", recomp::FunctionName(callee), callee);

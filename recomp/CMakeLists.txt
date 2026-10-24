@@ -7,10 +7,11 @@ if(MINGW)
     # Sem -static o executavel pode carregar um libstdc++ de outra instalacao do MinGW no PATH e falhar ao iniciar
     add_link_options(-static)
 endif()
-# LDXP/STXP de 64 bits no codigo gerado viram cmpxchg16b
-add_compile_options(-mcx16)
+# LDXP/STXP de 64 bits no codigo gerado viram cmpxchg16b; sem contracao de FP, a*b+c de instrucoes diferentes
+# nao pode virar FMA (o ARM arredonda cada uma)
+add_compile_options(-mcx16 -ffp-contract=off)
 
-add_library(recomp_core STATIC src/nso.cpp src/a64_decode.cpp src/emit_c.cpp)
+add_library(recomp_core STATIC src/nso.cpp src/a64_decode.cpp src/a64_simd.cpp src/emit_c.cpp src/emit_simd.cpp)
 target_include_directories(recomp_core PUBLIC include)
 target_compile_options(recomp_core PRIVATE -Wall -Wextra)
 
@@ -41,6 +42,11 @@ add_executable(context_test tests/context_test.cpp)
 target_include_directories(context_test PRIVATE include)
 target_compile_options(context_test PRIVATE -Wall -Wextra)
 add_test(NAME context_test COMMAND context_test)
+
+add_executable(simd_test tests/simd_test.cpp)
+target_include_directories(simd_test PRIVATE include)
+target_compile_options(simd_test PRIVATE -Wall -Wextra -ffp-contract=off)
+add_test(NAME simd_test COMMAND simd_test)
 
 # Prova de conceito R2: traduz a funcao 0x133f0c0 do dump do usuario no build (o codigo gerado nunca vai para o git)
 set(ZA_MAIN ${ZA_ROOT}/exefs/main)
