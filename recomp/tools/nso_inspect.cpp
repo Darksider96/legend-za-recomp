@@ -7,6 +7,7 @@
 //     functions.csv  rva,tamanho          (funcoes descritas no .eh_frame)
 //     relocations.csv rva,tipo,segmento,alvo_rva,simbolo   (alvo_rva: relativas; simbolo: as demais)
 //     layout.csv     nome,rva,tamanho     (segmentos, .bss e INIT_ARRAY)
+//     image.bin      imagem plana sem relocacoes (offset = RVA)
 //   Saida derivada do binario do jogo: a pasta padrao (analysis/recomp/generated) nao e versionada.
 
 #include "recomp/nso.hpp"
@@ -196,6 +197,9 @@ int main(int argc, char** argv) {
     for (int i = 0; i < 3; ++i) layout << names[i] << "," << Hex(segments[i]->memory_offset) << "," << segments[i]->size << "\n";
     layout << ".bss," << Hex(uint64_t{module.Data().memory_offset} + module.Data().size) << "," << module.BssSize() << "\n";
     layout << "init_array," << Hex(module.InitArray()) << "," << module.InitArrayCount() * 8 << "\n";
+    // Imagem plana (.text, .rodata, .data, .bss zerado), sem relocacoes aplicadas: offset no arquivo = RVA
+    std::ofstream image_file(fs::path(out_dir) / "image.bin", std::ios::binary);
+    image_file.write(reinterpret_cast<const char*>(module.Image().data()), static_cast<std::streamsize>(module.Image().size()));
 
     uint64_t covered = 0, largest = 0, largest_at = 0, overlaps = 0, previous_end = 0;
     for (const recomp::FunctionRange& f : module.Functions()) {
@@ -255,6 +259,6 @@ int main(int argc, char** argv) {
                   << "\n";
         for (size_t i = 0; i < unresolved.size() && i < 15; ++i) std::cout << "    " << unresolved[i] << "\n";
     }
-    std::cout << "\n  arquivos em " << out_dir << ": imports.csv, exports.csv, functions.csv, relocations.csv, layout.csv\n";
+    std::cout << "\n  arquivos em " << out_dir << ": imports.csv, exports.csv, functions.csv, relocations.csv, layout.csv, image.bin\n";
     return all_ok ? 0 : 1;
 }
