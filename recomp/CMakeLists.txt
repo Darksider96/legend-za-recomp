@@ -80,7 +80,7 @@ endif()
 # Jogo recompilado (R4): traduz main e sdk inteiros a partir do dump do usuario e compila o za_recomp.
 # Demorado (~1,2 GB de C++); o codigo gerado fica em build/ e nunca vai para o git.
 option(RECOMP_GAME "Traduzir main e sdk e compilar o za_recomp" OFF)
-set(RECOMP_GUEST_JOBS 6 CACHE STRING "Compilacoes paralelas dos arquivos gerados (cada uma usa ~1-2 GB de RAM)")
+set(RECOMP_GUEST_JOBS 6 CACHE STRING "Compilacoes paralelas dos arquivos gerados (cada uma usa ~0,6 GB de RAM)")
 set(ZA_SDK ${ZA_ROOT}/exefs/sdk)
 if(RECOMP_GAME AND EXISTS ${ZA_MAIN} AND EXISTS ${ZA_SDK})
     set(GUEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/guest)
@@ -103,14 +103,14 @@ if(RECOMP_GAME AND EXISTS ${ZA_MAIN} AND EXISTS ${ZA_SDK})
         endforeach()
         set(${out} ${files} PARENT_SCOPE)
     endfunction()
-    guest_outputs(${GUEST_DIR}/main 128 MAIN_SOURCES)
-    guest_outputs(${GUEST_DIR}/sdk 24 SDK_SOURCES)
+    guest_outputs(${GUEST_DIR}/main 256 MAIN_SOURCES)
+    guest_outputs(${GUEST_DIR}/sdk 40 SDK_SOURCES)
     add_custom_command(OUTPUT ${MAIN_SOURCES}
-        COMMAND a64_recomp ${ZA_MAIN} --all --out-dir ${GUEST_DIR}/main --files 128 ${MAIN_EXTRA}
+        COMMAND a64_recomp ${ZA_MAIN} --all --out-dir ${GUEST_DIR}/main --files 256 ${MAIN_EXTRA}
         DEPENDS a64_recomp ${ZA_MAIN}
         COMMENT "Traduzindo exefs/main")
     add_custom_command(OUTPUT ${SDK_SOURCES}
-        COMMAND a64_recomp ${ZA_SDK} --all --out-dir ${GUEST_DIR}/sdk --files 24 --base 0x7108000000 --prefix s_ --table kSdkFunctions
+        COMMAND a64_recomp ${ZA_SDK} --all --out-dir ${GUEST_DIR}/sdk --files 40 --base 0x7108000000 --prefix s_ --table kSdkFunctions
         DEPENDS a64_recomp ${ZA_SDK}
         COMMENT "Traduzindo exefs/sdk")
     set_source_files_properties(${MAIN_SOURCES} ${SDK_SOURCES} PROPERTIES COMPILE_OPTIONS "-O1;-foptimize-sibling-calls;-w;-Wa,-mbig-obj")

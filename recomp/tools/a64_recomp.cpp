@@ -78,7 +78,12 @@ int TranslateAll(const recomp::NsoModule& module, const std::string& out_dir, co
     all.erase(std::unique(all.begin(), all.end(), [](const auto& a, const auto& b) { return a.start == b.start; }), all.end());
 
     std::filesystem::create_directories(out_dir);
-    const size_t per_file = (all.size() + file_count - 1) / file_count;
+    // Fatia por numero de instrucoes (aproxima o tamanho do C++ gerado): arquivos de tamanho parecido mantem o pico
+    // de memoria de cada compilacao baixo
+    uint64_t total_instructions = 0;
+    for (const auto& f : all) total_instructions += f.size / 4;
+    const uint64_t per_file = (total_instructions + file_count - 1) / file_count;
+    uint64_t batch_instructions = 0;
     std::set<uint64_t> defined, called;
     for (const auto& f : all) defined.insert(f.start);
     size_t unsupported = 0, bytes = 0, files = 0;
@@ -103,8 +108,12 @@ int TranslateAll(const recomp::NsoModule& module, const std::string& out_dir, co
         if (!recomp::EmitFunction(module, f, result)) continue;
         unsupported += result.unsupported.size();
         called.insert(result.callees.begin(), result.callees.end());
+        batch_instructions += result.instructions;
         batch.push_back(std::move(result));
-        if (batch.size() >= per_file) flush();
+        if (batch_instructions >= per_file && files + 1 < file_count) {
+            flush();
+            batch_instructions = 0;
+        }
     }
     flush();
     while (files < file_count) write(std::format("guest_{:03}.cpp", files++), "// vazio\n");

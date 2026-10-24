@@ -1,57 +1,53 @@
-# TAREFA PARA O CODEX — Censo do kernel e dos serviços usados pelo sdk (planejamento da R5)
+# TAREFA PARA O CODEX — Superfície de API da R5 (fs, hid, applet, conta, horário, configurações)
 
 ## Contexto
-As tabelas de salto foram aceitas (27.860 entradas, todas dentro da função do `BR`, conferido). Mudança de
-arquitetura (ver seção 6 do `ORCHESTRATION_MANIFEST.md`): o **sdk também é recompilado** e a fronteira nativa fica
-nas **SVCs** (chamadas ao kernel do Horizon) e nos **serviços** acessados por IPC (`sm:`, `fsp-srv`, `hid`,
-`appletOE`, `vi:m`, `nvdrv`, `audren:u`...). Para planejar a R5 precisamos saber quais SVCs e serviços o jogo usa e
-quais APIs `nn::` levam até eles.
+O censo de kernel foi aceito (58 SVCs conferidas por varredura independente). Na R5 o runtime vai emular os
+serviços do sistema. Para cada área há duas opções: emular o **serviço IPC** (o sdk recompilado fala com ele) ou
+**sobrescrever a API `nn::`** do sdk por nome com uma implementação nativa. A escolha depende de quantas funções o
+jogo usa, com que argumentos e quais serviços elas alcançam. Esta tarefa levanta esses dados.
 
-Entradas novas em `analysis/recomp/generated/sdk/` (geradas por `nso_inspect exefs/sdk`): `exports.csv` (23.000
-exportações), `functions.csv` (32.097 funções), `imports.csv`, `relocations.csv`, `layout.csv`, `image.bin`.
-Para o main: os CSVs de sempre em `analysis/recomp/generated/` (inclusive `image.bin`, `plt_map.csv`, `imports.csv`).
-Capstone no `build\venv`.
+Entradas (todas em `analysis/recomp/generated/`): `imports.csv`, `plt_map.csv`, `call_targets.csv`, `image.bin`,
+`functions.csv`, `gap_functions.csv` (main); `sdk/*` (sdk); e os CSVs do seu censo de kernel
+(`import_kernel_reach.csv`, `service_names.csv`, `svc_sites.csv`). Capstone no `build\venv`.
 
 ## Arquivos que você pode criar (e SOMENTE estes)
-- `analysis/recomp/kernel_census.py`
-- `analysis/recomp/kernel_census_report.md`
+- `analysis/recomp/r5_api_surface.py`
+- `analysis/recomp/r5_api_surface_report.md`
 - Saídas CSV **somente** em `analysis/recomp/generated/`
-Mesma regra de conteúdo: o `.md` só tem contagens, RVAs, mnemônicos, nomes de SVCs/serviços e nomes de
-importações/exportações (demangled pode).
+Mesma regra de conteúdo do `.md`: contagens, RVAs, nomes de importações/exportações (demangled), nomes de serviços,
+mnemônicos e **strings curtas de caminho/montagem** (ex.: `rom:`, `save:`, `rom:/data/...`). Nada de listagens de
+instruções ou pseudocódigo.
 
-## Parte 1 — SVCs
-- Todas as instruções `svc #imm` no sdk e no main: módulo, RVA, número da SVC, função que contém (RVA) e o nome da
-  exportação dessa função quando existir (no sdk, quase toda função `svc` é um wrapper exportado como
-  `nn::svc::...`).
-- Saída `generated/svc_sites.csv`; no relatório: tabela por número de SVC (nome do Horizon, ex. 0x29 = GetInfo) com
-  quantidade de sites e nomes dos wrappers.
+## Parte 1 — Importações por área
+Áreas: `nn::fs`, `nn::hid`, `nn::oe` + `nn::applet`, `nn::account`, `nn::time`, `nn::settings`, `nn::err`,
+`nn::nifm`, `nn::aoc`, `nn::pl`, `nn::vi`, `nn::audio`, `nn::os` (só para referência de volume).
+Para cada importação de função do main nessas áreas: nome demangled, chamadas diretas (stub da PLT em
+`call_targets.csv`), funções distintas do main que chamam, serviços e SVCs alcançáveis (`import_kernel_reach.csv`).
+Saída `generated/r5_imports.csv`; no relatório, uma tabela por área ordenada por chamadas.
 
-## Parte 2 — Nomes de serviço
-- Procurar no `.rodata` do sdk (e do main) os nomes de serviço do `sm` (strings ASCII curtas terminadas em zero,
-  como `fsp-srv`, `hid`, `appletOE`, `vi:m`, `nvdrv`, `audren:u`, `set:sys`, `time:u`, `acc:u0`, `nifm:u`,
-  `bsd:u`, `ssl`, `pctl:a`, `aoc:u`, `friend:u`, `prepo:u`, `bcat:u`, `nim`, ...). Use uma lista conhecida de serviços
-  do Horizon + strings no formato `[a-z0-9:-]{2,8}` referenciadas por `ADRP+ADD` no código.
-- Para cada nome: as funções que o referenciam (RVA e exportação mais próxima/contida).
-- Saída `generated/service_names.csv` (`modulo,string_rva,nome,funcao_rva,exportacao`).
+## Parte 2 — Montagens e caminhos do sistema de arquivos
+- Para cada chamada do main a funções `nn::fs::Mount*`, `OpenFile`, `OpenDirectory`, `GetEntryType`, `CreateFile`,
+  `DeleteFile`, `Commit*`: tentar recuperar o argumento de string (nome de montagem ou caminho) montado com
+  `ADRP+ADD`/`ADR` no registrador de argumento (`x0`/`x1`) nas até 16 instruções anteriores à chamada, sem
+  sobrescrita no meio.
+- Saída `generated/r5_fs_strings.csv` (`chamada_rva,importacao,registrador,string`); no relatório: os nomes de
+  montagem distintos e os 30 prefixos de caminho mais frequentes (até o segundo `/`), com contagens; e quantas
+  chamadas ficaram sem string recuperada.
 
-## Parte 3 — Do main até o kernel
-- Para cada importação do main que é **função** e resolve para uma exportação do sdk (pelo nome): percorrer o grafo
-  de chamadas diretas (`BL`/`B` para fora) dentro do sdk a partir dela, até profundidade 12, e registrar quais SVCs
-  (Parte 1) e quais nomes de serviço (Parte 2) são alcançáveis.
-- Saída `generated/import_kernel_reach.csv` (`importacao,svcs,servicos,funcoes_visitadas`).
-- No relatório: para os 30 namespaces `nn::` com mais chamadas diretas (use `analysis/recomp/hle_priority.md` ou
-  `call_targets.csv` + `plt_map.csv`), os serviços e SVCs alcançáveis; e a lista de importações que **não** alcançam
-  nenhuma SVC (são puras — o código recompilado do sdk já basta).
+## Parte 3 — Recomendação por área
+Para cada área, uma linha: total de chamadas, nº de funções distintas usadas, serviços IPC alcançados, e uma
+**recomendação** `api` (sobrescrever as funções `nn::` por nome) ou `ipc` (emular o serviço), com o critério que
+você usou explicado em uma frase (por exemplo: poucas funções de alto nível e serviço com protocolo complexo → `api`).
+Não é decisão final — o Claude Code decide —, é um insumo justificado.
 
 ## Autoverificações (o script deve conferir e imprimir)
-1. Toda instrução `svc` encontrada fica dentro de uma função conhecida do seu módulo (ou é listada como exceção).
-2. Cada SVC da Parte 1 tem nome do Horizon atribuído (ou é marcada `desconhecida`).
-3. As 917 importações com stub do main: quantas resolvem para exportação do sdk pelo nome, quantas não (listar as que não).
-4. Contagens das partes batem com os CSVs gravados.
+1. Toda importação listada existe em `imports.csv` e tem stub em `plt_map.csv` (ou é marcada `sem_stub`).
+2. A soma das chamadas por área bate com `call_targets.csv`.
+3. Toda string recuperada na Parte 2 é ASCII terminada em zero e está no `.rodata` do main.
 
 ## Critério de aceite
 ```
-build\venv\Scripts\python.exe -I analysis\recomp\kernel_census.py
+build\venv\Scripts\python.exe -I analysis\recomp\r5_api_surface.py
 python tools\check_repo_safety.py
 ```
 
