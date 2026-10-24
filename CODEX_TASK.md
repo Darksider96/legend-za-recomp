@@ -1,5 +1,10 @@
 # TAREFA PARA O CODEX — Superfície de API da R5 (fs, hid, applet, conta, horário, configurações)
 
+> **Esta é uma tarefa NOVA.** O censo de kernel (`kernel_census*`) já foi aceito e commitado: **não edite**
+> `analysis/recomp/kernel_census.py` nem `kernel_census_report.md` (as edições não pedidas que estão na sua cópia de
+> trabalho não serão incorporadas). Os únicos arquivos desta tarefa são `r5_api_surface.py` e
+> `r5_api_surface_report.md`, descritos abaixo.
+
 ## Contexto
 O censo de kernel foi aceito (58 SVCs conferidas por varredura independente). Na R5 o runtime vai emular os
 serviços do sistema. Para cada área há duas opções: emular o **serviço IPC** (o sdk recompilado fala com ele) ou
