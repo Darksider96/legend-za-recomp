@@ -1,42 +1,71 @@
-# TAREFA PARA O ANTIGRAVITY — Verificação de segurança do repositório
+# TAREFAS PARA O ANTIGRAVITY — Lote 2
 
-## Contexto
-O repositório `legend-za-recomp` vai para o GitHub. A regra 5 do `ORCHESTRATION_MANIFEST.md` proíbe versionar
-material do jogo. O `.gitignore` já cobre isso, mas precisamos de uma checagem automática antes de cada commit.
+A tarefa anterior (verificação de segurança) foi aceita. Faça a **Tarefa A** e depois a **Tarefa B**, nessa ordem.
+Entregue um relatório por tarefa com a saída dos comandos de aceite.
 
-## Arquivos que você pode criar (e SOMENTE estes)
-1. `tools/check_repo_safety.py`
-2. `tools/install_hooks.bat`
-
-**Não edite nenhum outro arquivo**: nem `.gitignore`, nem o manifesto, nem nada em `recomp/`, `za_port/` ou `analysis/`.
-Se achar que outro arquivo precisa mudar, escreva isso no relatório final em vez de mudar.
-
-## O que `tools/check_repo_safety.py` deve fazer
-- Python 3, só biblioteca padrão. Rodar a partir da raiz do repositório.
-- Obter a lista de arquivos com `git ls-files --cached` (arquivos rastreados e já no stage).
-- Falhar (código de saída 1) e listar o motivo de cada arquivo que bater em qualquer regra:
-  1. Extensões proibidas: `.nsp .xci .keys .bin .bfbs .bnk .pck .wem .bntx .trmdl .trmsh .trmbf .trcol .trscn .trpak .trpfs .trpfd .dll .exe`
-  2. Caminho começando com `romfs/`, `exefs/` ou `recomp/out/`, ou contendo `/generated/`
-  3. Arquivo maior que 5 MB
-  4. Arquivo de texto (`.txt .c .cpp .h .hpp .md .py .json`) contendo padrões típicos do decompilador do Ghidra:
-     `param_1`, `uVar1`, `undefined8`, `FUN_71`, `local_10` (ler como texto UTF-8 ignorando erros)
-- Sem nenhum problema: imprimir `OK: N arquivos verificados` e sair com 0.
-- Opção `--self-test`: testar as funções de regra com uma lista de exemplos embutida no próprio script (sem tocar
-  no git), por exemplo `romfs/a.bin` deve falhar, `recomp/src/nso.cpp` deve passar, um texto com `param_1` deve
-  falhar. Imprimir cada caso e sair com 0 só se todos baterem com o esperado.
-
-## O que `tools/install_hooks.bat` deve fazer
-- Criar `.git/hooks/pre-commit` (sem extensão) que execute `python tools/check_repo_safety.py` e bloqueie o commit
-  se o código de saída for diferente de 0.
-- Se o hook já existir, não sobrescrever: avisar e sair.
-
-## Critério de aceite (rode e cole a saída no relatório)
-```
-python tools/check_repo_safety.py --self-test
-python tools/check_repo_safety.py
-```
-O primeiro deve sair com 0 com todos os casos corretos. O segundo deve sair com 0 no repositório atual.
-
-## Regras
+## Regras (valem para as duas)
+- Crie **somente** os arquivos listados em cada tarefa. Não edite nenhum outro arquivo, inclusive `CMakeLists.txt`,
+  `.gitignore`, o manifesto e tudo em `recomp/src`, `recomp/include`, `za_port/` e `analysis/`.
+  Se achar que outro arquivo precisa mudar, escreva isso no relatório em vez de mudar.
 - Se o mesmo erro acontecer duas vezes seguidas, **pare e relate**. Não tente de novo em loop.
-- Não faça commit nem push. Ao terminar, escreva um relatório curto: arquivos criados e saída dos dois comandos.
+- Não faça commit nem push.
+- Toda saída de build/geração vai para `build/` (já ignorado pelo git), nunca para dentro de `recomp/` ou `za_port/`.
+
+---
+
+## Tarefa A — `tools/run_all_tests.bat`
+
+Script que compila e testa os dois projetos CMake do repositório e diz no fim se está tudo verde.
+
+1. Colocar no início do `PATH` o toolchain WinLibs:
+   `%LOCALAPPDATA%\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin`
+   (é ele que tem `cmake.exe`, `ninja.exe` e `g++`; o cmake do devkitPro não serve).
+2. Para cada projeto, configurar com `-G Ninja -DCMAKE_BUILD_TYPE=Release`, compilar e rodar `ctest --output-on-failure`:
+   - `recomp/` em `build/recomp`
+   - `za_port/` em `build/za_port`
+3. Imprimir um resumo final com uma linha por projeto (`recomp: OK` ou `recomp: FALHOU`, idem `za_port`) e sair com
+   código 0 só se os dois passarem. Uma falha num projeto não deve impedir o outro de rodar.
+4. Rodar a partir da raiz do repositório (`tools\run_all_tests.bat`).
+
+**Aceite:** `tools\run_all_tests.bat` termina com os dois `OK` e código de saída 0. Cole o resumo final.
+
+---
+
+## Tarefa B — `recomp/tools/gen_import_table.py`
+
+Gera, a partir do inventário de importações, uma tabela C++ que a camada HLE vai usar.
+
+- Entrada: o `imports.csv` produzido por `nso_inspect` (colunas `nome,namespace,demangled,tipo,got,resolvido_no_sdk`;
+  alguns campos vêm entre aspas porque contêm vírgulas — use o módulo `csv`).
+- Uso: `python recomp/tools/gen_import_table.py <imports.csv> --out <pasta>`; gera `<pasta>/import_table.hpp` e
+  `<pasta>/import_table.cpp`. Python 3, só biblioteca padrão.
+- `import_table.hpp` deve conter exatamente esta interface:
+  ```cpp
+  #pragma once
+  #include <cstddef>
+  namespace recomp::hle {
+  struct ImportInfo {
+      const char* mangled;
+      const char* demangled;
+      const char* ns;        // coluna namespace
+      bool function;         // tipo == "func"
+      bool in_sdk;           // resolvido_no_sdk == "sim"
+  };
+  extern const ImportInfo kImports[];
+  extern const std::size_t kImportCount;
+  } // namespace recomp::hle
+  ```
+- `import_table.cpp`: inclui o header, define `kImports` com uma entrada por linha do CSV, ordenada por `ns` e depois
+  por `mangled`, e `kImportCount`. Escapar corretamente `\` e `"` nas strings C++.
+- Opção `--self-test`: gera a tabela a partir de um CSV de exemplo embutido no script (incluindo um nome com vírgula e
+  um com aspas), confere o conteúdo gerado e sai com 0 só se tudo bater. Não depende de nenhum arquivo externo.
+
+**Aceite** (cole a saída dos três):
+```
+python recomp/tools/gen_import_table.py --self-test
+python recomp/tools/gen_import_table.py analysis/recomp/generated/imports.csv --out build/hle_table
+g++ -std=c++20 -Wall -Wextra -fsyntax-only -Ibuild/hle_table build/hle_table/import_table.cpp
+```
+O segundo deve informar **1001** importações; o terceiro não pode ter erros nem warnings.
+Se `analysis/recomp/generated/imports.csv` não existir, gere com:
+`build\recomp\nso_inspect.exe exefs\main --sdk exefs\sdk` (depois da Tarefa A).
